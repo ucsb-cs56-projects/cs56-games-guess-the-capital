@@ -18,8 +18,12 @@
 <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}"/>
 <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc"/>
 <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc"/>
+<property name="fullPkg" value="edu.ucsb.cs56.S12.esterkin" />
 
-
+<path id="project.class.path">
+  <pathelement location="build"/>
+  <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+</path>
 
 
 
@@ -40,7 +44,9 @@
 </target>
 
  <target name="run" depends="compile" description="run the game">
-      <echo> Please java -cp build edu.ucsb.cs56.S12.esterkin.Game </echo> 
+   <java classname="${fullPkg}.${mainClass}" fork="true">
+     <classpath refid="project.class.path"/>
+   </java>
   </target>
   
   
