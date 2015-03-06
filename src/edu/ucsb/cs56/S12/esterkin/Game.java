@@ -16,7 +16,9 @@ public class Game{
 	private String guesschoice_string;
 	private int guesschoice_int;
     private String promptchoice_string;
-	private int promptchoice_int;
+	private int promptchoice_int1;
+    private int promptchoice_int2;
+    private int customprompt;
     private int score=0;
     public ArrayList<String> fourcapitals;
 	private int x;
@@ -191,15 +193,15 @@ public class Game{
 	}
     
     
-    public void setPromptChoice(){
+    public int setPromptChoice(){
         
 		try{
 			BufferedReader reader;
 			reader = new BufferedReader(new InputStreamReader(System.in));
 			while(y==0){
 				promptchoice_string = reader.readLine();
-				if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && ( ! promptchoice_string.equals("3") ))
-					System.out.println("Please type either 0, 1, 2, or 3");
+				if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && )
+					System.out.println("Please type either 0, 1,or 2");
 				else
 					y=1;
 			}
@@ -208,6 +210,7 @@ public class Game{
 		} catch(IOException ioe){
 			System.out.println("An unexpected error occured.");     
 		}
+		return promptchoice_int;
 	}
     
     
@@ -247,13 +250,36 @@ public class Game{
     
     public void prompt(){
         System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
-        System.out.println("\n0. Play a 10 Question US State Capitals Game");
-        System.out.println("1. Play a 50 Question US State Capitals Game");
-        System.out.println("2. Play a 10 Question World Capitals Game");
-        System.out.println("3. Play a 50 Question World Capitals Game");
+        System.out.println("\n0. Play US State Capitals Game");
+        System.out.println("1. Play World Capitals Game");
+        System.out.println("2. Play a game with World and State Capitals");
         System.out.println("\nPlease select a number: \n");
-        this.setPromptChoice();
+        promptchoice_int1=this.setPromptChoice();
+	System.out.println("\n0. Play with 10 questions");
+        System.out.println("1. Play with 50 questions");
+        System.out.println("2. Choose custom number of questions");
+        System.out.println("\nPlease select a number: \n");
+	promptchoice_int2=this.setPromptChoice();
+	if (promptchoice_int2==2) {
+	    System.out.println("Enter the number of questions");
+	    customprompt=this.customNumQuestions();
+	}
+
     }
+
+    public int customNumQuestions() {
+	int customNumber=0;	
+	try {
+	    BufferedReader reader;
+	    reader = new BufferedReader(new InputStreamReader(System.in));
+	    promptchoice_string = reader.readLine();
+	    customNumber = Integer.parseInt(promptchoice_string);
+	} catch(IOException ioe){
+	    System.out.println("An unexpected error occured.");
+	}
+	return customNumber;
+    }
+
     
     /**
      Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
