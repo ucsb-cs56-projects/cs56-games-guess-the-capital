@@ -10,19 +10,18 @@ public class Game{
     
 	//Instance variables 
     
-	private int index_choosenstate;
-	private String correctcapital;
-	private int index_duplicatechoosenstate;
-	private String guesschoice_string;
-	private int guesschoice_int;
+    private int index_choosenstate;
+    private String correctcapital;
+    private int index_duplicatechoosenstate;
+    private String guesschoice_string;
+    private int guesschoice_int;
     private String promptchoice_string;
-	private int promptchoice_int1;
+    private int promptchoice_int1;
     private int promptchoice_int2;
     private int customprompt;
     private int score=0;
     public ArrayList<String> fourcapitals;
-	private int x;
-    private int y;
+    private int x;
     private int numitems;
     static boolean play = true;
     
@@ -68,13 +67,6 @@ public class Game{
     }
     public void setPromptChoice_string(String s){
         this.promptchoice_string = s;
-    }
-    
-    public int getPromptChoice_int(){
-        return promptchoice_int;
-    }
-    public void setPromptChoice_int(int i){
-        this.promptchoice_int = i;
     }
     
     public void setScore(int i){
@@ -194,13 +186,14 @@ public class Game{
     
     
     public int setPromptChoice(){
-        
+        int promptchoice_int = 0;
+	int y = 0;
 		try{
 			BufferedReader reader;
 			reader = new BufferedReader(new InputStreamReader(System.in));
-			while(y==0){
+      			while(y==0){
 				promptchoice_string = reader.readLine();
-				if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && )
+				if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) )
 					System.out.println("Please type either 0, 1,or 2");
 				else
 					y=1;
@@ -220,7 +213,7 @@ public class Game{
     
 	public String compareAnswer(){
 		if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
-            if(numitems == 50){
+		    /*         if(numitems == 50){
                 score+=2;
                 return "Correct!";
             }
@@ -228,7 +221,10 @@ public class Game{
                 score+=10;
                 return "Correct!";
             }
-		} 
+	    } */
+		    score += (100/numitems);
+		    return "Correct!";
+		}
         return "Wrong!";
     }
     
@@ -335,24 +331,22 @@ public class Game{
      */
     
     public void runner(){
-        if(this.getPromptChoice_int()==0){
+        if(promptchoice_int2==0){
              numitems = 10;
-             this.StatesRunner(10);   
         }
-        else if(this.getPromptChoice_int()==1){
+        else if(promptchoice_int2==1){
             numitems = 50;
-            this.StatesRunner(50); 
         }
         
-        else if(this.getPromptChoice_int()==2){
-            numitems = 10;
-            this.CountriesRunner(10);
+        else if(promptchoice_int2==2){
+            numitems = customprompt;
         }
-            
-        else if (this.getPromptChoice_int()==3){
-                numitems = 50;
-                this.CountriesRunner(50); 
-        }
+	if(promptchoice_int1==0)
+	    this.StatesRunner(numitems);
+	else if(promptchoice_int1==1)
+	    this.CountriesRunner(numitems);      
+	else if(promptchoice_int1==2)
+	    this.StatesRunner(numitems);
     }
     
 	public static void main(String[] args){
