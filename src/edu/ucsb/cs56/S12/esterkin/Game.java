@@ -90,8 +90,19 @@ public class Game{
 	ArrayList<String> statesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"));
     ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
 	ArrayList<String> worldcountriesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"));
+    ArrayList<String> statesAndCountries = addLists(states, worldcountries);
+    ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(addLists(states, worldcountries));
+    ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt"));
+    ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt"));
+    ArrayList<String> bothCapitals = addLists(stateCapitals, worldCapitals);
 
-    
+
+    public ArrayList<String> addLists(ArrayList<String> l1, ArrayList<String> l2) {
+	ArrayList<String> newList = new ArrayList<String>();
+	newList.addAll(l1);
+	newList.addAll(l2);
+	return newList;
+    }
     
 	//Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
     
@@ -128,8 +139,8 @@ public class Game{
      Generates an arraylist containing 3 random capitals and the capital corresponding to the choosen state, shuffles the arraylist before returning it     
      */
     
-	public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate){
-		ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt");
+    public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate, ArrayList<String> list) {
+		ArrayList<String> capitals = list;
 		correctcapital = capitals.get(index_duplicatechoosenstate);
 		capitals.remove(index_duplicatechoosenstate);
 		fourcapitals = new ArrayList<String>();
@@ -280,10 +291,10 @@ public class Game{
     /**
      Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
      */
-	public void StatesRunner(int numitems){
+    public void QuestionRunner(int numitems, ArrayList<String> list, ArrayList<String> listCopy, ArrayList<String> clist){
 		for(int i=0;i<numitems;i++){
-			System.out.println("\nWhat is the capital of" + " " + statesCopy.get(this.ChooseRandomStateorCountry(states,statesCopy))+"?" +"\n");
-			ArrayList<String> fourCapitals = generate4Capitals(index_duplicatechoosenstate);
+			System.out.println("\nWhat is the capital of" + " " + listCopy.get(this.ChooseRandomStateorCountry(list,listCopy))+"?" +"\n");
+			ArrayList<String> fourCapitals = generate4Capitals(index_duplicatechoosenstate, clist);
 			for(int j=0;j<4;j++){
 				System.out.println("" + j +"." + " " + fourCapitals.get(j));
 			}
@@ -342,11 +353,11 @@ public class Game{
             numitems = customprompt;
         }
 	if(promptchoice_int1==0)
-	    this.StatesRunner(numitems);
+	    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);
 	else if(promptchoice_int1==1)
-	    this.CountriesRunner(numitems);      
+	    this.QuestionRunner(numitems, worldcountries, worldcountriesCopy, worldCapitals);      
 	else if(promptchoice_int1==2)
-	    this.StatesRunner(numitems);
+	    this.QuestionRunner(numitems, statesAndCountries, statesAndCountriesCopy, bothCapitals);
     }
     
 	public static void main(String[] args){

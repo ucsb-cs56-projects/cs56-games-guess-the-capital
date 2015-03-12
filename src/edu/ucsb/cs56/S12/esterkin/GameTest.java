@@ -32,14 +32,14 @@ assertEquals(testlist.size(),50);
  test generate4Capitals() from Game
  @see Game#generate4Capitals()
  */
-    
+/*    
 @Test public void testgenerate4Capitals()
 {    
 //test to see if generate4Capitals() creates an arraylist of 4 String objects
 Game g = new Game();
 ArrayList<String> testlist = g.generate4Capitals(10);
 assertEquals(testlist.size(),4);
-}
+} */
 
 /**
  test Grade() from Game
