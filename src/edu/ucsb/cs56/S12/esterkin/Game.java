@@ -140,7 +140,8 @@ public class Game{
      */
     
     public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate, ArrayList<String> list) {
-		ArrayList<String> capitals = list;
+	ArrayList<String> capitals = new ArrayList<String>();
+	capitals.addAll(list);
 		correctcapital = capitals.get(index_duplicatechoosenstate);
 		capitals.remove(index_duplicatechoosenstate);
 		fourcapitals = new ArrayList<String>();
@@ -155,22 +156,7 @@ public class Game{
 		return fourcapitals;
 	}
     
-    public ArrayList<String> generate4CountryCapitals(int index_duplicatechoosenstate){
-		ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt");
-		correctcapital = capitals.get(index_duplicatechoosenstate);
-		capitals.remove(index_duplicatechoosenstate);
-		fourcapitals = new ArrayList<String>();
-		for (int i=0;i<3;i++){
-			int randomcapital_index = (int)(   Math.random() * capitals.size());
-			fourcapitals.add(capitals.get(randomcapital_index));
-			capitals.remove(randomcapital_index);	
-		}
-		fourcapitals.add(correctcapital);
-		Collections.shuffle(fourcapitals);
-        
-		return fourcapitals;
-	}
-    
+  
     /**
      Peforms I/O and handles exceptions
      */
@@ -312,30 +298,7 @@ public class Game{
 		System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
 	}
     
-    /**
-     Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
-     */
-    
-    public void CountriesRunner(int numitems){
-		for(int i=0;i<numitems;i++){
-			System.out.println("\nWhat is the capital of" + " " + worldcountriesCopy.get(this.ChooseRandomStateorCountry(worldcountries,worldcountriesCopy))+"?" +"\n");
-			ArrayList<String> fourCapitals = generate4CountryCapitals(index_duplicatechoosenstate);
-			for(int j=0;j<4;j++){
-				System.out.println("" + j +"." + " " + fourCapitals.get(j));
-			}
-			System.out.println("");
-			System.out.print("Enter Answer: ");
-			this.setGuessChoice();
-			x=0;
-			if(i<numitems-2)
-                System.out.println(this.compareAnswer()+ " " + ((numitems-1)-i) + " " + "questions to go.");
-            if(i==numitems-2)
-                System.out.println(this.compareAnswer()+ " " + "The last question is...");
-            else if(i==numitems-1)
-                System.out.println(this.compareAnswer());
-		}
-		System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
-    }
+   
         
     /**
      Initiates appropriate actions based on the user's choice  
