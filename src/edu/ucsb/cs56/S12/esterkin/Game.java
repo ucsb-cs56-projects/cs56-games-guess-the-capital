@@ -18,10 +18,11 @@ public class Game{
     private String promptchoice_string;
     private int promptchoice_int1;
     private int promptchoice_int2;
+    private int customprompt;
     private int score=0;
     public ArrayList<String> fourcapitals;
     private int x = 0;
-    private int y = 0;
+    //    private int y = 0;
     private int numitems;
     static boolean play = true;
 
@@ -120,20 +121,20 @@ public class Game{
     
 	//Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
     
-	public ArrayList<String> readFile(String fileName) {
+    public ArrayList<String> readFile(String fileName) {
         
-		ArrayList<String> StatesOrCapitals = new ArrayList<String>();
-		try {
-			Scanner scanner = new Scanner(new File(fileName));
-			scanner.useDelimiter
-			(System.getProperty("line.separator")); 
-			while (scanner.hasNext()) {
-				StatesOrCapitals.add(scanner.next());}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return StatesOrCapitals;
+	ArrayList<String> StatesOrCapitals = new ArrayList<String>();
+	try {
+	    Scanner scanner = new Scanner(new File(fileName));
+	    scanner.useDelimiter
+		(System.getProperty("line.separator")); 
+	    while (scanner.hasNext()) {
+		StatesOrCapitals.add(scanner.next());}
+	    scanner.close();
+	} catch (FileNotFoundException e) {
+	    e.printStackTrace();
+	}
+	return StatesOrCapitals;
 	} 
 
 
@@ -141,14 +142,14 @@ public class Game{
     /**
     //     Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
      */
-	public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
+    public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
+	
+	index_choosenstate = (int)(   Math.random() * alist.size()  );
+	String choosenstate = alist.get(index_choosenstate);
+	alist.remove(index_choosenstate);
+	index_duplicatechoosenstate = alistcopy.indexOf(choosenstate);
         
-		index_choosenstate = (int)(   Math.random() * alist.size()  );
-		String choosenstate = alist.get(index_choosenstate);
-		alist.remove(index_choosenstate);
-		index_duplicatechoosenstate = alistcopy.indexOf(choosenstate);
-        
-		return index_duplicatechoosenstate; 
+	return index_duplicatechoosenstate; 
         
 	}
     
@@ -314,15 +315,29 @@ public class Game{
 
 	System.out.println("\n0. Play with 10 questions");
 	System.out.println("1. Play with 50 questions");
-	System.out.println("2. ***TBA in the next updates**** Choose custom number of questions");
+	System.out.println("2. Choose custom number of questions");
 	System.out.println("\nPlease select a number: \n");
 	promptchoice_int2 = this.setPromptChoice();
 
-	//********** add another prompt asking how many questions to be tested on" ***
-}
-
-    //*********** gather user's input of his/her custom number of questions ***
+	if(promptchoice_int2 == 2){
+	    System.out.println("Enter the number of questions");
+	    customprompt = this.customNumQuestions();
+	}
+    }
     
+    public int customNumQuestions() {
+	int customNumber = 0;
+	try {
+	    BufferedReader reader;
+	    reader = new BufferedReader(new InputStreamReader(System.in));
+	    promptchoice_string = reader.readLine();
+	    customNumber = Integer.parseInt(promptchoice_string);
+	} catch(IOException ioe){
+	    System.out.println("An unexpected error occured.");
+	}
+	return customNumber;
+    }
+
     
       /**/
     //Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
@@ -429,8 +444,10 @@ public class Game{
 	    numitems = 10;
 	else if(promptchoice_int2 == 1)
 	    numitems = 50;
+	else if(promptchoice_int2 == 2){
+	    numitems = customprompt;
+	}
 
-	// ****** another if statement for custom number ****
 
 	if(promptchoice_int1 == 0)
 	    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);
