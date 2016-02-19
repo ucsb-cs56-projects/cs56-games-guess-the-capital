@@ -10,16 +10,16 @@ public class Game{
     
 	//Instance variables 
     
-	private int index_choosenstate;
-	private String correctcapital;
-	private int index_duplicatechoosenstate;
-	private String guesschoice_string;
-	private int guesschoice_int;
+    private int index_choosenstate;
+    private String correctcapital;
+    private int index_duplicatechoosenstate;
+    private String guesschoice_string;
+    private int guesschoice_int;
     private String promptchoice_string;
-	private int promptchoice_int;
+    private int promptchoice_int;
     private int score=0;
     public ArrayList<String> fourcapitals;
-	private int x;
+    private int x;
     private int y;
     private int numitems;
     static boolean play = true;
@@ -193,22 +193,22 @@ public class Game{
     
     public void setPromptChoice(){
         
-		try{
-			BufferedReader reader;
-			reader = new BufferedReader(new InputStreamReader(System.in));
-			while(y==0){
-				promptchoice_string = reader.readLine();
-				if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && ( ! promptchoice_string.equals("3") ))
-					System.out.println("Please type either 0, 1, 2, or 3");
-				else
-					y=1;
-			}
-			promptchoice_int = Integer.parseInt(promptchoice_string);
+	try{
+	    BufferedReader reader;
+	    reader = new BufferedReader(new InputStreamReader(System.in));
+	    while(y==0){
+		promptchoice_string = reader.readLine();
+		if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && ( ! promptchoice_string.equals("3") ))
+		    System.out.println("Please type either 0, 1, 2, or 3");
+		else
+		    y=1;
+	    }
+	    promptchoice_int = Integer.parseInt(promptchoice_string);
             
-		} catch(IOException ioe){
-			System.out.println("An unexpected error occured.");     
-		}
+	} catch(IOException ioe){
+	    System.out.println("An unexpected error occured.");     
 	}
+    }
     
     
     /**
@@ -233,16 +233,32 @@ public class Game{
      Calculates a grade for the player based on their total score   
      */
 	public String grade(){
-		if (score >= 90) 
-			return "A";
-		if (score >= 80) 
-			return "B";
-		if (score >= 70) 
-			return "C";
-		if (score >= 60) 
-			return "D";
-		else
-			return "F";
+	    if (score >= 97)
+		return "A+";
+	    if (score >= 93) 
+		return "A";
+	    if (score >= 90) 
+		return "A-";
+	    if (score >= 87) 
+		return "B+";
+	    if (score >= 83) 
+		return "B";
+	    if (score >= 80) 
+		return "B-";
+	    if (score >= 77) 
+		return "C+";
+	    if (score >= 73) 
+		return "C";
+	    if (score >= 70) 
+		return "C-";
+	    if (score >= 67) 
+		return "D+";
+	    if (score >= 63) 
+		return "D";
+	    if (score >= 60) 
+		return "D-";
+	    else
+		return "F";
 	}
     
     public void prompt(){
@@ -329,22 +345,22 @@ public class Game{
         }
     }
     
-	public static void main(String[] args){
+    public static void main(String[] args){
         while(play){
-		Game game = new Game();
-        game.prompt();
-        game.runner();
-        System.out.println("Your Grade:" + " " + game.grade()+"\n\n\n");
-        System.out.println("Enter x to play again (entering any other key quits the game)");
-        try{playagain = (char)System.in.read();                
-            
-        } catch (IOException ioe) {
-			System.out.println("An unexpected error occured.");    
-		}
-        if(playagain != 'x')
-            play = false;
+	    Game game = new Game();
+	    game.prompt();
+	    game.runner();
+	    System.out.println("Your Grade:" + " " + game.grade()+"\n\n\n");
+	    System.out.println("Enter x to play again (entering any other key quits the game)");
+	    try{playagain = (char)System.in.read();                
+		
+	    } catch (IOException ioe) {
+		System.out.println("An unexpected error occured.");    
+	    }
+	    if(playagain != 'x')
+		play = false;
         }
-        }
+    }
 }
 
 
