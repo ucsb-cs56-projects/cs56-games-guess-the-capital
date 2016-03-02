@@ -1,6 +1,6 @@
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 1
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 1
 
 
     1	package edu.ucsb.cs56.S12.esterkin;
@@ -13,52 +13,52 @@
     8	
     9	public class Game{
    10	    
-   11		//Instance variables 
-   12	    
-   13		private int index_choosenstate;
-   14		private String correctcapital;
-   15		private int index_duplicatechoosenstate;
-   16		private String guesschoice_string;
-   17		private int guesschoice_int;
-   18	    private String promptchoice_string;
-   19		private int promptchoice_int;
-   20	    private int score=0;
-   21	    public ArrayList<String> fourcapitals;
-   22		private int x;
-   23	    private int y;
-   24	    private int numitems;
-   25	    static boolean play = true;
-   26	    
-   27	    //setters and getters
+   11	    //Instance variables 
+   12	    private int index_choosenstate;
+   13	    private String correctcapital;
+   14	    private int index_duplicatechoosenstate;
+   15	    private String guesschoice_string;
+   16	    private int guesschoice_int;
+   17	    private String promptchoice_string;
+   18	    private int promptchoice_int1;
+   19	    private int promptchoice_int2;
+   20	    private int customprompt;
+   21	    private int score=0;
+   22	    private int x = 0;
+   23	    private int numitems;
+   24	    private ArrayList<String> fourcapitals;
+   25	    static private boolean play = true;
+   26	    static private char playagain;
+   27	  
    28	    
-   29	    public int getIndex_choosenstate(){
-   30	        return index_choosenstate;
-   31	    }
-   32	    public void setIndex_choosenstate(int i){
-   33	        this.index_choosenstate = i;
-   34	    }
-   35	    
-   36	    public String getCorrectcapital(){
-   37	        return correctcapital;
+   29	    //setters and getters
+   30	    /** 
+   31		@return return the index of an ArrayList that holds a choosen state
+   32	    */
+   33	    public int getIndex_choosenstate(){
+   34	        return index_choosenstate;
+   35	    }
+   36	    public void setIndex_choosenstate(int i){
+   37	        this.index_choosenstate = i;
    38	    }
-   39	    public void setCorrectcapital(String s){
-   40	        this.correctcapital = s;
-   41	    }
-   42	    
-   43	    public int getIndex_duplicatechoosenstate(){
-   44	        return index_duplicatechoosenstate;
+   39	    
+   40	    public String getCorrectcapital(){
+   41	        return correctcapital;
+   42	    }
+   43	    public void setCorrectcapital(String s){
+   44	        this.correctcapital = s;
    45	    }
-   46	    public void setIndex_duplicatechoosenstate(int i){
-   47	        this.index_duplicatechoosenstate = i;
-   48	    }
-   49	    
-   50	    public String getGuessChoice_string(){
-   51	        return guesschoice_string;
+   46	    
+   47	    public int getIndex_duplicatechoosenstate(){
+   48	        return index_duplicatechoosenstate;
+   49	    }
+   50	    public void setIndex_duplicatechoosenstate(int i){
+   51	        this.index_duplicatechoosenstate = i;
    52	    }
-   53	    public void setGuessChoice_string(String s){
-   54	        this.guesschoice_string = s;
-   55	    }
-   56	    
+   53	    
+   54	    public String getGuessChoice_string(){
+   55	        return guesschoice_string;
+   56	    }
 
 
 
@@ -66,65 +66,65 @@
 
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 2
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 2
 
 
-   57	    public int getGuessChoice_int(){
-   58	        return guesschoice_int;
+   57	    public void setGuessChoice_string(String s){
+   58	        this.guesschoice_string = s;
    59	    }
-   60	    public void setGuessChoice_int(int i){
-   61	        this.guesschoice_int = i;
-   62	    }
-   63	    
-   64	    public String getPromptChoice_string(){
-   65	        return promptchoice_string;
+   60	    
+   61	    public int getGuessChoice_int(){
+   62	        return guesschoice_int;
+   63	    }
+   64	    public void setGuessChoice_int(int i){
+   65	        this.guesschoice_int = i;
    66	    }
-   67	    public void setPromptChoice_string(String s){
-   68	        this.promptchoice_string = s;
-   69	    }
-   70	    
-   71	    public int getPromptChoice_int(){
-   72	        return promptchoice_int;
+   67	    
+   68	    public String getPromptChoice_string(){
+   69	        return promptchoice_string;
+   70	    }
+   71	    public void setPromptChoice_string(String s){
+   72	        this.promptchoice_string = s;
    73	    }
-   74	    public void setPromptChoice_int(int i){
-   75	        this.promptchoice_int = i;
-   76	    }
-   77	    
-   78	    public void setScore(int i){
-   79	        this.score = i;
+   74	
+   75	    public void setScore(int i){
+   76	        this.score = i;
+   77	    }
+   78	    public int getScore(){
+   79	        return score;
    80	    }
    81	    
-   82	    public int getScore(){
-   83	        return score;
+   82	    public void setNumitems(int numitems){
+   83	        this.numitems = numitems;
    84	    }
-   85	    
-   86	    public void setNumitems(int numitems){
-   87	        this.numitems = numitems;
-   88	        
-   89	    }
-   90	    public int getNumitems(){
-   91	        return numitems;
-   92	    }
-   93	    static char playagain;
-   94	    
-   95		ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
-   96		ArrayList<String> statesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"));
-   97	    ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
-   98		ArrayList<String> worldcountriesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"));
-   99	
-  100	    
+   85	    public int getNumitems(){
+   86	        return numitems;
+   87	    }
+   88	    
+   89	    
+   90	
+   91	    
+   92	    ArrayList<String> states = readFile(
+   93						"build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
+   94	    ArrayList<String> statesCopy = new ArrayList<String>(states);
+   95	    
+   96	    ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
+   97	    ArrayList<String> worldcountriesCopy = new ArrayList<String>(worldcountries);
+   98	    
+   99	    ArrayList<String> statesAndCountries = addLists(states, worldcountries);
+  100	    ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(statesAndCountries);
   101	    
-  102		//Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
-  103	    
-  104		public ArrayList<String> readFile(String fileName) {
-  105	        
-  106			ArrayList<String> StatesOrCapitals = new ArrayList<String>();
-  107			try {
-  108				Scanner scanner = new Scanner(new File(fileName));
-  109				scanner.useDelimiter
-  110				(System.getProperty("line.separator")); 
-  111				while (scanner.hasNext()) {
-  112					StatesOrCapitals.add(scanner.next());}
+  102	    ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt"));
+  103	    ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt"));
+  104	    ArrayList<String> bothCapitals = addLists(stateCapitals, worldCapitals);
+  105	
+  106	    
+  107	    
+  108	    //combine two lists of ArrayList into one big ArrayList
+  109	    public ArrayList<String> addLists(ArrayList<String> l1, ArrayList<String> l2) {
+  110		ArrayList<String> newList = new ArrayList<String>();
+  111		newList.addAll(l1);
+  112		newList.addAll(l2);
 
 
 
@@ -132,131 +132,131 @@
 
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 3
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 3
 
 
-  113				scanner.close();
-  114			} catch (FileNotFoundException e) {
-  115				e.printStackTrace();
-  116			}
-  117			return StatesOrCapitals;
-  118		} 
-  119	    
-  120	    /**
-  121	     Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
-  122	     */
-  123		public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
-  124	        
-  125			index_choosenstate = (int)(   Math.random() * alist.size()  );
-  126			String choosenstate = alist.get(index_choosenstate);
-  127			alist.remove(index_choosenstate);
-  128			index_duplicatechoosenstate = alistcopy.indexOf(choosenstate);
-  129	        
-  130			return index_duplicatechoosenstate; 
-  131	        
-  132		}
-  133	    /**
-  134	     Generates an arraylist containing 3 random capitals and the capital corresponding to the choosen state, shuffles the arraylist before returning it     
-  135	     */
-  136	    
-  137		public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate){
-  138			ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt");
-  139			correctcapital = capitals.get(index_duplicatechoosenstate);
-  140			capitals.remove(index_duplicatechoosenstate);
-  141			fourcapitals = new ArrayList<String>();
-  142			for (int i=0;i<3;i++){
-  143				int randomcapital_index = (int)(   Math.random() * capitals.size());
-  144				fourcapitals.add(capitals.get(randomcapital_index));
-  145				capitals.remove(randomcapital_index);	
-  146			}
-  147			fourcapitals.add(correctcapital);
-  148			Collections.shuffle(fourcapitals);
-  149	        
-  150			return fourcapitals;
-  151		}
-  152	    
-  153	    public ArrayList<String> generate4CountryCapitals(int index_duplicatechoosenstate){
-  154			ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt");
-  155			correctcapital = capitals.get(index_duplicatechoosenstate);
-  156			capitals.remove(index_duplicatechoosenstate);
-  157			fourcapitals = new ArrayList<String>();
-  158			for (int i=0;i<3;i++){
-  159				int randomcapital_index = (int)(   Math.random() * capitals.size());
-  160				fourcapitals.add(capitals.get(randomcapital_index));
-  161				capitals.remove(randomcapital_index);	
-  162			}
-  163			fourcapitals.add(correctcapital);
-  164			Collections.shuffle(fourcapitals);
-  165	        
-  166			return fourcapitals;
-  167		}
-  168	    
-
-
-
+  113		return newList;
+  114	    }
+  115				      
+  116	
+  117	    
+  118	    
+  119	    //Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
+  120	    public ArrayList<String> readFile(String fileName) {
+  121		ArrayList<String> StatesOrCapitals = new ArrayList<String>();
+  122		try {
+  123		    Scanner scanner = new Scanner(new File(fileName));
+  124		    scanner.useDelimiter(System.getProperty("line.separator")); 
+  125		    while (scanner.hasNext()) 
+  126			StatesOrCapitals.add(scanner.next());
+  127		    scanner.close();
+  128		} catch (FileNotFoundException e) {
+  129		    e.printStackTrace();
+  130		}
+  131		return StatesOrCapitals;
+  132	    }
+  133	
+  134	
+  135	    
+  136	    /**
+  137	    //     Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
+  138	     */
+  139	    public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
+  140		index_choosenstate = (int)(   Math.random() * alist.size()  );
+  141		String choosenstate = alist.get(index_choosenstate);
+  142		alist.remove(index_choosenstate);
+  143		index_duplicatechoosenstate = alistcopy.indexOf(choosenstate);
+  144		return index_duplicatechoosenstate;  
+  145		}
+  146	    
+  147	    
+  148	    /**
+  149	     Generates an arraylist containing 3 random capitals and the capital corresponding to the choosen state, shuffles the arraylist before returning it     
+  150	     */
+  151	    public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate, ArrayList<String> list){
+  152		ArrayList<String> capitals = new ArrayList<String>(list);
+  153		correctcapital = capitals.get(index_duplicatechoosenstate);
+  154		capitals.remove(index_duplicatechoosenstate);
+  155		fourcapitals = new ArrayList<String>();
+  156		for (int i=0;i<3;i++){
+  157		    int randomcapital_index = (int)(   Math.random() * capitals.size());
+  158		    fourcapitals.add(capitals.get(randomcapital_index));
+  159		    capitals.remove(randomcapital_index);	
+  160		}
+  161		fourcapitals.add(correctcapital);
+  162		Collections.shuffle(fourcapitals);
+  163	        
+  164		return fourcapitals;
+  165	    }
+  166	
+  167	    
+  168	    /**
 
 
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 4
 
 
-  169	    /**
-  170	     Peforms I/O and handles exceptions
-  171	     */
-  172	    
-  173		public void setGuessChoice(){
-  174	        
-  175			try{
-  176				BufferedReader reader;
-  177				reader = new BufferedReader(new InputStreamReader(System.in));
-  178	            String choice = guesschoice_string;
-  179				while(x==0){
-  180					guesschoice_string = reader.readLine();
-  181					if( ( ! guesschoice_string.equals("0") ) && ( ! guesschoice_string.equals("1") ) && ( ! guesschoice_string.equals("2") ) && ( ! guesschoice_string.equals("3") ))
-  182						System.out.println("Please type either 0, 1, 2, or 3");
-  183					else
-  184						x=1;
-  185				}
-  186				guesschoice_int = Integer.parseInt(guesschoice_string);
-  187	            
-  188			} catch(IOException ioe){
-  189				System.out.println("An unexpected error occured.");     
-  190			}
-  191		}
-  192	    
-  193	    
-  194	    public void setPromptChoice(){
-  195	        
-  196			try{
-  197				BufferedReader reader;
-  198				reader = new BufferedReader(new InputStreamReader(System.in));
-  199				while(y==0){
-  200					promptchoice_string = reader.readLine();
-  201					if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) && ( ! promptchoice_string.equals("3") ))
-  202						System.out.println("Please type either 0, 1, 2, or 3");
-  203					else
-  204						y=1;
-  205				}
-  206				promptchoice_int = Integer.parseInt(promptchoice_string);
-  207	            
-  208			} catch(IOException ioe){
-  209				System.out.println("An unexpected error occured.");     
-  210			}
-  211		}
+
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 4
+
+
+  169	     Peforms I/O and handles exceptions
+  170	     */
+  171	    public void setGuessChoice(){
+  172		try{
+  173		    BufferedReader reader;
+  174		    reader = new BufferedReader(new InputStreamReader(System.in));
+  175		    while(x==0){
+  176			this.setGuessChoice_string(reader.readLine());
+  177			//guesschoice_string = reader.readLine();
+  178			if( ( ! guesschoice_string.equals("0") ) && ( ! guesschoice_string.equals("1") ) && ( ! guesschoice_string.equals("2") ) && ( ! guesschoice_string.equals("3") ))
+  179			    System.out.println("Please type either 0, 1, 2, or 3");
+  180			else
+  181			    x=1;
+  182		    }
+  183		    guesschoice_int = Integer.parseInt(guesschoice_string);
+  184	            
+  185		} catch(IOException ioe){
+  186		    System.out.println("An unexpected error occured.");     
+  187		}
+  188	    }
+  189	    
+  190	    
+  191	    public int setPromptChoice(){
+  192		int promptchoice_int = 0;
+  193		int y = 0;
+  194		try{
+  195		    BufferedReader reader;
+  196		    reader = new BufferedReader(new InputStreamReader(System.in));
+  197		    while(y==0){
+  198			promptchoice_string = reader.readLine();
+  199			if( ( ! promptchoice_string.equals("0") ) && ( ! promptchoice_string.equals("1") ) && ( ! promptchoice_string.equals("2") ) )
+  200			    System.out.println("Please type either 0, 1, 2");
+  201			else
+  202			    y=1;
+  203		    }
+  204		    promptchoice_int = Integer.parseInt(promptchoice_string);
+  205	            
+  206		} catch(IOException ioe){
+  207		    System.out.println("An unexpected error occured.");     
+  208		}
+  209		return promptchoice_int;
+  210	    }
+  211	    
   212	    
-  213	    
-  214	    /**
-  215	     Compares the answer the player choose with the correct answer, and performs the appropriate actions    
-  216	     */
-  217	    
-  218		public String compareAnswer(){
-  219			if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
-  220	            if(numitems == 50){
-  221	                score+=2;
-  222	                return "Correct!";
-  223	            }
-  224	            else if(numitems == 10){
+  213	    /**
+  214	     Compares the answer the player choose with the correct answer, and performs the appropriate actions    
+  215	     */
+  216	    
+  217	    public String compareAnswer(){
+  218		if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
+  219		    
+  220		    score += (100/numitems);
+  221		    return "Correct!";
+  222		} 
+  223	        return "Wrong!";
+  224	    }
 
 
 
@@ -264,131 +264,65 @@
 
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 5
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 5
 
 
-  225	                score+=10;
-  226	                return "Correct!";
-  227	            }
-  228			} 
-  229	        return "Wrong!";
-  230	    }
-  231	    
-  232	    /**
-  233	     Calculates a grade for the player based on their total score   
-  234	     */
-  235		public String grade(){
-  236			if (score >= 90) 
-  237				return "A";
-  238			if (score >= 80) 
-  239				return "B";
-  240			if (score >= 70) 
-  241				return "C";
-  242			if (score >= 60) 
-  243				return "D";
-  244			else
-  245				return "F";
-  246		}
-  247	    
-  248	    public void prompt(){
-  249	        System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
-  250	        System.out.println("\n0. Play a 10 Question US State Capitals Game");
-  251	        System.out.println("1. Play a 50 Question US State Capitals Game");
-  252	        System.out.println("2. Play a 10 Question World Capitals Game");
-  253	        System.out.println("3. Play a 50 Question World Capitals Game");
-  254	        System.out.println("\nPlease select a number: \n");
-  255	        this.setPromptChoice();
-  256	    }
-  257	    
-  258	    /**
-  259	     Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
-  260	     */
-  261		public void StatesRunner(int numitems){
-  262			for(int i=0;i<numitems;i++){
-  263				System.out.println("\nWhat is the capital of" + " " + statesCopy.get(this.ChooseRandomStateorCountry(states,statesCopy))+"?" +"\n");
-  264				ArrayList<String> fourCapitals = generate4Capitals(index_duplicatechoosenstate);
-  265				for(int j=0;j<4;j++){
-  266					System.out.println("" + j +"." + " " + fourCapitals.get(j));
-  267				}
-  268				System.out.println("");
-  269				System.out.print("Enter Answer: ");
-  270				this.setGuessChoice();
-  271				x=0;
-  272	            if(i<numitems-2)
-  273	                System.out.println(this.compareAnswer()+ " " + ((numitems-1)-i) + " " + "questions to go.");
-  274	            if(i==numitems-2)
-  275	                System.out.println(this.compareAnswer()+ " " + "The last question is...");
-  276	            else if(i==numitems-1)
-  277	                System.out.println(this.compareAnswer());
-  278	        }
-  279			System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
-  280		}
-
-
-
-
-
-
-
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 6
-
-
-  281	    
-  282	    /**
-  283	     Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
-  284	     */
-  285	    
-  286	    public void CountriesRunner(int numitems){
-  287			for(int i=0;i<numitems;i++){
-  288				System.out.println("\nWhat is the capital of" + " " + worldcountriesCopy.get(this.ChooseRandomStateorCountry(worldcountries,worldcountriesCopy))+"?" +"\n");
-  289				ArrayList<String> fourCapitals = generate4CountryCapitals(index_duplicatechoosenstate);
-  290				for(int j=0;j<4;j++){
-  291					System.out.println("" + j +"." + " " + fourCapitals.get(j));
-  292				}
-  293				System.out.println("");
-  294				System.out.print("Enter Answer: ");
-  295				this.setGuessChoice();
-  296				x=0;
-  297				if(i<numitems-2)
-  298	                System.out.println(this.compareAnswer()+ " " + ((numitems-1)-i) + " " + "questions to go.");
-  299	            if(i==numitems-2)
-  300	                System.out.println(this.compareAnswer()+ " " + "The last question is...");
-  301	            else if(i==numitems-1)
-  302	                System.out.println(this.compareAnswer());
-  303			}
-  304			System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
-  305	    }
-  306	        
-  307	    /**
-  308	     Initiates appropriate actions based on the user's choice  
-  309	     */
-  310	    
-  311	    public void runner(){
-  312	        if(this.getPromptChoice_int()==0){
-  313	             numitems = 10;
-  314	             this.StatesRunner(10);   
-  315	        }
-  316	        else if(this.getPromptChoice_int()==1){
-  317	            numitems = 50;
-  318	            this.StatesRunner(50); 
-  319	        }
-  320	        
-  321	        else if(this.getPromptChoice_int()==2){
-  322	            numitems = 10;
-  323	            this.CountriesRunner(10);
-  324	        }
-  325	            
-  326	        else if (this.getPromptChoice_int()==3){
-  327	                numitems = 50;
-  328	                this.CountriesRunner(50); 
-  329	        }
-  330	    }
-  331	    
-  332		public static void main(String[] args){
-  333	        while(play){
-  334			Game game = new Game();
-  335	        game.prompt();
-  336	        game.runner();
+  225	    
+  226	    /**
+  227	     Calculates a grade for the player based on their total score   
+  228	     */
+  229		public String grade(){
+  230	
+  231		    String letterGrade = "";
+  232		    /*	    
+  233	      	    if (score >= 97)
+  234			return "A+";
+  235		    if (score >= 93) 
+  236			return "A";
+  237		    if (score >= 90) 
+  238			return "A-";
+  239		    if (score >= 87) 
+  240			return "B+";
+  241		    if (score >= 83) 
+  242			return "B";
+  243		    if (score >= 80) 
+  244			return "B-";
+  245		    if (score >= 77) 
+  246			return "C+";
+  247		    if (score >= 73) 
+  248			return "C";
+  249		    if (score >= 70) 
+  250			return "C-";
+  251		    if (score >= 67) 
+  252			return "D+";
+  253		    if (score >= 63) 
+  254			return "D";
+  255		    if (score >= 60) 
+  256			return "D-";
+  257		    else
+  258			return "F";
+  259		    */
+  260		    
+  261		    if(score == 100)
+  262			return "A+";
+  263		    if(score >= 90)
+  264			letterGrade = "A";
+  265		    if(score >= 80)
+  266			letterGrade = "B";
+  267		    if(score >= 70)
+  268			letterGrade = "C";
+  269		    if(score >= 60) 
+  270			letterGrade = "D";
+  271		    else 
+  272			return "F";
+  273		    
+  274		    if(score %10 >= 7)
+  275			return letterGrade + "+";
+  276		    if(score %10 >= 3)
+  277			return letterGrade;
+  278		    else
+  279			return letterGrade + "-";
+  280	
 
 
 
@@ -396,25 +330,125 @@
 
 
 
-2012-05-31 23:43     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 7
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 6
 
 
-  337	        System.out.println("Your Grade:" + " " + game.grade()+"\n\n\n");
-  338	        System.out.println("Enter x to play again (entering any other key quits the game)");
-  339	        try{playagain = (char)System.in.read();                
-  340	            
-  341	        } catch (IOException ioe) {
-  342				System.out.println("An unexpected error occured.");    
-  343			}
-  344	        if(playagain != 'x')
-  345	            play = false;
-  346	        }
-  347	        }
-  348	}
+  281		}
+  282	    
+  283	    public void prompt(){
+  284	        System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
+  285	
+  286		System.out.println("\n0. Play US State Capitals Game");
+  287		System.out.println("1. Play World Capitals Game");
+  288		System.out.println("2. Play a game with World and State Capitals");
+  289		System.out.println("\nPlease select a number: \n");
+  290		promptchoice_int1 = this.setPromptChoice();
+  291	
+  292		System.out.println("\n0. Play with 10 questions");
+  293		System.out.println("1. Play with 50 questions");
+  294		System.out.println("2. Choose custom number of questions");
+  295		System.out.println("\nPlease select a number: \n");
+  296		promptchoice_int2 = this.setPromptChoice();
+  297	
+  298		if(promptchoice_int2 == 2){
+  299		    System.out.println("Enter the number of questions");
+  300		    customprompt = this.customNumQuestions();
+  301		}
+  302	    }
+  303	    
+  304	    public int customNumQuestions() {
+  305		int customNumber = 0;
+  306		try {
+  307		    BufferedReader reader;
+  308		    reader = new BufferedReader(new InputStreamReader(System.in));
+  309		    promptchoice_string = reader.readLine();
+  310		    customNumber = Integer.parseInt(promptchoice_string);
+  311		} catch(IOException ioe){
+  312		    System.out.println("An unexpected error occured.");
+  313		}
+  314		return customNumber;
+  315	    }
+  316	
+  317	    
+  318	      /**/
+  319	    //Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
+  320	    /**/
+  321	  
+  322	    public void QuestionRunner(int numitems, ArrayList<String> list, ArrayList<String> listCopy, ArrayList<String> clist) {
+  323		for(int i=0; i<numitems; i++){
+  324		    System.out.println("\nWhat is the capital of " + listCopy.get(this.ChooseRandomStateorCountry(list,listCopy)) + "?\n");
+  325		    ArrayList<String> fourCapitals = generate4Capitals(index_duplicatechoosenstate, clist);
+  326		    for(int j=0; j<4; j++){
+  327			System.out.println("" + j + ". " + fourCapitals.get(j));
+  328		    }
+  329		    System.out.print("\nEnter Answer: ");
+  330		    this.setGuessChoice();
+  331		    x=0;
+  332		    if(i<numitems-2)
+  333			System.out.println(this.compareAnswer() + " " + ((numitems-1)-i) + " questions to go.");
+  334		    if(i==numitems-2)
+  335			System.out.println(this.compareAnswer() + " The last question is...");
+  336		    else if(i==numitems-1)
+
+
+
+
+
+
+
+2016-03-02 11:33     src/edu/ucsb/cs56/S12/esterkin/Game.java     Page 7
+
+
+  337			System.out.println(this.compareAnswer());
+  338		}
+  339		System.out.println("\n\n\nYour Total Score: " + score + "/100");
+  340	    }
+  341		    
+  342	
+  343	    
+  344	    /**
+  345	     Initiates appropriate actions based on the user's choice  
+  346	     */
+  347	    
+  348	    public void runner(){
   349	
-  350	
-  351	
-  352	
+  350		if(promptchoice_int2 == 0)
+  351		    numitems = 10;
+  352		else if(promptchoice_int2 == 1)
+  353		    numitems = 50;
+  354		else if(promptchoice_int2 == 2)
+  355		    numitems = customprompt;
+  356		
+  357	
+  358		if(promptchoice_int1 == 0)
+  359		    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);
+  360		else if(promptchoice_int1 == 1)
+  361		    this.QuestionRunner(numitems, worldcountries, worldcountriesCopy, worldCapitals);
+  362		else if(promptchoice_int1 == 2)
+  363		    this.QuestionRunner(numitems, statesAndCountries, statesAndCountriesCopy, bothCapitals);
+  364	    }
+  365	    
+  366	    public static void main(String[] args){
+  367	        while(play){
+  368		    Game game = new Game();
+  369		    game.prompt();
+  370		    game.runner();
+  371		    System.out.println("Your Grade: " + game.grade()+"\n\n\n");
+  372		    System.out.println("Enter x to play again (entering any other key quits the game)");
+  373		    try{
+  374			playagain = (char)System.in.read();                
+  375		    } catch (IOException ioe) {
+  376			System.out.println("An unexpected error occured.");    
+  377		    }
+  378		    if(playagain != 'x')
+  379			play = false;
+  380	        }
+  381	    }
+  382	}
+  383	
+  384	
+  385	
+  386	
 
 
 
@@ -428,41 +462,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2012-05-31 23:29   src/edu/ucsb/cs56/S12/esterkin/GameTest.java   Page 1
+2016-03-02 14:11   src/edu/ucsb/cs56/S12/esterkin/GameTest.java   Page 1
 
 
     1	package edu.ucsb.cs56.S12.esterkin;
@@ -495,32 +495,32 @@
    28	assertEquals(testlist.size(),50);
    29	}
    30	
-   31	/**
+   31	 /**
    32	 test generate4Capitals() from Game
    33	 @see Game#generate4Capitals()
-   34	 */
-   35	    
+   34	 */ 
+   35	 /*  
    36	@Test public void testgenerate4Capitals()
    37	{    
    38	//test to see if generate4Capitals() creates an arraylist of 4 String objects
    39	Game g = new Game();
-   40	ArrayList<String> testlist = g.generate4Capitals(10);
+   40	ArrayList<String> testlist = g.generate4Capitals(10, "build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt");
    41	assertEquals(testlist.size(),4);
    42	}
-   43	
-   44	/**
-   45	 test Grade() from Game
-   46	 @see Game#Grade()
-   47	 */
-   48	
-   49	@Test public void testGrade()
-   50	{
-   51	//test to see if Grade() converts a total score to the appropriate grade    
-   52	Game g = new Game();
-   53	    g.setScore(40);
-   54	    assertEquals(g.grade(),"F");     
-   55	}    
-   56	    
+   43	*/    
+   44	
+   45	/**
+   46	 test Grade() from Game
+   47	 @see Game#grade()
+   48	 */
+   49	
+   50	@Test public void testGrade()
+   51	    {
+   52	//test to see if Grade() converts a total score to the appropriate grade    
+   53	    Game g = new Game();
+   54	    g.setScore(62);
+   55	    assertEquals("D-", g.grade());
+   56	    }
 
 
 
@@ -528,11 +528,11 @@
 
 
 
-2012-05-31 23:29   src/edu/ucsb/cs56/S12/esterkin/GameTest.java   Page 2
+2016-03-02 14:11   src/edu/ucsb/cs56/S12/esterkin/GameTest.java   Page 2
 
 
-   57	}
-
+   57	    
+   58	}
 
 
 

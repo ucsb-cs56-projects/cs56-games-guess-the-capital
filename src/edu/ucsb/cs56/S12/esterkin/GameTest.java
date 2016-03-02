@@ -24,7 +24,7 @@ public class GameTest
 {
 //test to see if readFile() reads, parses text document, and stores the data into an ArrayList of size 50
 Game g = new Game();
-ArrayList<String> testlist = g.readFile("states.txt");
+ArrayList<String> testlist = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
 assertEquals(testlist.size(),50);
 }
 
@@ -44,15 +44,15 @@ assertEquals(testlist.size(),4);
 
 /**
  test Grade() from Game
- @see Game#Grade()
+ @see Game#grade()
  */
 
 @Test public void testGrade()
     {
 //test to see if Grade() converts a total score to the appropriate grade    
     Game g = new Game();
-    g.setScore(40);
-    assertEquals(g.grade(),"F");
+    g.setScore(62);
+    assertEquals("D-", g.grade());
     }
     
 }

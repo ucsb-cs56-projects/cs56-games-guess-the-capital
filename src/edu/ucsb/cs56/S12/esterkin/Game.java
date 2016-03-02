@@ -9,7 +9,6 @@ import java.io.*;
 public class Game{
     
     //Instance variables 
-    
     private int index_choosenstate;
     private String correctcapital;
     private int index_duplicatechoosenstate;
@@ -20,15 +19,17 @@ public class Game{
     private int promptchoice_int2;
     private int customprompt;
     private int score=0;
-    public ArrayList<String> fourcapitals;
     private int x = 0;
-    //    private int y = 0;
     private int numitems;
-    static boolean play = true;
-
+    private ArrayList<String> fourcapitals;
+    static private boolean play = true;
+    static private char playagain;
+  
     
     //setters and getters
-    
+    /** 
+	@return return the index of an ArrayList that holds a choosen state
+    */
     public int getIndex_choosenstate(){
         return index_choosenstate;
     }
@@ -71,44 +72,40 @@ public class Game{
         this.promptchoice_string = s;
     }
 
-    /*
-    public int getPromptChoice_int(){
-        return promptchoice_int;
-    }
-    public void setPromptChoice_int(int i){
-        this.promptchoice_int = i;
-    }
-    */    
-
     public void setScore(int i){
         this.score = i;
     }
-    
     public int getScore(){
         return score;
     }
     
     public void setNumitems(int numitems){
         this.numitems = numitems;
-        
     }
     public int getNumitems(){
         return numitems;
     }
-    static char playagain;
     
-    ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
-    ArrayList<String> statesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"));
+    
+
+    
+    ArrayList<String> states = readFile(
+					"build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
+    ArrayList<String> statesCopy = new ArrayList<String>(states);
+    
     ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
-    ArrayList<String> worldcountriesCopy = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"));
+    ArrayList<String> worldcountriesCopy = new ArrayList<String>(worldcountries);
+    
     ArrayList<String> statesAndCountries = addLists(states, worldcountries);
-    ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(addLists(states,worldcountries));
+    ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(statesAndCountries);
+    
     ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt"));
     ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt"));
     ArrayList<String> bothCapitals = addLists(stateCapitals, worldCapitals);
 
     
-    //combine two lists of Capitals into one ArrayList
+    
+    //combine two lists of ArrayList into one big ArrayList
     public ArrayList<String> addLists(ArrayList<String> l1, ArrayList<String> l2) {
 	ArrayList<String> newList = new ArrayList<String>();
 	newList.addAll(l1);
@@ -119,23 +116,20 @@ public class Game{
 
     
     
-	//Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
-    
+    //Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
     public ArrayList<String> readFile(String fileName) {
-        
 	ArrayList<String> StatesOrCapitals = new ArrayList<String>();
 	try {
 	    Scanner scanner = new Scanner(new File(fileName));
-	    scanner.useDelimiter
-		(System.getProperty("line.separator")); 
-	    while (scanner.hasNext()) {
-		StatesOrCapitals.add(scanner.next());}
+	    scanner.useDelimiter(System.getProperty("line.separator")); 
+	    while (scanner.hasNext()) 
+		StatesOrCapitals.add(scanner.next());
 	    scanner.close();
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
 	}
 	return StatesOrCapitals;
-	} 
+    }
 
 
     
@@ -143,45 +137,19 @@ public class Game{
     //     Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
      */
     public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
-	
 	index_choosenstate = (int)(   Math.random() * alist.size()  );
 	String choosenstate = alist.get(index_choosenstate);
 	alist.remove(index_choosenstate);
 	index_duplicatechoosenstate = alistcopy.indexOf(choosenstate);
-        
-	return index_duplicatechoosenstate; 
-        
+	return index_duplicatechoosenstate;  
 	}
     
     
     /**
      Generates an arraylist containing 3 random capitals and the capital corresponding to the choosen state, shuffles the arraylist before returning it     
      */
-
-    /*
-    public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate){
-       	ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt");
-	correctcapital = capitals.get(index_duplicatechoosenstate);
-	capitals.remove(index_duplicatechoosenstate);
-	fourcapitals = new ArrayList<String>();
-	for (int i=0;i<3;i++){
-	    int randomcapital_index = (int)(   Math.random() * capitals.size());
-	    fourcapitals.add(capitals.get(randomcapital_index));
-	    capitals.remove(randomcapital_index);	
-	}
-	fourcapitals.add(correctcapital);
-	Collections.shuffle(fourcapitals);
-        
-	return fourcapitals;
-	}
-    */
-    
-    //public ArrayList<String> generate4CountryCapitals(int index_duplicatechoosenstate, ArrayList<String> list) {
-	//	ArrayList<String> capitals = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt");
-
     public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate, ArrayList<String> list){
-	ArrayList<String> capitals = new ArrayList<String>();
-	capitals.addAll(list);
+	ArrayList<String> capitals = new ArrayList<String>(list);
 	correctcapital = capitals.get(index_duplicatechoosenstate);
 	capitals.remove(index_duplicatechoosenstate);
 	fourcapitals = new ArrayList<String>();
@@ -195,20 +163,18 @@ public class Game{
         
 	return fourcapitals;
     }
+
     
     /**
      Peforms I/O and handles exceptions
      */
-    
     public void setGuessChoice(){
-	
 	try{
 	    BufferedReader reader;
 	    reader = new BufferedReader(new InputStreamReader(System.in));
-            String choice = guesschoice_string;
 	    while(x==0){
-		guesschoice_string = reader.readLine();
-		if( ( ! guesschoice_string.equals("0") ) && ( ! guesschoice_string.equals("1") ) && ( ! guesschoice_string.equals("2") ) && ( ! guesschoice_string.equals("3") ))
+		this.setGuessChoice_string(reader.readLine());
+        	if( ( ! guesschoice_string.equals("0") ) && ( ! guesschoice_string.equals("1") ) && ( ! guesschoice_string.equals("2") ) && ( ! guesschoice_string.equals("3") ))
 		    System.out.println("Please type either 0, 1, 2, or 3");
 		else
 		    x=1;
@@ -249,16 +215,7 @@ public class Game{
     
     public String compareAnswer(){
 	if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
-	    /*
-	    if(numitems == 50){
-                score+=2;
-                return "Correct!";
-            }
-            else if(numitems == 10){
-                score+=10;
-                return "Correct!";
-            }
-	    */
+	    
 	    score += (100/numitems);
 	    return "Correct!";
 	} 
@@ -269,44 +226,31 @@ public class Game{
      Calculates a grade for the player based on their total score   
      */
 	public String grade(){
-	    if (score >= 97)
+	    String letterGrade = "";         
+	    if(score == 100)
 		return "A+";
-	    if (score >= 93) 
-		return "A";
-	    if (score >= 90) 
-		return "A-";
-	    if (score >= 87) 
-		return "B+";
-	    if (score >= 83) 
-		return "B";
-	    if (score >= 80) 
-		return "B-";
-	    if (score >= 77) 
-		return "C+";
-	    if (score >= 73) 
-		return "C";
-	    if (score >= 70) 
-		return "C-";
-	    if (score >= 67) 
-		return "D+";
-	    if (score >= 63) 
-		return "D";
-	    if (score >= 60) 
-		return "D-";
-	    else
+	    if(score >= 90)
+		letterGrade = "A";
+	    if(score >= 80)
+		letterGrade = "B";
+	    if(score >= 70)
+		letterGrade = "C";
+	    if(score >= 60) 
+		letterGrade = "D";
+	    else 
 		return "F";
+	    
+	    if(score %10 >= 7)
+		return letterGrade + "+";
+	    if(score %10 >= 3)
+		return letterGrade;
+	    else
+		return letterGrade + "-";
 	}
     
     public void prompt(){
         System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
-	/*
-        System.out.println("\n0. Play a 10 Question US State Capitals Game");
-        System.out.println("1. Play a 50 Question US State Capitals Game");
-        System.out.println("2. Play a 10 Question World Capitals Game");
-        System.out.println("3. Play a 50 Question World Capitals Game");
-        System.out.println("\nPlease select a number: \n");
-        this.setPromptChoice();
-	*/
+
 	System.out.println("\n0. Play US State Capitals Game");
 	System.out.println("1. Play World Capitals Game");
 	System.out.println("2. Play a game with World and State Capitals");
@@ -342,57 +286,7 @@ public class Game{
       /**/
     //Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
     /**/
-    /*  
-    public void StatesRunner(int numitems){
-	for(int i=0;i<numitems;i++){
-	    System.out.println("\nWhat is the capital of" + " " + statesCopy.get(this.ChooseRandomStateorCountry(states,statesCopy))+"?" +"\n");
-	    ArrayList<String> fourCapitals = generate4Capitals(index_duplicatechoosenstate);
-	    for(int j=0;j<4;j++){
-		System.out.println("" + j +"." + " " + fourCapitals.get(j));
-	    }
-	    System.out.println("");
-	    System.out.print("Enter Answer: ");
-	    this.setGuessChoice();
-	    x=0;
-	    if(i<numitems-2)
-		System.out.println(this.compareAnswer()+ " " + ((numitems-1)-i) + " " + "questions to go.");
-	    if(i==numitems-2)
-		System.out.println(this.compareAnswer()+ " " + "The last question is...");
-	    else if(i==numitems-1)
-		System.out.println(this.compareAnswer());
-	}
-	System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
-    }
-     */       
-
-    
-    /**/
-    // Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
-    /**/
-    /*
-    public void CountriesRunner(int numitems){
-	for(int i=0;i<numitems;i++){
-	    System.out.println("\nWhat is the capital of" + " " + worldcountriesCopy.get(this.ChooseRandomStateorCountry(worldcountries,worldcountriesCopy))+"?" +"\n");
-	    ArrayList<String> fourCapitals = generate4CountryCapitals(index_duplicatechoosenstate);
-	    for(int j=0;j<4;j++){
-		System.out.println("" + j +"." + " " + fourCapitals.get(j));
-	    }
-	    System.out.println("");
-	    System.out.print("Enter Answer: ");
-	    this.setGuessChoice();
-	    x=0;
-	    if(i<numitems-2)
-                System.out.println(this.compareAnswer()+ " " + ((numitems-1)-i) + " " + "questions to go.");
-            if(i==numitems-2)
-                System.out.println(this.compareAnswer()+ " " + "The last question is...");
-            else if(i==numitems-1)
-                System.out.println(this.compareAnswer());
-	}
-	System.out.println("\n\n\nYour Total Score:" +" "+ score + "/" +"100");
-    }
-    */
-
-
+  
     public void QuestionRunner(int numitems, ArrayList<String> list, ArrayList<String> listCopy, ArrayList<String> clist) {
 	for(int i=0; i<numitems; i++){
 	    System.out.println("\nWhat is the capital of " + listCopy.get(this.ChooseRandomStateorCountry(list,listCopy)) + "?\n");
@@ -420,34 +314,14 @@ public class Game{
      */
     
     public void runner(){
-	/*
-        if(this.getPromptChoice_int()==0){
-             numitems = 10;
-             this.StatesRunner(10);   
-        }
-        else if(this.getPromptChoice_int()==1){
-            numitems = 50;
-            this.StatesRunner(50); 
-        }
-        
-        else if(this.getPromptChoice_int()==2){
-            numitems = 10;
-            this.CountriesRunner(10);
-        }
-            
-        else if (this.getPromptChoice_int()==3){
-                numitems = 50;
-                this.CountriesRunner(50); 
-        }
-	*/
+
 	if(promptchoice_int2 == 0)
 	    numitems = 10;
 	else if(promptchoice_int2 == 1)
 	    numitems = 50;
-	else if(promptchoice_int2 == 2){
+	else if(promptchoice_int2 == 2)
 	    numitems = customprompt;
-	}
-
+	
 
 	if(promptchoice_int1 == 0)
 	    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);
