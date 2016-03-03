@@ -89,8 +89,7 @@ public class Game{
     
 
     
-    ArrayList<String> states = readFile(
-					"build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
+    ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
     ArrayList<String> statesCopy = new ArrayList<String>(states);
     
     ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
