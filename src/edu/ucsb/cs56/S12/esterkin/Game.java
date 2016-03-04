@@ -6,6 +6,14 @@ import java.util.*;
 import java.lang.Math;
 import java.io.*;
 
+/**
+ * The main class Game, to run and play guess-the-capital-game
+ *
+ * @author Edward Sterkin
+ * @author Yuki Mano
+ * @version CS56, Winter 2016 (original version: CS56, Spring 2012)
+ */
+
 public class Game{
     
     //Instance variables 
@@ -24,98 +32,168 @@ public class Game{
     private ArrayList<String> fourcapitals;
     static private boolean play = true;
     static private char playagain;
-  
+
+    /**
+       no-args constructor onlys runs the Game class
+    */
+    
     
     //setters and getters
     /** 
-	@return return the index of an ArrayList that holds a choosen state
+	get the index of the choosen state
+	@return the index of an ArrayList that holds a choosen state
     */
     public int getIndex_choosenstate(){
         return index_choosenstate;
     }
+    /** 
+	set the index of the choosen state
+	@param int take an integer to choose a particular state 
+    */
     public void setIndex_choosenstate(int i){
         this.index_choosenstate = i;
     }
-    
+
+    /**
+       get the string of the correct capital
+       @return the correct capital as a String within the multiple choice
+    */
     public String getCorrectcapital(){
         return correctcapital;
     }
+    /**
+       set the string of the correct capital
+       @param String take a String to set the correct capital name
+    */
     public void setCorrectcapital(String s){
         this.correctcapital = s;
     }
-    
+
+    /**
+       get the index of the duplicatechoosenstate
+       @return the index of an ArrayList that holds the choosen state
+    */
     public int getIndex_duplicatechoosenstate(){
         return index_duplicatechoosenstate;
     }
+    /**
+       set the index of the duplicatechoosenstate
+       @param int take an integer that locates the choosen state
+    */
     public void setIndex_duplicatechoosenstate(int i){
         this.index_duplicatechoosenstate = i;
     }
-    
+
+    /**
+       get the string of the choosen guess
+       @return the String guesschoice_string
+     */
     public String getGuessChoice_string(){
         return guesschoice_string;
     }
+    /**
+       set the string of the choosen guess
+       @param String take a String and set it to guesschoice_string
+    */
     public void setGuessChoice_string(String s){
         this.guesschoice_string = s;
     }
-    
+
+    /**
+       get the integer of the choosen guess
+       @return the int guesschoice_int
+     */
     public int getGuessChoice_int(){
         return guesschoice_int;
     }
+    /**
+       set the integer o the choosen guess
+       @param int set an integer to guesschoice_int
+     */
     public void setGuessChoice_int(int i){
         this.guesschoice_int = i;
     }
-    
+
+    /**
+       get the string of the prompt choice
+       @return the String promptchoice_string
+    */
     public String getPromptChoice_string(){
         return promptchoice_string;
     }
+    /**
+       set the string of the prompt choice
+       @param String set a String to promptchoice_string
+    */
     public void setPromptChoice_string(String s){
         this.promptchoice_string = s;
     }
 
+    /**
+       set the user's score
+       @param int set the score of the game
+    */
     public void setScore(int i){
         this.score = i;
     }
+    /** 
+	get the user's score
+	@return the score of the game
+    */
     public int getScore(){
         return score;
     }
-    
+
+    /**
+       set the integer numitems
+       @param int set an integer to numitems
+    */
     public void setNumitems(int numitems){
         this.numitems = numitems;
     }
+    /**
+       get the integer numitems
+       @return the integer numitems
+    */
     public int getNumitems(){
         return numitems;
     }
     
     
-
-    
-    ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); //Moved from ChooseRandomStateorCountry();
+    //get the text files that contain the US states and the world countries
+    ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); 
     ArrayList<String> statesCopy = new ArrayList<String>(states);
     
-    ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); //Moved from ChooseRandomStateorCountry();
-    ArrayList<String> worldcountriesCopy = new ArrayList<String>(worldcountries);
-    
+    ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); 
+    ArrayList<String> worldcountriesCopy = new ArrayList<String>(worldcountries);   
     ArrayList<String> statesAndCountries = addLists(states, worldcountries);
     ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(statesAndCountries);
-    
+
+    //get the text files that contain the US states' and worlds' capitals
     ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt"));
     ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt"));
     ArrayList<String> bothCapitals = addLists(stateCapitals, worldCapitals);
 
-    
-    
-    //combine two lists of ArrayList into one big ArrayList
-    public ArrayList<String> addLists(ArrayList<String> l1, ArrayList<String> l2) {
+       
+    /**
+       combine two lists of ArrayList into one big ArrayList
+       @param ArrayList<String> the first list
+       @param ArrayList<String> the second list
+       @return one ArrayList that contains all of the elements in the first and second list
+    */
+       public ArrayList<String> addLists(ArrayList<String> l1, ArrayList<String> l2) {
 	ArrayList<String> newList = new ArrayList<String>();
 	newList.addAll(l1);
 	newList.addAll(l2);
 	return newList;
     }
-			      
 
-    
-    
-    //Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
+
+    /**
+    Parse file function - adapted from http://www.java-tips.org/java-se-tips/java.util/scanning-text-with-java.util.scanner-3.html
+    @param String takes a name of a text file
+    @return an ArrayList of all of name in the text file
+    */
     public ArrayList<String> readFile(String fileName) {
 	ArrayList<String> StatesOrCapitals = new ArrayList<String>();
 	try {
@@ -133,8 +211,11 @@ public class Game{
 
     
     /**
-    //     Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
-     */
+       Returns the index of a random state from the duplicate states arraylist and removes that index from the original states arraylist    
+       @param ArrayList<String> a list
+       @param ArrayList<String> a copied version of that list
+       @return an integer index_duplicatechoosenstate
+    */
     public int ChooseRandomStateorCountry(ArrayList<String> alist, ArrayList<String> alistcopy){
 	index_choosenstate = (int)(   Math.random() * alist.size()  );
 	String choosenstate = alist.get(index_choosenstate);
@@ -146,7 +227,10 @@ public class Game{
     
     /**
      Generates an arraylist containing 3 random capitals and the capital corresponding to the choosen state, shuffles the arraylist before returning it     
-     */
+    @param int the index of the choosen state 
+    @param ArrayList<String> a list
+    @return 3 random capitals and the capital corresponding to the choosen state
+    */
     public ArrayList<String> generate4Capitals(int index_duplicatechoosenstate, ArrayList<String> list){
 	ArrayList<String> capitals = new ArrayList<String>(list);
 	correctcapital = capitals.get(index_duplicatechoosenstate);
@@ -165,8 +249,8 @@ public class Game{
 
     
     /**
-     Peforms I/O and handles exceptions
-     */
+       Sets the user's guess choice, while peforms I/O and handles exceptions 
+    */
     public void setGuessChoice(){
 	try{
 	    BufferedReader reader;
@@ -185,7 +269,10 @@ public class Game{
 	}
     }
     
-    
+    /**
+       Sets the user's game type that he or she wants to play
+       @return the integer that the user selects to play a certain game type
+     */
     public int setPromptChoice(){
 	int promptchoice_int = 0;
 	int y = 0;
@@ -209,9 +296,9 @@ public class Game{
     
     
     /**
-     Compares the answer the player choose with the correct answer, and performs the appropriate actions    
+     Compares the answer the player choose with the correct answer, and performs the appropriate actions
+     @return a String as either "Correct!" if the guess is correct or "Wrong!" if the guess is wrong 
      */
-    
     public String compareAnswer(){
 	if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
 	    
@@ -223,7 +310,8 @@ public class Game{
     
     /**
      Calculates a grade for the player based on their total score   
-     */
+     @return the grade of user's performance playing the game
+    */
 	public String grade(){
 	    String letterGrade = "";         
 	    if(score == 100)
@@ -246,7 +334,10 @@ public class Game{
 	    else
 		return letterGrade + "-";
 	}
-    
+
+    /**
+       Displays the prompt of the game
+     */
     public void prompt(){
         System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
 
@@ -267,7 +358,11 @@ public class Game{
 	    customprompt = this.customNumQuestions();
 	}
     }
-    
+
+    /**
+      User can decide how many questions he or she wants to play in a game
+      @return the integer customNumber
+     */
     public int customNumQuestions() {
 	int customNumber = 0;
 	try {
@@ -282,10 +377,13 @@ public class Game{
     }
 
     
-      /**/
-    //Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
-    /**/
-  
+    /**
+    Asks the questions, runs certain methods, sets appropriate instance variables, and prints appropriate responses. 
+    @param int numitems
+    @param ArrayList<String> list
+    @param ArrayList<String> listCopy
+    @param ArrayList<String> clist
+    */
     public void QuestionRunner(int numitems, ArrayList<String> list, ArrayList<String> listCopy, ArrayList<String> clist) {
 	for(int i=0; i<numitems; i++){
 	    System.out.println("\nWhat is the capital of " + listCopy.get(this.ChooseRandomStateorCountry(list,listCopy)) + "?\n");
@@ -311,9 +409,7 @@ public class Game{
     /**
      Initiates appropriate actions based on the user's choice  
      */
-    
     public void runner(){
-
 	if(promptchoice_int2 == 0)
 	    numitems = 10;
 	else if(promptchoice_int2 == 1)
@@ -321,7 +417,6 @@ public class Game{
 	else if(promptchoice_int2 == 2)
 	    numitems = customprompt;
 	
-
 	if(promptchoice_int1 == 0)
 	    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);
 	else if(promptchoice_int1 == 1)
@@ -329,7 +424,11 @@ public class Game{
 	else if(promptchoice_int1 == 2)
 	    this.QuestionRunner(numitems, statesAndCountries, statesAndCountriesCopy, bothCapitals);
     }
-    
+
+
+    /**
+       Initializes the game 
+     */
     public static void main(String[] args){
         while(play){
 	    Game game = new Game();
