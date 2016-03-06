@@ -316,15 +316,15 @@ public class Game{
 	    String letterGrade = "";         
 	    if(score == 100)
 		return "A+";
-	    if(score >= 90)
+	    if(score < 100)
 		letterGrade = "A";
-	    if(score >= 80)
+	    if(score < 90)
 		letterGrade = "B";
-	    if(score >= 70)
+	    if(score < 80)
 		letterGrade = "C";
-	    if(score >= 60) 
+	    if(score < 70) 
 		letterGrade = "D";
-	    else 
+	    if(score < 60) 
 		return "F";
 	    
 	    if(score %10 >= 7)

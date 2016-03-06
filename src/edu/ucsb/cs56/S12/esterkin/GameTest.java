@@ -1,7 +1,8 @@
 package edu.ucsb.cs56.S12.esterkin;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*; //assertEquals;
+//import static org.junit.Assert.assertNotEquals;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +28,8 @@ public class GameTest
 	ArrayList<String> testList2 = g.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt");
 	ArrayList<String> testCombinedList = g.addLists(testList1, testList2);
 	assertEquals(testCombinedList.size(), 246); 
+	assertNotSame(testCombinedList.size(), 245);
+	assertNotSame(testCombinedList.size(), 247);
     }
 
   
@@ -38,7 +41,9 @@ public class GameTest
     {
 	Game g = new Game();
 	ArrayList<String> testlist = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
-	assertEquals(testlist.size(),50);
+	assertEquals(testlist.size(), 50);
+	assertNotSame(testlist.size(), 49);
+	assertNotSame(testlist.size(), 51);
     }
 
 
@@ -56,6 +61,8 @@ public class GameTest
 	    if(i == index_randomState)
 		assertEquals(i, index_randomState);
 	}
+	assertNotSame(-1, index_randomState);
+	assertNotSame(50, index_randomState);
     }
 
 
@@ -68,6 +75,8 @@ public class GameTest
 	Game g = new Game();
 	ArrayList<String> testlist = g.generate4Capitals(10, g.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"));
 	assertEquals(testlist.size(),4);
+	assertNotSame(testlist.size(),3);
+	assertNotSame(testlist.size(),5);
     }
     
 
@@ -78,15 +87,21 @@ public class GameTest
     @Test public void testCompareAnswer()
     {
 	Game g = new Game();
-	g.setCorrectcapital("Honolulu");
-	g.setGuessChoice_int(2);
+	g.setCorrectcapital("Indianapolis");
+	g.setGuessChoice_int(0);
 	ArrayList<String> testlist = new ArrayList<String>();
 	testlist.add("Honolulu");
 	testlist.add("Sacramento");
 	testlist.add("Indianapolis");
 	testlist.add("Boston");
-	ArrayList<String> tl = g.generate4Capitals(2, testlist);
-	assertEquals(g.compareAnswer(), "Wrong!");
+	testlist.add("Austine");
+	ArrayList<String> test4Capitals = g.generate4Capitals(0, testlist);
+	for(int i=0; i<test4Capitals.size()-1; i++){
+	    if(g.getCorrectcapital().equals(test4Capitals.get(0)))
+		assertEquals(g.compareAnswer(), "Correct!");
+	    else 
+		assertEquals(g.compareAnswer(), "Wrong!");
+	}
     }
 
 
@@ -99,6 +114,7 @@ public class GameTest
     Game g = new Game();
     g.setScore(0);
     assertEquals("F", g.grade());
+    assertNotSame("D-", g.grade());
     }
 
 /**
@@ -110,6 +126,7 @@ public class GameTest
 	Game g = new Game();
 	g.setScore(100);
 	assertEquals("A+", g.grade());
+	assertNotSame("A", g.grade());
     }
 
 /**
@@ -121,6 +138,8 @@ public class GameTest
 	Game g = new Game();
 	g.setScore(72);
 	assertEquals("C-", g.grade());
+	assertNotSame("C", g.grade());
+	assertNotSame("D+", g.grade());
     }
     
 }

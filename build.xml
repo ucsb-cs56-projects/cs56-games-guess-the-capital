@@ -3,7 +3,9 @@
 
 
   <!-- build.xml for Choice Points Project 1, S12, CS56
-  name: @@@ EDUARD STERKIN -->
+  name: @@@ EDUARD STERKIN
+       updated version: W16, CS56
+  name: @@@ YUKI MANO-->
 
   <property environment="env"/> <!-- load the environment variables --> 
   
