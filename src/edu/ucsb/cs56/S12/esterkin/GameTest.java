@@ -1,8 +1,8 @@
 package edu.ucsb.cs56.S12.esterkin;
 
 import org.junit.Test;
-import static org.junit.Assert.*; //assertEquals;
-//import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 import java.util.ArrayList;
 
 /**
@@ -88,19 +88,19 @@ public class GameTest
     {
 	Game g = new Game();
 	g.setCorrectcapital("Indianapolis");
-	g.setGuessChoice_int(0);
+	g.setGuessChoice_int(2);
 	ArrayList<String> testlist = new ArrayList<String>();
 	testlist.add("Honolulu");
 	testlist.add("Sacramento");
 	testlist.add("Indianapolis");
 	testlist.add("Boston");
-	testlist.add("Austine");
-	ArrayList<String> test4Capitals = g.generate4Capitals(0, testlist);
+	//testlist.add("Austine");
+	ArrayList<String> test4Capitals = g.generate4Capitals(2, testlist);
 	for(int i=0; i<test4Capitals.size()-1; i++){
-	    if(g.getCorrectcapital().equals(test4Capitals.get(0)))
-		assertEquals(g.compareAnswer(), "Correct!");
+	    if(g.getCorrectcapital().equals(test4Capitals.get(2)))
+		assertEquals(g.compareAnswer(), "Correct!\n");
 	    else 
-		assertEquals(g.compareAnswer(), "Wrong!");
+		assertEquals(g.compareAnswer(), "Wrong! The correct answer was " + g.getCorrectcapital() + ".\n");
 	}
     }
 

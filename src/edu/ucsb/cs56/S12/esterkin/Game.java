@@ -303,9 +303,9 @@ public class Game{
 	if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
 	    
 	    score += (100/numitems);
-	    return "Correct!";
+	    return "Correct!\n";
 	} 
-        return "Wrong!";
+        return "Wrong! The correct answer was " + correctcapital + ".\n";
     }
     
     /**
@@ -431,9 +431,9 @@ public class Game{
 	    this.setGuessChoice();
 	    x=0;
 	    if(i<numitems-2)
-		System.out.println(this.compareAnswer() + " " + ((numitems-1)-i) + " questions to go.");
+		System.out.println(this.compareAnswer() + ((numitems-1)-i) + " questions to go.");
 	    if(i==numitems-2)
-		System.out.println(this.compareAnswer() + " The last question is...");
+		System.out.println(this.compareAnswer() + "The last question is...");
 	    else if(i==numitems-1)
 		System.out.println(this.compareAnswer());
 	}
