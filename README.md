@@ -47,11 +47,11 @@ ply. Furthermore, javadoc comments can be worded better.
 
    The only bug I see so far is that running the junit test for compareAnswer() will sometime result an Error. (Within around 4 'ant test' or less, the Error will show up.)
 ```sh
-Testcase: testCompareAnswer took 0.006 sec
-	  Cause an ERROR
-/ by zero
-java.lang.ArithmeticException: / by zero
-    at edu.ucsb.cs56.S12.esterkin.Game.compareAnswer(Game.java:305)
-    at edu.ucsb.cs56.S12.esterkin.GameTest.testCompareAnswer(GameTest.java:101)
+$ Testcase: testCompareAnswer took 0.006 sec
+$	 Cause an ERROR
+$ / by zero
+$ java.lang.ArithmeticException: / by zero
+$   at edu.ucsb.cs56.S12.esterkin.Game.compareAnswer(Game.java:305)
+$   at edu.ucsb.cs56.S12.esterkin.GameTest.testCompareAnswer(GameTest.java:101)
 
 ```
