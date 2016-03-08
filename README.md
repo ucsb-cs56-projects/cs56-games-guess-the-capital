@@ -50,6 +50,7 @@ Testcase: testCompareAnswer took 0.006 sec
 java.lang.ArithmeticException: / by zero
     at edu.ucsb.cs56.S12.esterkin.Game.compareAnswer(Game.java:305)
     at edu.ucsb.cs56.S12.esterkin.GameTest.testCompareAnswer(GameTest.java:101)
+
 ```
 
     A possible refactoring I see is that few of the methods can possibly be simply. Furthermore, javadoc comments can be worded better. 

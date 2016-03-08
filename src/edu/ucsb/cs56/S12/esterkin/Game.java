@@ -361,6 +361,7 @@ public class Game{
 
     /**
        Check to see if the user input is an integer or not
+       @param String num
        @return a boolean isInteger
      */
     public boolean checkInteger(String num) {
