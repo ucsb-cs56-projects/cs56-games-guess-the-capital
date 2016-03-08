@@ -360,16 +360,52 @@ public class Game{
     }
 
     /**
+       Check to see if the user input is an integer or not
+       @return a boolean isInteger
+     */
+    public boolean checkInteger(String num) {
+	boolean isInteger = true;
+	try {
+	    Integer.parseInt(num);
+	} catch (Exception ex) {
+	    isInteger = false;
+	}
+	return isInteger;
+    }
+
+    /**
       User can decide how many questions he or she wants to play in a game
       @return the integer customNumber
      */
     public int customNumQuestions() {
 	int customNumber = 0;
 	try {
+	    int z = 0;
+	    boolean isInt = true;
 	    BufferedReader reader;
 	    reader = new BufferedReader(new InputStreamReader(System.in));
-	    promptchoice_string = reader.readLine();
-	    customNumber = Integer.parseInt(promptchoice_string);
+	    while(z == 0){
+		promptchoice_string = reader.readLine();
+		isInt = checkInteger(promptchoice_string);
+		if(isInt == true){
+		    customNumber = Integer.parseInt(promptchoice_string);
+		    if(promptchoice_int1==0 && (customNumber<1 || customNumber>50))
+			System.out.println("Please type in the number between 1 and 50, inclusively");
+		    else if(promptchoice_int1==1 && (customNumber<1 || customNumber>196))
+			System.out.println("Please type in the number between 1 and 196, inclusively");
+		    else if(promptchoice_int1==2 && (customNumber<1 || customNumber>246))
+			System.out.println("Please type in the number between 1 and 246, inclusively");
+		    else
+			z=1;
+		}
+		else
+		    System.out.println("Please only type in an integer");
+	    }
+		
+		    
+		
+		
+	
 	} catch(IOException ioe){
 	    System.out.println("An unexpected error occured.");
 	}
