@@ -42,8 +42,7 @@ W16 | yukelele 5pm | Yuki Mano | Guess the Capital Game
   
    At this point of code, the features that I can think of are only expanding the game. In other words, the game can have a mode of testing capitals in certain countries such as Africa and Asia. Beside those features, another one can be adding a GUI into a game, so the game does not have to be played on the command line. If GUI is added into the game, then further features can be easily added. 
 
-   A possible refactoring I see is that few of the methods can possibly be sim\
-ply. Furthermore, javadoc comments can be worded better.
+   A possible refactoring I see is that few of the methods can possibly be simply. Furthermore, javadoc comments can be worded better.
 
    The only bug I see so far is that running the junit test for compareAnswer() will sometime result an Error. (Within around 4 'ant test' or less, the Error will show up.)
 ```sh
