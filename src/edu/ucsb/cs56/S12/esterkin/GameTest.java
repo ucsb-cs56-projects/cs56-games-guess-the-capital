@@ -94,7 +94,6 @@ public class GameTest
 	testlist.add("Sacramento");
 	testlist.add("Indianapolis");
 	testlist.add("Boston");
-	//testlist.add("Austine");
 	ArrayList<String> test4Capitals = g.generate4Capitals(2, testlist);
 	for(int i=0; i<test4Capitals.size()-1; i++){
 	    if(g.getCorrectcapital().equals(test4Capitals.get(2)))
@@ -142,4 +141,22 @@ public class GameTest
 	assertNotSame("D+", g.grade());
     }
     
+    
+/**
+   test the inputted String is an Integer value or not
+   @see Game#checkInteger
+*/
+    @Test public void testCheckInteger()
+    {
+	Game g = new Game();
+	String num1 = "45";
+	String num2 = "2.5";
+	String num3 = "number";
+	String num4 = "65f";
+	assertEquals(g.checkInteger(num1), true);
+	assertEquals(g.checkInteger(num2), false);
+	assertEquals(g.checkInteger(num3), false);
+	assertEquals(g.checkInteger(num4), false);
+    }
+
 }

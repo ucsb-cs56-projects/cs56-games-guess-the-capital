@@ -236,6 +236,7 @@ public class Game{
 	correctcapital = capitals.get(index_duplicatechoosenstate);
 	capitals.remove(index_duplicatechoosenstate);
 	fourcapitals = new ArrayList<String>();
+	//get 3 random capitals
 	for (int i=0;i<3;i++){
 	    int randomcapital_index = (int)(   Math.random() * capitals.size());
 	    fourcapitals.add(capitals.get(randomcapital_index));
@@ -388,8 +389,11 @@ public class Game{
 	    while(z == 0){
 		promptchoice_string = reader.readLine();
 		isInt = checkInteger(promptchoice_string);
+
+		//check if the user input is an integer
 		if(isInt == true){
 		    customNumber = Integer.parseInt(promptchoice_string);
+		    //check if the integer of the user input is in range
 		    if(promptchoice_int1==0 && (customNumber<1 || customNumber>50))
 			System.out.println("Please type in the number between 1 and 50, inclusively");
 		    else if(promptchoice_int1==1 && (customNumber<1 || customNumber>196))
@@ -401,12 +405,7 @@ public class Game{
 		}
 		else
 		    System.out.println("Please only type in an integer");
-	    }
-		
-		    
-		
-		
-	
+	    }	
 	} catch(IOException ioe){
 	    System.out.println("An unexpected error occured.");
 	}
@@ -471,6 +470,8 @@ public class Game{
 	    Game game = new Game();
 	    game.prompt();
 	    game.runner();
+	    
+	    //after the game is over
 	    System.out.println("Your Grade: " + game.grade()+"\n\n\n");
 	    System.out.println("Enter x to play again (entering any other key quits the game)");
 	    try{
