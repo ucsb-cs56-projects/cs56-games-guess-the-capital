@@ -3,44 +3,46 @@
 
 
   <!-- build.xml for Choice Points Project 1, S12, CS56
-  name: @@@ EDUARD STERKIN -->
+  name: @@@ EDUARD STERKIN
+       updated version: W16, CS56
+  name: @@@ YUKI MANO-->
 
-   <property environment="env"/> <!-- load the environment variables --> 
+  <property environment="env"/> <!-- load the environment variables --> 
   
-   <!-- load the environment variables -->
-<property name="webRoot" value="${env.HOME}/public_html/"/>
-<property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/"/>
-<property name="course" value="cs56"/>
-<property name="quarter" value="S12"/>
-<property name="issueNum" value="0000768"/>
-<property name="mainClass" value="Game"/>
-<property name="projectName" value="${course}_${quarter}_${issueNum}"/>
-<property name="projectPath" value="${course}/${quarter}/issues/${issueNum}"/>
-<property name="javadocDest" value="${webRoot}/${projectPath}/javadoc"/>
-<property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc"/>
+  <property name="webRoot" value="${env.HOME}/public_html/cs56"/>
+  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/cs56"/>
+  <property name="course" value="cs56"/>
+  <property name="quarter" value="S12"/>
+  <property name="issueNum" value="0000768"/>
+  <property name="mainClass" value="Game"/>
+  <property name="projectName" value="${course}_${quarter}_${issueNum}"/>
+  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}"/>
+  <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc"/>
+  <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc"/>
+
+<path id="project.class.path">
+  <pathelement location="build"/>
+  <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2jar"/>
+</path>
 
 
 
-
-
-<target name="compile" >  
-<mkdir dir="build" />
-<javac srcdir="src" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,vars,source" >                                                                                                             
-        
-        <classpath>                                                                                                                              
-            <pathelement location="build"/>                                                                                                          
-            <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>                                                   
-        </classpath>   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-    </javac>  
-    <copy todir="build/edu/ucsb/cs56/S12/esterkin" >                                                                 
-     <fileset dir="src/edu/ucsb/cs56/S12/esterkin/text"/>                                                                     
-</copy>
-             
+<target name="compile" description="compile my code" >  
+  <mkdir dir="build" />
+  <javac srcdir="src" destdir="build" includeantruntime="false" debug="true" debuglevel="lines,vars,source" >                                  
+    <classpath>                                                               
+      <pathelement location="build"/>                                                    <pathelement location="lib/junit-4.8.2.jar"/>                       
+    </classpath>     
+  </javac>  
+  <copy todir="build/edu/ucsb/cs56/S12/esterkin">                           
+    <fileset dir="src/edu/ucsb/cs56/S12/esterkin/text"/>
+  </copy>
 </target>
 
  <target name="run" depends="compile" description="run the game">
-      <echo> Please java -cp build edu.ucsb.cs56.S12.esterkin.Game </echo> 
+   <java classname="edu.ucsb.cs56.S12.esterkin.${mainClass}" fork="true">
+     <classpath refid="project.class.path"/>
+   </java>
   </target>
   
   
@@ -54,8 +56,8 @@
   </target>
  <delete dir="build" quiet="true" />  
 
-   <target name="javadoc" depends="compile">                                                        
-                                                                                                  
+
+ <target name="javadoc" depends="compile">                                                                          
    <delete dir="javadoc" quiet="true" />                                                          
    <javadoc  destdir="javadoc" author="true" version="true" use="true" >                          
       <fileset dir="src" includes="**/*.java"/>                                                     
@@ -85,25 +87,21 @@
  </target> 
 
     
-    <target name="test" depends="compile" description="run JUnit tests">
-        
-        <junit haltonerror="no" haltonfailure="no">
-            <classpath>
-                <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
-                <pathelement location="build"/>
-            </classpath>
-            
-            <batchtest fork="yes">
-                <fileset dir="src">
-                    <!-- this will pick up every class with a name ending in Test -->
-                    <include name="*/*Test.java"/>
-                </fileset>
-            </batchtest>
-            
-            <formatter type="plain" usefile="false" /> 
-            
-        </junit>
-    </target>
+ <target name="test" depends="compile" description="run JUnit tests">
+   <junit haltonerror="no" haltonfailure="no">
+     <classpath>
+      <pathelement location="lib/junit-4.8.2.jar"/>
+      <pathelement location="build"/>
+     </classpath>
+     <batchtest fork="yes">
+       <fileset dir="src">
+         <!-- this will pick up every class with a name ending in Test -->
+         <include name="**/*Test.java"/>
+       </fileset>
+     </batchtest>
+     <formatter type="plain" usefile="false" /> 
+   </junit>
+ </target>
 
  <target name="jar" depends="compile">                                          
    <mkdir dir="dist" />                                                         
