@@ -50,6 +50,7 @@
 <target name="clean" description="delete unnecessary files and directories">
    
     <delete dir="javadoc" quiet="true" />
+    <delete dir="dist" quiet="true" />
     <delete dir="temp" quiet="true" /> 
   </target>
  <delete dir="build" quiet="true" />  
@@ -101,10 +102,13 @@
    </junit>
  </target>
 
- <target name="jar" depends="compile">                                          
+ <target name="jar" depends="compile">
+   <mkdir dir="dist" />
+     <jar destfile="dist/${projectName}.jar" basedir="build" >                                          
        <manifest>                                                                 
          <attribute name="Main-Class" value="${mainClass}"/>                 
-       </manifest>                                                                
+       </manifest>                                              
+     </jar>                  
  </target>   
  
  
