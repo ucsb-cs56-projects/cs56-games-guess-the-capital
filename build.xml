@@ -105,9 +105,6 @@
        <manifest>                                                                 
          <attribute name="Main-Class" value="${mainClass}"/>                 
        </manifest>                                                                
-   </jar>   
-   
-                  
  </target>   
  
  
