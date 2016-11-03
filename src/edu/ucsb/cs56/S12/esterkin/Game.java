@@ -33,6 +33,9 @@ public class Game{
     static private boolean play = true;
     static private char playagain;
 
+	// location of our text files (such as states, capitals, etc)
+	private final static String filePath = "build/edu/ucsb/cs56/S12/esterkin/";
+
     /**
        no-args constructor onlys runs the Game class
     */
@@ -149,7 +152,8 @@ public class Game{
        @param int set an integer to numitems
     */
     public void setNumitems(int numitems){
-        this.numitems = numitems;
+		if (numitems > 0)
+			this.numitems = numitems;
     }
     /**
        get the integer numitems
@@ -161,17 +165,17 @@ public class Game{
     
     
     //get the text files that contain the US states and the world countries
-    ArrayList<String> states = readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt"); 
+    ArrayList<String> states = readFile(filePath + "states.txt"); 
     ArrayList<String> statesCopy = new ArrayList<String>(states);
     
-    ArrayList<String> worldcountries = readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"); 
+    ArrayList<String> worldcountries = readFile(filePath + "worldcountries.txt"); 
     ArrayList<String> worldcountriesCopy = new ArrayList<String>(worldcountries);   
     ArrayList<String> statesAndCountries = addLists(states, worldcountries);
     ArrayList<String> statesAndCountriesCopy = new ArrayList<String>(statesAndCountries);
 
     //get the text files that contain the US states' and worlds' capitals
-    ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/capitals.txt"));
-    ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcapitals.txt"));
+    ArrayList<String> stateCapitals = new ArrayList<String>(this.readFile(filePath + "capitals.txt"));
+    ArrayList<String> worldCapitals = new ArrayList<String>(this.readFile(filePath + "worldcapitals.txt"));
     ArrayList<String> bothCapitals = addLists(stateCapitals, worldCapitals);
 
        
@@ -302,8 +306,8 @@ public class Game{
      */
     public String compareAnswer(){
 	if(correctcapital.equals(fourcapitals.get(guesschoice_int))){
-	    
-	    score += (100/numitems);
+	    if (numitems > 0)
+			score += (100/numitems);
 	    return "Correct!\n";
 	} 
         return "Wrong! The correct answer was " + correctcapital + ".\n";
@@ -446,12 +450,22 @@ public class Game{
      Initiates appropriate actions based on the user's choice  
      */
     public void runner(){
-	if(promptchoice_int2 == 0)
-	    numitems = 10;
-	else if(promptchoice_int2 == 1)
-	    numitems = 50;
-	else if(promptchoice_int2 == 2)
-	    numitems = customprompt;
+
+	while (true) {
+		if(promptchoice_int2 == 0) {
+			numitems = 10;
+			break;
+		}
+		else if(promptchoice_int2 == 1) {
+			numitems = 50;
+			break;
+		}
+		else if(promptchoice_int2 == 2) {
+			if (customprompt > 0)
+				numitems = customprompt;
+			break;
+		}
+	}
 	
 	if(promptchoice_int1 == 0)
 	    this.QuestionRunner(numitems, states, statesCopy, stateCapitals);

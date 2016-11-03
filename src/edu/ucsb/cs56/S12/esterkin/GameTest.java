@@ -21,11 +21,14 @@ public class GameTest
     test two lists of ArrayList merge into one big ArrayList by comparing its size
     @see Game#addLists
  */
+
+	private static final String filePath = "build/edu/ucsb/cs56/S12/esterkin/";
+
     @Test public void testAddLists()
     {
 	Game g = new Game();
-	ArrayList<String> testList1 = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
-	ArrayList<String> testList2 = g.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt");
+	ArrayList<String> testList1 = g.readFile(filePath + "states.txt");
+	ArrayList<String> testList2 = g.readFile(filePath + "worldcountries.txt");
 	ArrayList<String> testCombinedList = g.addLists(testList1, testList2);
 	assertEquals(testCombinedList.size(), 246); 
 	assertNotSame(testCombinedList.size(), 245);
@@ -40,7 +43,7 @@ public class GameTest
     @Test public void testReadFile()
     {
 	Game g = new Game();
-	ArrayList<String> testlist = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
+	ArrayList<String> testlist = g.readFile(filePath + "states.txt");
 	assertEquals(testlist.size(), 50);
 	assertNotSame(testlist.size(), 49);
 	assertNotSame(testlist.size(), 51);
@@ -54,8 +57,8 @@ public class GameTest
     @Test public void testChooseRandomStateorCountry()
     {
 	Game g = new Game();
-	ArrayList<String> testlist1 = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
-	ArrayList<String> testlist2 = g.readFile("build/edu/ucsb/cs56/S12/esterkin/states.txt");
+	ArrayList<String> testlist1 = g.readFile(filePath + "states.txt");
+	ArrayList<String> testlist2 = g.readFile(filePath + "states.txt");
 	int index_randomState = g.ChooseRandomStateorCountry(testlist1, testlist2);
 	for(int i=0; i<testlist1.size(); i++){
 	    if(i == index_randomState)
@@ -73,7 +76,7 @@ public class GameTest
     @Test public void testGenerate4Capitals()
     {    
 	Game g = new Game();
-	ArrayList<String> testlist = g.generate4Capitals(10, g.readFile("build/edu/ucsb/cs56/S12/esterkin/worldcountries.txt"));
+	ArrayList<String> testlist = g.generate4Capitals(10, g.readFile(filePath + "worldcountries.txt"));
 	assertEquals(testlist.size(),4);
 	assertNotSame(testlist.size(),3);
 	assertNotSame(testlist.size(),5);
