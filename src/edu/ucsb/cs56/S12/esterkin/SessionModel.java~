@@ -1,0 +1,60 @@
+/**
+ * Model that keeps track of the current session.
+ *
+ * @author Sean Shelton, Armin Mahini
+ * @version UCSB CS56, F16
+ */
+import java.util.Observable;
+import java.util.ArrayList;
+
+public class SessionModel extends Observable{
+    private int numQuestions;
+    private int numCorrect = 0;
+    private double grade = 0;
+    //private Territory territoryOfQuestion;
+    //private Territory[] questionTerritories;
+    private ArrayList<Capital> answers;
+    
+    SessionModel() {
+	numQuestions = 10;
+	questionTerritories = new ArrayList<Territory>();
+	questionTerritories.clear();
+	//questionTerritories
+        //territoryOfQuestion = new Territory();
+    }
+
+    public boolean checkAnswer(Capital guess, int questionNumber){
+		return answers.get(questionNumber-1) == guess;
+    }
+
+    public void setNumQuestions(int numQuestions){
+	this.numQuestions = numQuestions;
+    }
+
+    public int getNumQuestions(){
+	return numQuestions;
+    }
+
+    public void setNumCorrect(int numCorrect){
+	this.numCorrect = numCorrect;
+    }
+
+    public int getNumCorrect(){
+	return numCorrect;
+    }
+
+    public void setGrade(double grade){
+	this.grade = grade;
+    }
+
+    public double getGrade(){
+	return grade;
+    }
+ 
+    public void setTerritory(Capital capital){
+	
+    }
+
+    
+    
+}
