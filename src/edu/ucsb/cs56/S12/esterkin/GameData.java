@@ -10,6 +10,7 @@
 
 import java.util.Observable;
 import java.util.HashMap;
+import java.io.BufferedReader;
 
 public class GameData extends Observable {
 	// TODO: Maybe consider making GameData a static singleton?
@@ -40,31 +41,16 @@ public class GameData extends Observable {
 
 	//private int numOfQuestions;
 
-	GameData() {
+	private GameData() {
 		// not sure what to have for default constructor yet,
 		// maybe default to the states HashMap?
 
 		//setQuestion(getTerritory(random capital));
 	}
 
-	GameData(HashMap setType) {
+	/*GameData(HashMap setType) {
 		locationHashMap = setType;
 		//setQuestion(getTerritory(random capital));
-	}
-
-	/**
-	 * Getter method for questionTerritory.
-	 */
-	//public Territory getQuestionTerritory() { return questionTerritory; }
-
-	/**
-	 * Setter method for questionTerritory.
-	 * Asserts that the capital provided is within the HashMap.
-	 * @param answer Capital of some territory, answer to the question.
-	 */
-	/*public void setQuestion(Capital answer) { 
-		assert(locationHashMap.containsKey(answer));
-		questionTerritory = getTerritory(answer);
 	}*/
 
 	/**
@@ -107,9 +93,30 @@ public class GameData extends Observable {
 	// an array of territories from the second file, then mapping them 
 	// together for our HashMap.
 	
-	/*
-	 * public HashMap createGameMap(String capitalsFile, String territoriesFile);
-	 */
+	public HashMap createGameMap(File capitalsFile, File territoriesFile) {
+		HashMap<Capital, Territory> gameHash = new HashMap<Capital, Territory>();
+
+		// create file readers for the capitals/territories
+		try {
+			BufferedReader capitalsReader = 
+				new BufferedReader(new FileReader(capitalsFile));
+			BufferedReader territoriesReader = 
+				new BufferedReader(new FileReader(territoriesFile));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// create strings to store input from files
+		String capitalLine;
+		String territoryLine; 
+
+		// create capitals and territories to fill the HashMap
+		while ((capitalLine =  capitalsReader.readline()) != null &&
+				(territoryLine = territoriesReader.readline()) != null) {
+			gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
+		}
+		return gameHash;
+	}
 
 	// Still need to add all of the Observable methods. 
 }
