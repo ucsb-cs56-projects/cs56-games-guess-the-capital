@@ -6,6 +6,7 @@
  */
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Scanner;
 
 public class GameView{
     
@@ -18,7 +19,7 @@ public class GameView{
     public static int QUESTION_NUM_MENU = 1;
     public static int QUESTION_MENU = 2;
     public static int FINAL_MENU = 3;
-    private Controller controller;
+    //private Controller controller;
     GameView(){
 	menuList.add(new MainMenu());
 	menuList.add(new QuestionMenu());

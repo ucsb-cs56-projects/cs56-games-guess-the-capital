@@ -11,6 +11,10 @@
 import java.util.Observable;
 import java.util.HashMap;
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class GameData extends Observable {
 	// TODO: Maybe consider making GameData a static singleton?
@@ -25,6 +29,12 @@ public class GameData extends Observable {
 
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
 	private HashMap locationHashMap = new HashMap<Capital, Territory>();
+
+	// Singleton instance
+	private static GameData instance = new GameData();
+
+	// File path for location of data
+	private final static String filePath = "build/edu/ucsb/cs56/S12/esterkin/";
 
 	/** 
 	 * Question's territory for the game (so this is either a state or country).
@@ -44,8 +54,19 @@ public class GameData extends Observable {
 	private GameData() {
 		// not sure what to have for default constructor yet,
 		// maybe default to the states HashMap?
+		File capitalsFile = new File(filePath + "capitals.txt");
+		File statesFile = new File(filePath + "states.txt");
+		locationHashMap = createGameMap(capitalsFile, statesFile);
 
 		//setQuestion(getTerritory(random capital));
+	}
+
+	private GameData(File capitalsFile, File territoriesFile) {
+		locationHashMap = createGameMap(capitalsFile, territoriesFile);
+	}
+
+	public static GameData getInstance(){
+		return instance;
 	}
 
 	/*GameData(HashMap setType) {
@@ -96,25 +117,28 @@ public class GameData extends Observable {
 	public HashMap createGameMap(File capitalsFile, File territoriesFile) {
 		HashMap<Capital, Territory> gameHash = new HashMap<Capital, Territory>();
 
-		// create file readers for the capitals/territories
 		try {
+			// create strings to store input from files
+			String capitalLine;
+			String territoryLine; 
+
+			// create file readers for the capitals/territories
 			BufferedReader capitalsReader = 
 				new BufferedReader(new FileReader(capitalsFile));
 			BufferedReader territoriesReader = 
 				new BufferedReader(new FileReader(territoriesFile));
-		} catch (FileNotFoundException e) {
+
+			// create capitals and territories to fill the HashMap
+			while ((capitalLine =  capitalsReader.readLine()) != null &&
+					(territoryLine = territoriesReader.readLine()) != null) {
+				gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// create strings to store input from files
-		String capitalLine;
-		String territoryLine; 
 
-		// create capitals and territories to fill the HashMap
-		while ((capitalLine =  capitalsReader.readline()) != null &&
-				(territoryLine = territoriesReader.readline()) != null) {
-			gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
-		}
+
 		return gameHash;
 	}
 
