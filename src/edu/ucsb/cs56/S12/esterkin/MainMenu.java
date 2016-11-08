@@ -5,14 +5,8 @@
  * @version UCSB CS56, F16
  */
 
-import java.io.*;
-
 public class MainMenu extends Menu{
     
-    public int setPromptChoice(){
-	super.setPromptChoice();
-    }
-   
     public void printMenu(){
 	System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
 	System.out.println("\n0. Play US State Capitals Game");

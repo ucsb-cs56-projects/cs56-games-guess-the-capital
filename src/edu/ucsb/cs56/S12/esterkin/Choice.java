@@ -10,13 +10,19 @@ public class Choice {
     
     private String choice;
     
-    private ArrayList<String> choices;
-
     Choice(){
-	choices = new ArrayList<String>();
+	choice = "";
     }
     
-    
+    public String getChoice(){
+	return this.choice;
+    }
  
-    
+    public void setChoice(String c){
+	this.choice = c;
+    }
+
+    public String toString(){
+	return this.choice;
+    }
 }

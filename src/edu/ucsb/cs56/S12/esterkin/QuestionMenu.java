@@ -9,24 +9,16 @@ import java.io.*;
 
 public class QuestionMenu extends Menu{ //implements Choice
 
-    
-    /**
-     * ArrayList of capitals for the user to select from when playing the game
-     */
-    private ArrayList<Choice> capitals; //or protected?
-    private ArrayList<Choice> worldCountries;
-    private ArrayList<Choice> statesAndCountries;
-    private 
-    
-    public int setPromptChoice(){
-	super.setPromptChoice();
-    }
-
     /**
      * Prints question, whether or not response is correct/incorrect
      */
-    public void printMenu(){
-	
+    public void printMenu(ArrayList<Choice> choices, Territory t,
+			  int questionNum){
+	System.out.println("Question " + questionNum + ": " "What is the capital of " + t.getName() "?\n");
+	for(int i = 0; i < choice.length(); i++){
+	    System.out.println(i + ". " + choices.get(i).toString());
+	    
+	}
     }
 
 }
