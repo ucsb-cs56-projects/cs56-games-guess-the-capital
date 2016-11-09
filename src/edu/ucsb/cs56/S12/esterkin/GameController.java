@@ -10,22 +10,20 @@ public class GameController{
     
     private SessionModel model;
     private GameView view;
+	GameData gameData = GameData.getInstance();
+
+    GameController(){
+		model = new SessionModel();
+		view = new GameView();
+	}
 
     //WIP
     GameController(SessionModel model, GameView view){
-	this.model = model;
-	this.view = view;
+		this.model = model;
+		this.view = view;
     }
-
-    /**
-     * Stub from GameView class, not exactly sure what this is for
-    
-    public void getInput(int i){
-	
-    }
-    */
 
     public void startGame(){
-	MainMenu.printMenu();
+		//MainMenu.printMenu();
     }
 }

@@ -20,21 +20,23 @@ public class GameView{
     public static int QUESTION_MENU = 2;
     public static int FINAL_MENU = 3;
     //private Controller controller;
+
     GameView(){
-	menuList.add(new MainMenu());
-	menuList.add(new QuestionMenu());
-	menuList.add(new QuestionNumMenu());
-	menuList.add(new FinalMenu());
+		menuList.add(new MainMenu());
+		menuList.add(new QuestionMenu());
+		menuList.add(new QuestionNumMenu());
+		menuList.add(new FinalMenu());
     }
 
     /**
      * Decides what I display given the user's input
      */
-    public void menuIO(int menuNum){
-	menuList.get(menuNum).printMenu();
-	Scanner input = new Scanner(System.in);
-	int i = input.nextInt();
-        //controller.getInput(i); stub for Controller
+    public int menuIO(int menuNum){
+		menuList.get(menuNum).printMenu();
+		Scanner input = new Scanner(System.in);
+		int i = input.nextInt();
+		return i;
+		//controller.menuInput(i); //stub for Controller
     }
    
 }

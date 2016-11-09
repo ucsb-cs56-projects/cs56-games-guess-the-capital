@@ -32,6 +32,7 @@ public class SessionModel extends Observable{
      * Represents answers for each question in the current session
      */
     private ArrayList<Capital> answers;
+	GameData gameData = GameData.getInstance();
 
     /**
      * Constructor for a session of the game, by default sets 
@@ -39,9 +40,9 @@ public class SessionModel extends Observable{
      * clears it just to be safe
      */
     SessionModel() {
-	numQuestions = 10;
+		numQuestions = 10;
         answers = new ArrayList<Capital>();
-	answers.clear();
+		answers.clear();
 	//questionTerritories
         //territoryOfQuestion = new Territory();
     }
@@ -62,14 +63,14 @@ public class SessionModel extends Observable{
      * @param numQuestions represents the user's desired number of questions
      */
     public void setNumQuestions(int numQuestions){
-	this.numQuestions = numQuestions;
+		this.numQuestions = numQuestions;
     }
     
     /**
      * Returns the number of questions in the current session
      */
     public int getNumQuestions(){
-	return numQuestions;
+		return numQuestions;
     }
     
     /**
@@ -77,14 +78,14 @@ public class SessionModel extends Observable{
      * @param numCorrect represents the number of correct answers 
      */
     public void setNumCorrect(int numCorrect){
-	this.numCorrect = numCorrect;
+		this.numCorrect = numCorrect;
     }
 
     /**
      * Returns the number of correct answers in the current session
      */
     public int getNumCorrect(){
-	return numCorrect;
+		return numCorrect;
     }
 
     /**
@@ -92,14 +93,14 @@ public class SessionModel extends Observable{
      * @param grade represents the user's grade based on the number of correct responses 
      */
     public void setGrade(double grade){
-	this.grade = grade;
+		this.grade = grade;
     }
 
     /**
      * Returns the user's grade
      */
     public double getGrade(){
-	return grade;
+		return grade;
     }
     
     /*

@@ -30,10 +30,13 @@ public class GameData extends Observable {
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
 	private HashMap locationHashMap = new HashMap<Capital, Territory>();
 
-	// Singleton instance
+	/** Singleton instance
+	 */
 	private static GameData instance = new GameData();
 
-	// File path for location of data
+	/**
+ 	 *  File path for location of data
+ 	 */
 	private final static String filePath = "build/edu/ucsb/cs56/S12/esterkin/";
 
 	/** 
@@ -114,7 +117,7 @@ public class GameData extends Observable {
 	// an array of territories from the second file, then mapping them 
 	// together for our HashMap.
 	
-	public HashMap createGameMap(File capitalsFile, File territoriesFile) {
+	public static HashMap createGameMap(File capitalsFile, File territoriesFile) {
 		HashMap<Capital, Territory> gameHash = new HashMap<Capital, Territory>();
 
 		try {
