@@ -13,6 +13,9 @@ public class GameController{
     GameData gameData = GameData.getInstance();
     private MainMenu main;
 
+	// use input to handle things accordingly
+	private int input;
+
     GameController(){
 		model = new SessionModel();
 		view = new GameView();
@@ -24,10 +27,19 @@ public class GameController{
     }
 
     public void runGame(){
-	view.menuIO(0); //change to static vars in GameView later, didn't compile with static vars for some reason
-	view.menuIO(1);
-        view.menuIO(2);
-	view.menuIO(3);
+		input = view.menuIO(GameView.MAIN_MENU); //change to static vars in GameView later, didn't compile with static vars for some reason
+		// TODO: set GameData to their selection
+		
+		input = view.menuIO(GameView.QUESTION_NUM_MENU);
+		// TODO: set SessionModel's number of questions
+
+		// for (int i = 1; i <= model.getNumQuestions(); ++i) {	
+        	input = view.menuIO(GameView.QUESTION_MENU);
+		// TODO: check if answer is right or wrong, then increase or decrease num correct
+		// might have to have gameview as an observer to sessionmodel to make this work
+
+		input = view.menuIO(GameView.FINAL_MENU);
+		// if input is 1, play again
     }    
 
 }
