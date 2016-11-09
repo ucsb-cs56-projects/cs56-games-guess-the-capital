@@ -10,20 +10,24 @@ public class GameController{
     
     private SessionModel model;
     private GameView view;
-	GameData gameData = GameData.getInstance();
+    GameData gameData = GameData.getInstance();
+    private MainMenu main;
 
     GameController(){
 		model = new SessionModel();
 		view = new GameView();
 	}
 
-    //WIP
     GameController(SessionModel model, GameView view){
 		this.model = model;
 		this.view = view;
     }
 
-    public void startGame(){
-		//MainMenu.printMenu();
-    }
+    public void runGame(){
+	view.menuIO(0); //change to static vars in GameView later, didn't compile with static vars for some reason
+	view.menuIO(1);
+        view.menuIO(2);
+	view.menuIO(3);
+    }    
+
 }
