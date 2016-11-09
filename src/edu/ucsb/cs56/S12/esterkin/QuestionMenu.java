@@ -13,12 +13,13 @@ public class QuestionMenu extends Menu{ //implements Choice
     /**
      * Prints question, whether or not response is correct/incorrect
      */
-    public void printMenu(ArrayList<Choice> choices, Territory t,
+    public void printMenu(ArrayList<Territory> possibleChoices, Territory answerTerritory,
 			  int questionNum){
 
-		System.out.println("Question " + questionNum + ": " + "What is the capital of " + t.getName() + "?\n");
-		for(int i = 0; i < choices.size(); i++){
-			System.out.println(i + ". " + choices.get(i).toString());
+		System.out.println("Question " + questionNum + ": " + "What is the capital of " + answerTerritory.getName() + "?\n");
+		for(int i = 0; i < possibleChoices.size(); i++){
+			System.out.println(i + ". " + possibleChoices.get(i).getCapital().getName());
+			//System.out.println(i + ". " + choices.get(i).toString());
 		}
 
     }

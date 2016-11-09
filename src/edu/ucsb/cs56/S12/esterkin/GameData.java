@@ -15,20 +15,22 @@ import java.io.FileReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameData extends Observable {
 	// TODO: Maybe consider making GameData a static singleton?
 
 	/**
-	 * Maps all of the capitals to their territories.
-	 * (e.g. HashMap<Capital, Territory>())
+	 * Creates an ArrayList of Territories, which has the capitals inside
+	 * (e.g. ArrayList<Territory>(), each territory has a capital within it)
 	 *
 	 * A territory is either a state or a country, and the capitals should be mapped
 	 * to their respective state or country.
 	 */
 
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
-	private HashMap locationHashMap = new HashMap<Capital, Territory>();
+	//private HashMap locationHashMap = new HashMap<Capital, Territory>();
+	private ArrayList<Territory> locations = new ArrayList<Territory>();
 
 	/** Singleton instance
 	 */
@@ -59,13 +61,14 @@ public class GameData extends Observable {
 		// maybe default to the states HashMap?
 		File capitalsFile = new File(filePath + "capitals.txt");
 		File statesFile = new File(filePath + "states.txt");
-		locationHashMap = createGameMap(capitalsFile, statesFile);
+		locations = createGameLocations(capitalsFile, statesFile);
 
 		//setQuestion(getTerritory(random capital));
 	}
 
 	private GameData(File capitalsFile, File territoriesFile) {
-		locationHashMap = createGameMap(capitalsFile, territoriesFile);
+		//locationHashMap = createGameMap(capitalsFile, territoriesFile);
+		locations = createGameLocations(capitalsFile, territoriesFile);
 	}
 
 	public static GameData getInstance(){
@@ -82,43 +85,38 @@ public class GameData extends Observable {
 	 * Asserts that the capital provided is within the HashMap.
 	 * @param capital Capital of some territory.
 	 */
-	public Territory getTerritory(Capital capital) {  
-		assert(locationHashMap.containsKey(capital));
-		return (Territory)locationHashMap.get(capital);
-	}
+	//public Territory getTerritory(Capital capital) {
+		
+		//assert(locationHashMap.containsKey(capital));
+		//return (Territory)locationHashMap.get(capital);
+	//}
 
 	/**
 	 * Returns the HashMap in GameData (Capitals to Territories)
 	 */
-	public HashMap<Capital, Territory> getHashMap() {
-		return locationHashMap;
+	public ArrayList<Territory> getLocations() {
+		return locations;
 	} 
 
 	/** 
-	 * Sets locationHashMap to hashMap
+	 * Sets the object's ArrayList of locations to a new ArrayList.
 	 *
-	 * @param hashMap A hashMap that maps Capitals to Territories, and Capitals should match
-	 * their territories.
+	 * @param locations An ArrayList that contains all of the Territories, with their Capitals inside.
+	 * 
 	 */
-	public void setHashMap(HashMap<Capital, Territory> hashMap) {
-		this.locationHashMap = hashMap;
+	public void setLocations(ArrayList<Territory> locations) {
+		this.locations = locations;
 	}
 
-	/**
-	 * Checks if a given capital is the answer to the current question.
-	 * @param answer Capital of some territory, answer to the question.
-	 * @return True if capital is the correct answer, false otherwise.
+	/** Creates an ArrayList of territories based on the capitals and territories files.
+	 *	In the file, the lines should match between the capitals and the territories.
+	 *
+	 * @param capitalsFile is the file with the capitals.
+	 * @param territoriesFile is the file with the territories.
 	 */
-	//public boolean checkAnswer(Capital answer) { return getQuestionTerritory() == getTerritory(answer); }
-
-	// Still need a method to create our HashMap.
-	//
-	// Thinking of making an array of capitals from the capitals file, then
-	// an array of territories from the second file, then mapping them 
-	// together for our HashMap.
-	
-	public static HashMap createGameMap(File capitalsFile, File territoriesFile) {
-		HashMap<Capital, Territory> gameHash = new HashMap<Capital, Territory>();
+	public static ArrayList<Territory> createGameLocations(File capitalsFile, File territoriesFile) {
+		ArrayList<Territory> gameLocations = new ArrayList<Territory>();
+		gameLocations.clear();
 
 		try {
 			// create strings to store input from files
@@ -131,10 +129,11 @@ public class GameData extends Observable {
 			BufferedReader territoriesReader = 
 				new BufferedReader(new FileReader(territoriesFile));
 
-			// create capitals and territories to fill the HashMap
+			// create capitals and territories to fill the ArrayList
 			while ((capitalLine =  capitalsReader.readLine()) != null &&
 					(territoryLine = territoriesReader.readLine()) != null) {
-				gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
+				//gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
+				gameLocations.add(new Territory(capitalLine, territoryLine));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -142,7 +141,8 @@ public class GameData extends Observable {
 
 
 
-		return gameHash;
+		//return gameHash;
+		return gameLocations;
 	}
 
 	// Still need to add all of the Observable methods. 

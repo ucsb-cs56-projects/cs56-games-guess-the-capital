@@ -6,6 +6,7 @@
  */
 import java.util.Observable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SessionModel extends Observable{
     
@@ -23,15 +24,25 @@ public class SessionModel extends Observable{
      * Represents final grade of the current session
      */
     private double grade = 0;
-    
-    //private Territory territoryOfQuestion;
-    
-    //private Territory[] questionTerritories;
+
+	/**
+	 * The number of choices available to pick from in the multiple choice game.
+	 */ 
+	private int numChoices;
     
     /**
      * Represents answers for each question in the current session
      */
-    private ArrayList<Capital> answers;
+    private ArrayList<Territory> possibleAnswers;
+
+	/**
+	 *	Current answer for the question
+	 */
+	private Territory answerTerritory;
+
+	/** 
+	 * Singleton GameData class used for generating questions/answers
+	 */
 	GameData gameData = GameData.getInstance();
 
     /**
@@ -41,8 +52,10 @@ public class SessionModel extends Observable{
      */
     SessionModel() {
 		numQuestions = 10;
-        answers = new ArrayList<Capital>();
-		answers.clear();
+		numChoices = 4;
+        possibleAnswers = new ArrayList<Territory>();
+		possibleAnswers.clear();
+		updateCurrentQuestion();
 	//questionTerritories
         //territoryOfQuestion = new Territory();
     }
@@ -54,8 +67,10 @@ public class SessionModel extends Observable{
      * @param questionNumber represents the number of the question the
      * user is currently on
      */
-    public boolean checkAnswer(Capital guess, int questionNumber){
-		return answers.get(questionNumber-1) == guess;
+    public boolean checkAnswer(int guess){
+		return possibleAnswers.get(guess).getName() == answerTerritory.getName();
+		//return guess.getName() == answerTerritory.getCapital().getName();
+		//return possibleAnswers.get(questionNumber-1) == guess;
     }
 
     /**
@@ -102,6 +117,52 @@ public class SessionModel extends Observable{
     public double getGrade(){
 		return grade;
     }
+
+	/**
+	 *	Changes the number of choices to play the game with.
+	 *	(e.g. having to guess between 6 choices instead of the usual 4)
+	 */
+	public void setNumChoices(int numChoices) {
+		this.numChoices = numChoices;
+	}
+
+	/**
+	 *	Gets the number of choices
+	 */
+	public int getNumChoices() {
+		return this.numChoices;
+	}
+
+	public ArrayList<Territory> getPossibleAnswers() {
+		return possibleAnswers;
+	}
+
+	/**
+	 * Changes the possible answers to a random set of capitals
+	 */
+	public void updateCurrentQuestion(){
+		// clear current set of answers
+		possibleAnswers.clear();
+
+		// Creating r to be our random number generator
+		Random r = new Random();
+
+		// Making an ArrayList of locations to make the question
+		ArrayList<Territory> totalData = gameData.getLocations();
+		Territory t = new Territory();
+
+		for (int i = 0; i < numChoices; ++i) {
+			// Set t equal to some random territory
+			t = totalData.get(r.nextInt(totalData.size()));
+			possibleAnswers.add(t);
+		}
+
+		// Choose a possible answer to actually be the answer
+		answerTerritory = possibleAnswers.get(r.nextInt(numChoices));
+
+		//gameData.getLocations.get(r.nextInt(
+		
+	}
     
     /*
     public void setTerritory(Capital capital){
