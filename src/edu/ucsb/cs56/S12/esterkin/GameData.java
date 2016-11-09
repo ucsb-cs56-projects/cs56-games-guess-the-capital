@@ -31,6 +31,9 @@ public class GameData extends Observable {
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
 	//private HashMap locationHashMap = new HashMap<Capital, Territory>();
 	private ArrayList<Territory> locations = new ArrayList<Territory>();
+	private ArrayList<Territory> usGame = new ArrayList<Territory>();
+	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
+	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
 	/** Singleton instance
 	 */
@@ -61,7 +64,16 @@ public class GameData extends Observable {
 		// maybe default to the states HashMap?
 		File capitalsFile = new File(filePath + "capitals.txt");
 		File statesFile = new File(filePath + "states.txt");
-		locations = createGameLocations(capitalsFile, statesFile);
+		File worldCapitalsFile = new File(filePath + "worldcapitals.txt");
+		File worldCountriesFile = new File(filePath + "worldcountries.txt");
+
+		usGame = createGameLocations(capitalsFile, statesFile);
+		worldGame = createGameLocations(worldCapitalsFile, worldCountriesFile);
+		allGame = createGameLocations(capitalsFile, statesFile);
+		allGame.addAll(worldGame);
+		setLocations(usGame);
+		//locations =  usGame;
+		//usGame = createGameLocations(capitalsFile, statesFile);
 
 		//setQuestion(getTerritory(random capital));
 	}
