@@ -11,6 +11,7 @@ import java.io.*;
 public class FinalMenu extends Menu{
 
     public void printMenu(MenuData menuData){
+		assert (menuData != null);
 		System.out.println("\n\n\n");
 		System.out.println("Your Total Score: " + menuData.numCorrect + "/" + menuData.numQuestions);
 		System.out.println("\n\n\n");

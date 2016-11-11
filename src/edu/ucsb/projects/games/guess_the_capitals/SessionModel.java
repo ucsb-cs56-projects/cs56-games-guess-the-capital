@@ -95,6 +95,8 @@ public class SessionModel extends Observable{
      */
     public void setNumQuestions(int numQuestions){
 		this.numQuestions = numQuestions;
+		setChanged();
+		notifyObservers();
     }
     
     /**
@@ -106,6 +108,8 @@ public class SessionModel extends Observable{
 
 	public void setQuestionNum(int questionNum) {
 		this.questionNum = questionNum;
+		setChanged();
+		notifyObservers();
 	}
 
 	public int getQuestionNum() {
@@ -118,6 +122,8 @@ public class SessionModel extends Observable{
      */
     public void setNumCorrect(int numCorrect){
 		this.numCorrect = numCorrect;
+		setChanged();
+		notifyObservers();
     }
 
     /**
@@ -133,6 +139,8 @@ public class SessionModel extends Observable{
      */
     public void setGrade(double grade){
 		this.grade = grade;
+		setChanged();
+		notifyObservers();
     }
 
     /**
@@ -148,6 +156,8 @@ public class SessionModel extends Observable{
 	 */
 	public void setNumChoices(int numChoices) {
 		this.numChoices = numChoices;
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -190,6 +200,8 @@ public class SessionModel extends Observable{
 		// Choose a possible answer to actually be the answer
 		answerTerritory = possibleAnswers.get(r.nextInt(numChoices));
 
+		setChanged();
+		notifyObservers();
 		//gameData.getLocations.get(r.nextInt(
 		
 	}
@@ -198,6 +210,8 @@ public class SessionModel extends Observable{
 		this.numQuestions = 10;
 		this.numCorrect = 0;
 		this.grade = 0;
+		setChanged();
+		notifyObservers();
 	}
     
     /*

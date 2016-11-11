@@ -26,12 +26,15 @@ public class GameController{
 		model = new SessionModel();
 		view = new GameView();
 		menuData = new MenuData();
+		model.addObserver(menuData);
 	}
 
     GameController(SessionModel model, GameView view, GameData gameData){
 		this.model = model;
 		this.view = view;
 		this.gameData = gameData;
+		menuData = new MenuData();
+		model.addObserver(menuData);
     }
 
     public void runGame(){
@@ -95,11 +98,12 @@ public class GameController{
 		// might have to have gameview as an observer to sessionmodel to make this work
 
 		// initializes game session
-		model.updateCurrentQuestion();	
+		model.updateCurrentQuestion();
+		//menuData = new MenuData(model);
 
 		for (int i = 1; i <= model.getNumQuestions(); ++i){
 			// print out question menu and get input
-			model.setQuestionNum(i);
+			//model.setQuestionNum(i);
 			menuData.setQuestionNum(i);
 			//model.setQuestionNum(i);
 			input = view.menuIO(GameView.QUESTION_MENU, menuData);
@@ -107,6 +111,8 @@ public class GameController{
 			// evaluate input for correctness
 			if (model.checkAnswer(input))
 				model.setNumCorrect(model.getNumCorrect() + 1);
+
+			model.updateCurrentQuestion();
 		}
 	}
 
@@ -114,7 +120,7 @@ public class GameController{
 
 
 	public boolean finalMenu() {
-		input = view.menuIO(GameView.FINAL_MENU, null); //need to double check with Sean/Jack
+		input = view.menuIO(GameView.FINAL_MENU, menuData); //need to double check with Sean/Jack
 		return input == 1;
 
 	}
