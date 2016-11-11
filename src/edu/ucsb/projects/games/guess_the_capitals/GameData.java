@@ -8,6 +8,7 @@
  * @version for UCSB CS56, F16  
  */
 
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
 import java.util.Observable;
 import java.util.HashMap;
 import java.io.BufferedReader;
@@ -45,7 +46,7 @@ public class GameData extends Observable {
 	/**
  	 *  File path for location of data
  	 */
-	private final static String filePath = "build/edu/ucsb/cs56/S12/esterkin/";
+	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
 
 	/** 
 	 * Question's territory for the game (so this is either a state or country).

@@ -4,6 +4,7 @@
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16
  */
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 public class MainMenu extends Menu{
     

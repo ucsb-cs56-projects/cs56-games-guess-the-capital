@@ -13,13 +13,13 @@ public abstract class Menu{
     /**
      * Place to keep all the choices a user can make give the menu they're at
      */
-    protected ArrayList<Choice> choices;
+    //protected ArrayList<Choice> choices;
   
-    public abstract void printMenu();
+    public abstract void printMenu(MenuData menuData);
 
-    public Menu(){
-	choices = new ArrayList<Choice>();
-    }
+    /*public Menu(){
+		choices = new ArrayList<Choice>();
+    }*/
     
     
 }
