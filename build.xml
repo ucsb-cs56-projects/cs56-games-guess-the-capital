@@ -10,15 +10,26 @@
   <property environment="env"/> <!-- load the environment variables --> 
   
   <property name="webRoot" value="${env.HOME}/public_html/cs56"/>
-  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/cs56"/>
-  <property name="course" value="cs56"/>
-  <property name="quarter" value="S12"/>
-  <property name="issueNum" value="0000768"/>
-  <property name="mainClass" value="Game"/>
-  <property name="projectName" value="${course}_${quarter}_${issueNum}"/>
-  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}"/>
+  <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56"/>
+  <property name="projectName" value="cs56-games-guess-the-capital" />
   <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc"/>
-  <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc"/>
+  <property name="javadocURL" value="${webBaseURL}/${projectPath}/javadoc"/>
+  <property name="javadocLink" value="http://java.sun.com/javase/7/docs/api/"/>
+  <property name="packagePrefix" value="edu.ucsb.cs56.projects.games.guess_the_capitals" />
+  <property name="mainClass" value="RunText"/>
+  <!--property name="viewPackagePrefix" value="${packagePrefix}.view" /-->
+  <!--property name="ID" value="esterkin"/-->
+
+  <property name="issueNum" value="0000768"/>
+  <!--property name="course" value="cs56"/-->
+  <!--property name="quarter" value="S12"/-->
+
+  <!-- making these right now -->
+
+  <!-- possibly going to remove these two -->
+  <!--property name="projectName" value="${course}_${quarter}_${issueNum}"/-->
+  <!-- property name="projectPath" value="${course}/${quarter}/issues/${issueNum}"-->
+
 
 <path id="project.class.path">
   <pathelement location="build"/>
@@ -34,13 +45,13 @@
       <pathelement location="build"/>                                                    <pathelement location="lib/junit-4.8.2.jar"/>                       
     </classpath>     
   </javac>  
-  <copy todir="build/edu/ucsb/cs56/S12/esterkin">                           
-    <fileset dir="src/edu/ucsb/cs56/S12/esterkin/text"/>
+  <copy todir="build/edu/ucsb/cs56/projects/games/guess_the_capitals">                           
+    <fileset dir="src/edu/ucsb/projects/games/guess_the_capitals/text"/>
   </copy>
 </target>
 
  <target name="run" depends="compile" description="run the game">
-   <java classname="edu.ucsb.cs56.S12.esterkin.${mainClass}" fork="true">
+   <java classname="${packagePrefix}.${mainClass}" fork="true">
      <classpath refid="project.class.path"/>
    </java>
   </target>

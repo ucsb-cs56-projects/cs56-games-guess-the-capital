@@ -1,0 +1,1 @@
+Write factory class for the hash tables
