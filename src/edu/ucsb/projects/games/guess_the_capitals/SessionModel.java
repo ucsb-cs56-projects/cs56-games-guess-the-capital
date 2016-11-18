@@ -58,15 +58,20 @@ public class SessionModel extends Observable{
      * clears it just to be safe
      */
     SessionModel() {
-		numQuestions = 10;
-		numChoices = 4;
+	numQuestions = 10;
+      	numChoices = 4;
         possibleAnswers = new ArrayList<Territory>();
-		possibleAnswers.clear();
+	possibleAnswers.clear();
 		//updateCurrentQuestion();
 	//questionTerritories
         //territoryOfQuestion = new Territory();
     }
-
+    
+    /** Constructor for a session of the game. Like the one above, sets number of questions to 10,
+     *  creates an  empty ArrayList and clears it. 
+     *  @param gameData gameData allows this SessionModel to access a particular list of capitals 
+     *  and terroritories depending on which selections the user has made.
+     */
 	SessionModel(GameData gameData) {
 		this.gameData = gameData;
 		numQuestions = 10;
@@ -80,8 +85,6 @@ public class SessionModel extends Observable{
      * Returns true if the capital guessed by the player is correct,
      * otherwhise returns false
      * @param guess represents the user's guess
-     * @param questionNumber represents the number of the question the
-     * user is currently on
      */
     public boolean checkAnswer(int guess){
 		return possibleAnswers.get(guess).getName() == answerTerritory.getName();
@@ -106,12 +109,18 @@ public class SessionModel extends Observable{
 		return numQuestions;
     }
 
+    /** Sets the number of questions to 10, 50, or a custom number selected by the user
+     * @param questionNum is number of questions indicated by the user
+     */
 	public void setQuestionNum(int questionNum) {
 		this.questionNum = questionNum;
 		setChanged();
 		notifyObservers();
 	}
 
+    /** Returns the current quetion number
+     *
+     */
 	public int getQuestionNum() {
 		return this.questionNum;
 	}
@@ -161,16 +170,22 @@ public class SessionModel extends Observable{
 	}
 
 	/**
-	 *	Gets the number of choices
+	 *	Gets the number of choices for this session of the game
 	 */
 	public int getNumChoices() {
 		return this.numChoices;
 	}
 
+        /** Returns the possible answers for 
+	 *
+	 */
 	public ArrayList<Territory> getPossibleAnswers() {
 		return possibleAnswers;
 	}
 
+    /** Returns the Territory for which the Capital belongs to
+     *
+     */
 	public Territory getAnswerTerritory() {
 		return answerTerritory;
 	}
@@ -205,7 +220,9 @@ public class SessionModel extends Observable{
 		//gameData.getLocations.get(r.nextInt(
 		
 	}
-
+    /** Sets the number of questions, correct answers and grade to their default users to get the game ready
+     * for the next session to be played
+     */
 	public void reset() {
 		this.numQuestions = 10;
 		this.numCorrect = 0;

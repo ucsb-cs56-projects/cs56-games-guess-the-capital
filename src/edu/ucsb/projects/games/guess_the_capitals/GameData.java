@@ -21,14 +21,6 @@ import java.util.ArrayList;
 public class GameData extends Observable {
 	// TODO: Maybe consider making GameData a static singleton?
 
-	/**
-	 * Creates an ArrayList of Territories, which has the capitals inside
-	 * (e.g. ArrayList<Territory>(), each territory has a capital within it)
-	 *
-	 * A territory is either a state or a country, and the capitals should be mapped
-	 * to their respective state or country.
-	 */
-
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
 	//private HashMap locationHashMap = new HashMap<Capital, Territory>();
 

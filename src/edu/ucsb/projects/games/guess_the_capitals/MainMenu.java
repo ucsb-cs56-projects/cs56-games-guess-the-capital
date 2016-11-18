@@ -8,6 +8,10 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 public class MainMenu extends Menu{
     
+    /** Overridden version simply prints selections for the user to choose
+     *  from when the game first begins
+     * @param menuData is the data that the menus have access to
+     */
     public void printMenu(MenuData menuData){
 		System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
 		System.out.println("\n0. Play US State Capitals Game");
