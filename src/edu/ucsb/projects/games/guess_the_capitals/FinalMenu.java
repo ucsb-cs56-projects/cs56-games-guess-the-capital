@@ -10,6 +10,9 @@ import java.io.*;
 
 public class FinalMenu extends Menu{
 
+    /** Prints last menu the user sees once the game is over. Displays the users score and gives
+     *  them the option to play again or end the session
+     */
     public void printMenu(MenuData menuData){
 		assert (menuData != null);
 		System.out.println("\n\n\n");

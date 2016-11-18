@@ -9,16 +9,28 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
 public class Capital {
 	private String capitalName;
 
+        /** Default constructor for a Capital object, name is auotmatically set to "Capital"
+         *
+	 */
 	Capital() {
 		this.capitalName = "Capital";
 	}
 
+        /** Constructor for a Capital object, name is set to whatever the user passes through
+         *
+	 */
 	Capital(String capitalName) {
 		this.capitalName = capitalName;
 	}
 
-	public String getName() { return this.capitalName; }
-
+        /** Returns the name of the capital in question
+	 * 
+	 */
+        public String getName() { return this.capitalName; }
+    
+        /** Indicates whether some other Capital is "equal to" this one. 
+         *
+         */
         public boolean equals(Capital capital){
 	    return this.getName().equals(capital.getName());
 	}

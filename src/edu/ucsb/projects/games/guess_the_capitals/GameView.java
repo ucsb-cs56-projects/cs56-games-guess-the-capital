@@ -27,6 +27,10 @@ public class GameView { //extends Observable?
     //GameData worldGame = new GameData(worldCapitalsFile, worldCountriesFile);
     //GameData allGame = new GameData();
 
+    /** Default constructor that adds the 4 menus a user will see through the game. They will be 
+     *  iterated throughout the game as the user makes a numerical input indicating what the want 
+     *  to do (select US/World, number of questions, etc.)
+     */
     GameView(){
 		menuList.add(new MainMenu());
 		menuList.add(new QuestionNumMenu());
@@ -35,7 +39,9 @@ public class GameView { //extends Observable?
     }
 
     /**
-     * Decides what I display given the user's input
+     * Decides what to display given the user's input
+     * @param menuNum corresponds to what menu to display given where in the game the user is
+     * @param menuData is passed to print out possible choices
      */
     public int menuIO(int menuNum, MenuData menuData) {
 		menuList.get(menuNum).printMenu(menuData);

@@ -22,13 +22,20 @@ public class GameController{
 	// use input to handle things accordingly
 	private int input;
 
+    /** Default constructor for the controller. Responsible for sending commands to  model 
+     *  and view to update their states'
+     */
     GameController(){
 		model = new SessionModel();
 		view = new GameView();
 		menuData = new MenuData();
 		model.addObserver(menuData);
-	}
+    }
 
+    /** Constructor for GameController. Responsible for sending commands to  model and 
+     *  view to update their states'. Assigns user-inputted model, view, 
+     *  and gameData to SessionModel, GameView and GameData objects, respectively.
+     */
     GameController(SessionModel model, GameView view, GameData gameData){
 		this.model = model;
 		this.view = view;
@@ -36,7 +43,9 @@ public class GameController{
 		menuData = new MenuData();
 		model.addObserver(menuData);
     }
-
+    
+    /** Responsible for actually running the game, menu-by-menu.
+     */ 
     public void runGame(){
 		// reset our model
 		boolean keepGoing = true;
@@ -59,6 +68,9 @@ public class GameController{
 
     }
 
+        /** Displays main menu and allows user to select which set of 
+         *  territories they'd like to be quizzed on
+         */
 	public void mainMenu() {
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
@@ -75,6 +87,9 @@ public class GameController{
 		    //GameData all = new GameData();
 	}
 
+        /** Displays menu that allows user how many questions they'd like to be asked
+         *  given their numerical input
+         */
 	public void questionNumMenu() {
 		input = view.menuIO(GameView.QUESTION_NUM_MENU, null);
 		// TODO: set SessionModel's number of questions
@@ -90,12 +105,12 @@ public class GameController{
 		    model.setNumQuestions(customNum);
 		}
 	}
-
+    
+        /** Iterates through questions that user will be asked given 
+	 *  their choices of territory and number of questions
+	 */
 	public void playTheQuestions() {
         //input = view.menuIO(GameView.QUESTION_MENU);
-
-		// TODO: check if answer is right or wrong, then increase or decrease num correct
-		// might have to have gameview as an observer to sessionmodel to make this work
 
 		// initializes game session
 		model.updateCurrentQuestion();
@@ -116,9 +131,8 @@ public class GameController{
 		}
 	}
 
-
-
-
+        /** Displays final menu and allows user to play another game or end the session
+	 */
 	public boolean finalMenu() {
 		input = view.menuIO(GameView.FINAL_MENU, menuData); //need to double check with Sean/Jack
 		return input == 1;

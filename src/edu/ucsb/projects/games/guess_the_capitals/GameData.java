@@ -39,7 +39,8 @@ public class GameData extends Observable {
 	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
 	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
-	/** Singleton instance
+	/** Singleton instance to restrict instantiaion since we'll be using this GameData 
+	 *  object across the whole game
 	 */
 	private static GameData instance = new GameData();
 
@@ -48,21 +49,11 @@ public class GameData extends Observable {
  	 */
 	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
 
-	/** 
-	 * Question's territory for the game (so this is either a state or country).
-	 * 
-	 * This is used to determine whether or not an answer is correct,
-	 * and has its own getter and setter.
-	 *
-	 * The controller can set the questionTerritory by putting in a capital, and then
-	 * the questionTerritory will be the territory that the capital maps to in the HashMap.
+	/** Constructs a newly allocated GameData object that knows all the territories and capitals for the
+	 *  US, world and both of those games.
+	 *  The controller can set the questionTerritory by putting in a capital, and then
+	 *  the questionTerritory will be the territory that the capital maps to in the HashMap.
 	 */
-
-	//TODO: Made SessionModel, probably don't need questionTerritory
-	//private Territory questionTerritory;
-
-	//private int numOfQuestions;
-
 	private GameData() {
 		// not sure what to have for default constructor yet,
 		// maybe default to the states HashMap?
@@ -79,15 +70,21 @@ public class GameData extends Observable {
 		setLocations(usGame);
 		//locations =  usGame;
 		//usGame = createGameLocations(capitalsFile, statesFile);
-
 		//setQuestion(getTerritory(random capital));
 	}
 
+        /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
+	 *  territories for the specific game the user has selected to play.
+	 *  @param capitalsFile is the file with the capitals.
+	 *  @param territoriesFile is the file with the territories.
+         */
 	private GameData(File capitalsFile, File territoriesFile) {
 		//locationHashMap = createGameMap(capitalsFile, territoriesFile);
 		locations = createGameLocations(capitalsFile, territoriesFile);
 	}
-
+    
+        /** Returns instance of singleton GameData
+	 */
 	public static GameData getInstance(){
 		return instance;
 	}
@@ -97,16 +94,6 @@ public class GameData extends Observable {
 		//setQuestion(getTerritory(random capital));
 	}*/
 
-	/**
-	 * Gets the territory that a capital maps to.
-	 * Asserts that the capital provided is within the HashMap.
-	 * @param capital Capital of some territory.
-	 */
-	//public Territory getTerritory(Capital capital) {
-		
-		//assert(locationHashMap.containsKey(capital));
-		//return (Territory)locationHashMap.get(capital);
-	//}
 
 	/**
 	 * Returns the locations in GameData (ArrayList of Territories with Capitals inside)
@@ -114,25 +101,32 @@ public class GameData extends Observable {
 	public ArrayList<Territory> getLocations() {
 		return locations;
 	}
+
+        /**
+	 * Returns the list of Territory objects in a US capitals game (ArrayList of Territories with Capitals inside)
+	 */
 	public ArrayList<Territory> getUSGame() {
 		return usGame;
 	}
+
+        /**
+	 * Returns the list of Territory objects in a World capitals game (ArrayList of Territories with Capitals inside)
+	 */
 	public ArrayList<Territory> getWorldGame() {
 		return worldGame;
-	} 
+	}
+    
+        /**
+	 * Returns the list of Territory objects in a a game of US and World capitals game (ArrayList of Territories with Capitals inside)
+	 */
 	public ArrayList<Territory> getAllGame() {
 		return allGame;
 	}
 
 	/** 
 	 * Sets the object's ArrayList of locations to a new ArrayList.
-	 *
 	 * @param locations An ArrayList that contains all of the Territories, with their Capitals inside.
-	 * 
 	 */
-
-	// TODO: remove locations from GameData and move the logic of setting the current
-	// set of locations to SessionModel
 	public void setLocations(ArrayList<Territory> locations) {
 		this.locations = locations;
 	}
@@ -174,5 +168,4 @@ public class GameData extends Observable {
 		return gameLocations;
 	}
 
-	// Still need to add all of the Observable methods. 
 }
