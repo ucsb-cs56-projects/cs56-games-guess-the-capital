@@ -58,6 +58,7 @@ public class MenuData implements Observer{
     /** Updates the Menu object's information through the Observer pattern
      *  as the game progresses
      *  @param obs is passed through to allow the game to update the Menu's state
+     *  @param ov is an arbitrary data object that is passed to each Observer when it is notified
      */
 	public void update(Observable obs, Object ov) {
 		// This needs to be a session model
