@@ -14,6 +14,8 @@ public abstract class Menu{
 
     /** Abstract method for printing menus throughout the game,
      *  to be implemented in classes that extend Menu
+     *  @param menuData contains information such as the number of possible choices, 
+     *  question number and Territory and Capital objects
      */
     public abstract void printMenu(MenuData menuData); 
     

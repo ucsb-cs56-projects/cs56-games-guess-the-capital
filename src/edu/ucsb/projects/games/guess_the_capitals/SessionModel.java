@@ -176,7 +176,7 @@ public class SessionModel extends Observable{
 		return this.numChoices;
 	}
 
-        /** Returns the possible answers for 
+        /** Returns the possible answers for the question
 	 *
 	 */
 	public ArrayList<Territory> getPossibleAnswers() {

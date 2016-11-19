@@ -15,6 +15,8 @@ public class QuestionMenu extends Menu{ //implements Choice
 
     /**
      * Prints question, whether or not response is correct/incorrect
+     * @param menuData contains information for the number of possible choices, 
+     * question number and Territory and Capital objects
      */
     public void printMenu(MenuData menuData){
 		assert (menuData != null);

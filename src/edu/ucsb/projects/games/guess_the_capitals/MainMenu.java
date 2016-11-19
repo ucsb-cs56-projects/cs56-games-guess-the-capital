@@ -10,7 +10,8 @@ public class MainMenu extends Menu{
     
     /** Overridden version simply prints selections for the user to choose
      *  from when the game first begins
-     * @param menuData is the data that the menus have access to
+     *  @param menuData contains information such as the number of possible choices, 
+     *  question number and Territory and Capital objects
      */
     public void printMenu(MenuData menuData){
 		System.out.println("\nWelcome to the capitals quiz game! \nWhat would you like to do?");
