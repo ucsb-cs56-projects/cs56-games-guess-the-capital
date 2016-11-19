@@ -132,6 +132,7 @@ public class GameController{
 	}
 
         /** Displays final menu and allows user to play another game or end the session
+	 *  @return true if the user selected 1, else return false if they did not
 	 */
 	public boolean finalMenu() {
 		input = view.menuIO(GameView.FINAL_MENU, menuData); //need to double check with Sean/Jack

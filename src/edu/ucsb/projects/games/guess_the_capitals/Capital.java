@@ -24,13 +24,14 @@ public class Capital {
 	}
 
         /** Returns the name of the capital in question
-	 * 
+	 *  @return Capital's name
 	 */
         public String getName() { return this.capitalName; }
     
         /** Indicates whether some other Capital is "equal to" this one. 
-         *
-         */
+         *  @param capital will be compared to another Capital object
+         *  @return true if Capital objects are equal, else return false
+	 */
         public boolean equals(Capital capital){
 	    return this.getName().equals(capital.getName());
 	}

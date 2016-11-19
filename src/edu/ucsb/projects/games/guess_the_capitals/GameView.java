@@ -42,6 +42,7 @@ public class GameView { //extends Observable?
      * Decides what to display given the user's input
      * @param menuNum corresponds to what menu to display given where in the game the user is
      * @param menuData is passed to print out possible choices
+     * @return int that user selected to choose a menu
      */
     public int menuIO(int menuNum, MenuData menuData) {
 		menuList.get(menuNum).printMenu(menuData);

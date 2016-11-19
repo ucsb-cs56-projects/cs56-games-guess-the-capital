@@ -66,15 +66,21 @@
   </target>
  <delete dir="build" quiet="true" />  
 
-
- <target name="javadoc" depends="compile">                                                                          
+ 
+<property name="javadoc_absolute_path" location="javadoc"/>
+ 
+<target name="javadoc" depends="compile" description="generate javadoc">
+  
    <delete dir="javadoc" quiet="true" />                                                          
    <javadoc  destdir="javadoc" author="true" version="true" use="true" >                          
       <fileset dir="src" includes="**/*.java"/>                                                     
-      <classpath>                                                                                 
-          <pathelement location="./lib/junit-4.8.2.jar"/>      
-     </classpath>                                                                                 
-   </javadoc>                                                                                     
+      <classpath refid ="project.class.path" />
+      <link href="https://docs.oracle.com/javase/8/docs/api/" />                                                 
+   </javadoc>
+   <echo>
+     javadoc written to file://{javadoc_absolute_path}/index.html
+   </echo>
+   
                                                                                                   
    <!-- delete the old javadoc -->                                                                
    <delete quiet="true" dir="${javadocDest}" />                                                   

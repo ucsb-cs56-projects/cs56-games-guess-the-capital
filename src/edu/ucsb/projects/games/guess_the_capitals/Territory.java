@@ -31,11 +31,11 @@ public class Territory {
 		this.territoryName = territoryName;
 	}
     
-    /** Returns the name of the Territory
+    /** @return the name of the Territory
      */
 	public String getName() { return this.territoryName; }
     
-    /** Returns the name of the Capital
+    /** @return the name of the Capital
      */
 	public Capital getCapital() { return this.capital; }
 }

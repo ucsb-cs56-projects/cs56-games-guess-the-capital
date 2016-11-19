@@ -85,6 +85,7 @@ public class SessionModel extends Observable{
      * Returns true if the capital guessed by the player is correct,
      * otherwhise returns false
      * @param guess represents the user's guess
+     * @return true if guess is correct, else return false
      */
     public boolean checkAnswer(int guess){
 		return possibleAnswers.get(guess).getName() == answerTerritory.getName();
@@ -103,7 +104,7 @@ public class SessionModel extends Observable{
     }
     
     /**
-     * Returns the number of questions in the current session
+     * @return number of questions in the current session
      */
     public int getNumQuestions(){
 		return numQuestions;
@@ -118,7 +119,7 @@ public class SessionModel extends Observable{
 		notifyObservers();
 	}
 
-    /** Returns the current quetion number
+    /** @return the current question number
      *
      */
 	public int getQuestionNum() {
@@ -136,7 +137,7 @@ public class SessionModel extends Observable{
     }
 
     /**
-     * Returns the number of correct answers in the current session
+     * @return  number of correct answers in the current session
      */
     public int getNumCorrect(){
 		return numCorrect;
@@ -153,7 +154,7 @@ public class SessionModel extends Observable{
     }
 
     /**
-     * Returns the user's grade
+     * @return the user's grade
      */
     public double getGrade(){
 		return grade;
@@ -162,6 +163,7 @@ public class SessionModel extends Observable{
 	/**
 	 *	Changes the number of choices to play the game with.
 	 *	(e.g. having to guess between 6 choices instead of the usual 4)
+	 * @param numChoices represents number of options the user can pick from
 	 */
 	public void setNumChoices(int numChoices) {
 		this.numChoices = numChoices;
@@ -170,20 +172,20 @@ public class SessionModel extends Observable{
 	}
 
 	/**
-	 *	Gets the number of choices for this session of the game
+	 *  @return number of choices for this session of the game
 	 */
 	public int getNumChoices() {
 		return this.numChoices;
 	}
 
-        /** Returns the possible answers for the question
+        /** @return the possible answers for the question
 	 *
 	 */
 	public ArrayList<Territory> getPossibleAnswers() {
 		return possibleAnswers;
 	}
 
-    /** Returns the Territory for which the Capital belongs to
+    /** @return the Territory for which the Capital belongs to
      *
      */
 	public Territory getAnswerTerritory() {

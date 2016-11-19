@@ -76,6 +76,7 @@ public class GameData extends Observable {
 	}
     
         /** Returns instance of singleton GameData
+	 *  @return instance of GameData object
 	 */
 	public static GameData getInstance(){
 		return instance;
@@ -89,27 +90,28 @@ public class GameData extends Observable {
 
 	/**
 	 * Returns the locations in GameData (ArrayList of Territories with Capitals inside)
+	 * @return ArrayList of Territories from GameData
 	 */
 	public ArrayList<Territory> getLocations() {
 		return locations;
 	}
 
         /**
-	 * Returns the list of Territory objects in a US capitals game (ArrayList of Territories with Capitals inside)
+	 * @return Returns the list of Territory objects in a US capitals game (ArrayList of Territories with Capitals inside)
 	 */
 	public ArrayList<Territory> getUSGame() {
 		return usGame;
 	}
 
         /**
-	 * Returns the list of Territory objects in a World capitals game (ArrayList of Territories with Capitals inside)
+	 * @return Territory objects in a World capitals game (ArrayList of Territories with Capitals inside)
 	 */
 	public ArrayList<Territory> getWorldGame() {
 		return worldGame;
 	}
     
         /**
-	 * Returns the list of Territory objects in a a game of US and World capitals game (ArrayList of Territories with Capitals inside)
+	 * @return Territory objects in a game of US and World capitals game (ArrayList of Territories with Capitals inside)
 	 */
 	public ArrayList<Territory> getAllGame() {
 		return allGame;
@@ -128,6 +130,7 @@ public class GameData extends Observable {
 	 *
 	 * @param capitalsFile is the file with the capitals.
 	 * @param territoriesFile is the file with the territories.
+	 * @return list of locations to be used in a session of the game
 	 */
 	public static ArrayList<Territory> createGameLocations(File capitalsFile, File territoriesFile) {
 		ArrayList<Territory> gameLocations = new ArrayList<Territory>();
