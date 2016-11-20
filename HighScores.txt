@@ -1,0 +1,15 @@
+NAME	SCORE
+
+Armin	7
+Arminhammer	6
+ArminM	2
+Mahini	2
+Arminito	5
+Nimra	2
+Neeki	3
+Patrick	2
+Someone	3
+Nobody	4
+Mom	2
+Dad	3
+Blah	3
