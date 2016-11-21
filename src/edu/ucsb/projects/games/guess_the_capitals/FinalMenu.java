@@ -57,7 +57,7 @@ public class FinalMenu extends Menu{
 	    //String line = null;
 	    //while ((line = bufferedReader.readLine()) != null){
 	    Scanner scanner = new Scanner(fileReader);
-	    while (scanner.hasNextLine() && count < 9){
+	    while (scanner.hasNextLine() && count < 15){
 		//lines.add(bufferedReader.readLine());
 		lines.add(scanner.nextLine());
 		count++;
@@ -79,7 +79,9 @@ public class FinalMenu extends Menu{
 	return parsed;
     }
 
-    public void sort(ArrayList<String[]> parsed){
+    
+
+    /*public void sort(ArrayList<String[]> parsed){
 	boolean swapped = true;
 	int j = 0;
 	String[] temp = new String[2];
@@ -105,7 +107,7 @@ public class FinalMenu extends Menu{
 		}
 	    } 
 	}
-    }
+    }*/
     
     public void printScores(ArrayList<String[]> parsed){
 	for (String[] p: parsed){

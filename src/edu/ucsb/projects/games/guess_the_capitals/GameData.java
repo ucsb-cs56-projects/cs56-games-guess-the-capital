@@ -28,6 +28,12 @@ public class GameData extends Observable {
 	// set of locations to SessionModel
 	private ArrayList<Territory> locations = new ArrayList<Territory>();
 	private ArrayList<Territory> usGame = new ArrayList<Territory>();
+        private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
+        private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
+        private ArrayList<Territory> europeGame = new ArrayList<Territory>();
+        private ArrayList<Territory> asiaGame = new ArrayList<Territory>();
+        private ArrayList<Territory> africaGame = new ArrayList<Territory>();
+        private ArrayList<Territory> australiaGame = new ArrayList<Territory>();
 	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
 	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
@@ -37,7 +43,7 @@ public class GameData extends Observable {
 	private static GameData instance = new GameData();
 
 	/**
- 	 *  File path for location of data
+  	 *  File path for location of data
  	 */
 	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
 
@@ -51,10 +57,29 @@ public class GameData extends Observable {
 		// maybe default to the states HashMap?
 		File capitalsFile = new File(filePath + "capitals.txt");
 		File statesFile = new File(filePath + "states.txt");
+		File africaCountriesFile = new File(filePath + "africaCountries.txt");
+		File africaCapsFile = new File(filePath + "africaCaps.txt");
+		File asiaCountriesFile = new File(filePath + "asiaCountries.txt");
+		File asiaCapsFile = new File(filePath + "asiaCaps.txt");
+		File australiaCountriesFile = new File(filePath + "australiaCountries.txt");
+		File australiaCapsFile = new File(filePath + "australiaCaps.txt");
+		File europeCountriesFile = new File(filePath + "europeCountries.txt");
+		File europeCapsFile = new File(filePath + "europeCaps.txt");
+		File northAmCountriesFile = new File(filePath + "northAmCountries.txt");
+		File northAmCapsFile = new File(filePath + "northAmCaps.txt");
+		File southAmCountriesFile = new File(filePath + "southAmCountries.txt");
+		File southAmCapsFile = new File(filePath + "southAmCaps.txt");
 		File worldCapitalsFile = new File(filePath + "worldcapitals.txt");
 		File worldCountriesFile = new File(filePath + "worldcountries.txt");
 
 		usGame = createGameLocations(capitalsFile, statesFile);
+		africaGame = createGameLocations(africaCapsFile, africaCountriesFile);
+		asiaGame = createGameLocations(asiaCapsFile, asiaCountriesFile);
+		australiaGame = createGameLocations(australiaCapsFile, australiaCountriesFile);
+		europeGame = createGameLocations(europeCapsFile, europeCountriesFile);
+		northAmGame = createGameLocations(northAmCapsFile, northAmCountriesFile);
+	        southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
+		
 		worldGame = createGameLocations(worldCapitalsFile, worldCountriesFile);
 		allGame = new ArrayList<Territory>();
 		allGame.addAll(usGame); // createGameLocations(capitalsFile, statesFile);
@@ -101,6 +126,48 @@ public class GameData extends Observable {
 	 */
 	public ArrayList<Territory> getUSGame() {
 		return usGame;
+	}
+
+        /**
+	 * @return Returns the list of Territory objects in a North American capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getNorthAmGame() {
+		return northAmGame;
+	}
+
+        /**
+	 * @return Returns the list of Territory objects in a South American capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getSouthAmGame() {
+		return southAmGame;
+	}
+
+        /**
+	 * @return Returns the list of Territory objects in a European capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getEuropeGame() {
+		return europeGame;
+	}
+
+        /**
+	 * @return Returns the list of Territory objects in an Asian capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getAsiaGame() {
+		return asiaGame;
+	}
+
+        /**
+	 * @return Returns the list of Territory objects in an African capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getAfricaGame() {
+		return africaGame;
+	}
+
+     /**
+	 * @return Returns the list of Territory objects in an Australian capitals game (ArrayList of Territories with Capitals inside)
+	 */
+	public ArrayList<Territory> getAustraliaGame() {
+		return australiaGame;
 	}
 
         /**

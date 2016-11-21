@@ -75,14 +75,26 @@ public class GameController{
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
 		if(input == 0)
-			gameData.setLocations(gameData.getUSGame());
+		    gameData.setLocations(gameData.getUSGame());
 		    //GameData us = new GameData(capitalsFile, statesFile);
 		else if(input == 1)
-			gameData.setLocations(gameData.getWorldGame());
+		    gameData.setLocations(gameData.getNorthAmGame());
+		else if(input == 2)
+		    gameData.setLocations(gameData.getSouthAmGame());
+		else if(input == 3)
+		    gameData.setLocations(gameData.getEuropeGame());
+		else if(input == 4)
+		    gameData.setLocations(gameData.getAsiaGame());
+		else if(input == 5)
+		    gameData.setLocations(gameData.getAfricaGame());
+		else if(input == 6)
+		    gameData.setLocations(gameData.getAustraliaGame());
+		else if(input == 7)
+		    gameData.setLocations(gameData.getWorldGame());
 			//gameData.setLocations(GameData.worldGame);
 		    //GameData world = new GameData(worldCapitalsFile, worldCountriesFile);
-		else if(input == 2)
-			gameData.setLocations(gameData.getAllGame());
+		else if(input == 8)
+		    gameData.setLocations(gameData.getAllGame());
 			//gameData.setLocations(GameData.allGame);
 		    //GameData all = new GameData();
 	}
