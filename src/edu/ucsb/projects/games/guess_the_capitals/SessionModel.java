@@ -1,15 +1,15 @@
-/**
- * Model that keeps track of the current session.
- *
- * @author Sean Shelton, Armin Mahini
- * @version UCSB CS56, F16
- */
 package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 import java.util.Observable;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Model that keeps track of the current session.
+ *
+ * @author Sean Shelton, Armin Mahini
+ * @version UCSB CS56, F16
+ */
 public class SessionModel extends Observable{
     
     /**
@@ -119,8 +119,8 @@ public class SessionModel extends Observable{
 		notifyObservers();
 	}
 
-    /** @return the current question number
-     *
+    /** 
+     * @return the current question number
      */
 	public int getQuestionNum() {
 		return this.questionNum;
@@ -178,15 +178,15 @@ public class SessionModel extends Observable{
 		return this.numChoices;
 	}
 
-        /** @return the possible answers for the question
-	 *
+    /** 
+	 * @return the possible answers for the question
 	 */
 	public ArrayList<Territory> getPossibleAnswers() {
 		return possibleAnswers;
 	}
 
-    /** @return the Territory for which the Capital belongs to
-     *
+    /** 
+     * @return the Territory for which the Capital belongs to
      */
 	public Territory getAnswerTerritory() {
 		return answerTerritory;

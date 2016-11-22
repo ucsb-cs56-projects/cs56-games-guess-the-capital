@@ -1,11 +1,11 @@
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
 /**
  * MainMenu object that player sees when game first begins
  *
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16
  */
-package edu.ucsb.cs56.projects.games.guess_the_capitals;
-
 public class MainMenu extends Menu{
     
     /** Overridden version simply prints selections for the user to choose

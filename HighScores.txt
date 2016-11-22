@@ -2,13 +2,13 @@ NAME	SCORE
 
 Armin	7
 Arminhammer	6
-ArminM	2
+Hingle McCringleberry	8
 Mahini	2
 Arminito	5
 Nimra	2
 Neeki	3
 Patrick	2
-Someone	3
+Smitty Werbenjagermanjensen	3
 Nobody	4
 Mom	2
 Dad	3
@@ -21,3 +21,7 @@ Legin	7
 ArminMahini	10
 Seyed	5
 Bizmo	2
+Arturo	3
+Nick	2
+The	4
+NickIsAwesome	3

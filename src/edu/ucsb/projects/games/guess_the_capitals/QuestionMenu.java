@@ -1,16 +1,14 @@
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
+import java.io.*;
+import java.util.ArrayList;
+
 /**
  * QuestionMenu object that player sees when mode is selected and the user is asked a question
  *
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16
  */
-
-package edu.ucsb.cs56.projects.games.guess_the_capitals;
-
-import java.io.*;
-import java.util.ArrayList;
-
-
 public class QuestionMenu extends Menu{ //implements Choice
 
     /**

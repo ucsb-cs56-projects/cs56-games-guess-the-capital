@@ -1,3 +1,9 @@
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
+import java.util.Observer;
+import java.util.Observable;
+import java.util.ArrayList;
+
 /**
  * Holds all of the data for the menus
  *
@@ -8,14 +14,6 @@
  * @author Sean Shelton, Armin Mahini
  * @version for UCSB CS56, F16  
  */
-
-package edu.ucsb.cs56.projects.games.guess_the_capitals;
-
-import java.util.Observer;
-import java.util.Observable;
-
-import java.util.ArrayList;
-
 public class MenuData implements Observer{
 	public ArrayList<Territory> possibleChoices;
 	public Territory answerTerritory;

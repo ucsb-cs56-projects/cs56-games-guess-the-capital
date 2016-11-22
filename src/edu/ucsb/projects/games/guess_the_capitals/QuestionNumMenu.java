@@ -1,12 +1,11 @@
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
 /**
  * QuestionNumMenu object that player sees when selecting how many questions they want to asked
  *
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16
  */
-
-package edu.ucsb.cs56.projects.games.guess_the_capitals;
-
 public class QuestionNumMenu extends Menu{
     
     /** Prints out options for number of questions to be quizzed on

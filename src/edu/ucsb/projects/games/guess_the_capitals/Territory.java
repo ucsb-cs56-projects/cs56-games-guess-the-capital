@@ -1,12 +1,11 @@
+package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
 /**
  * Contains the data for the territories in our game.
  *
  * @author Sean Shelton, Armin Mahini
  * @version for UCSB CS56, F16  
  */
-
-package edu.ucsb.cs56.projects.games.guess_the_capitals;
-
 public class Territory {
 
 	private String territoryName;
@@ -31,11 +30,13 @@ public class Territory {
 		this.territoryName = territoryName;
 	}
     
-    /** @return the name of the Territory
+    /** 
+     * @return the name of the Territory
      */
 	public String getName() { return this.territoryName; }
     
-    /** @return the name of the Capital
+    /** 
+    * @return the name of the Capital
      */
 	public Capital getCapital() { return this.capital; }
 }

@@ -1,14 +1,6 @@
-/**
- * Holds all of the data for the game
- *
- * Also contains the question, and can determine whether or not an answer
- * is right or wrong.
- *
- * @author Sean Shelton, Armin Mahini
- * @version for UCSB CS56, F16  
- */
 
 package edu.ucsb.cs56.projects.games.guess_the_capitals;
+
 import java.util.Observable;
 import java.util.HashMap;
 import java.io.BufferedReader;
@@ -18,6 +10,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Holds all of the data for the game
+ *
+ * Also contains the question, and can determine whether or not an answer
+ * is right or wrong.
+ *
+ * @author Sean Shelton, Armin Mahini
+ * @version for UCSB CS56, F16  
+ */
 public class GameData extends Observable {
 	// TODO: Maybe consider making GameData a static singleton?
 
@@ -28,12 +29,12 @@ public class GameData extends Observable {
 	// set of locations to SessionModel
 	private ArrayList<Territory> locations = new ArrayList<Territory>();
 	private ArrayList<Territory> usGame = new ArrayList<Territory>();
-        private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
-        private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
-        private ArrayList<Territory> europeGame = new ArrayList<Territory>();
-        private ArrayList<Territory> asiaGame = new ArrayList<Territory>();
-        private ArrayList<Territory> africaGame = new ArrayList<Territory>();
-        private ArrayList<Territory> australiaGame = new ArrayList<Territory>();
+    private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
+    private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
+    private ArrayList<Territory> europeGame = new ArrayList<Territory>();
+    private ArrayList<Territory> asiaGame = new ArrayList<Territory>();
+    private ArrayList<Territory> africaGame = new ArrayList<Territory>();
+    private ArrayList<Territory> australiaGame = new ArrayList<Territory>();
 	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
 	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
@@ -78,7 +79,7 @@ public class GameData extends Observable {
 		australiaGame = createGameLocations(australiaCapsFile, australiaCountriesFile);
 		europeGame = createGameLocations(europeCapsFile, europeCountriesFile);
 		northAmGame = createGameLocations(northAmCapsFile, northAmCountriesFile);
-	        southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
+	    southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
 		
 		worldGame = createGameLocations(worldCapitalsFile, worldCountriesFile);
 		allGame = new ArrayList<Territory>();
@@ -90,17 +91,17 @@ public class GameData extends Observable {
 		//setQuestion(getTerritory(random capital));
 	}
 
-        /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
+    /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
 	 *  territories for the specific game the user has selected to play.
 	 *  @param capitalsFile is the file with the capitals.
 	 *  @param territoriesFile is the file with the territories.
-         */
+     */
 	private GameData(File capitalsFile, File territoriesFile) {
 		//locationHashMap = createGameMap(capitalsFile, territoriesFile);
 		locations = createGameLocations(capitalsFile, territoriesFile);
 	}
     
-        /** Returns instance of singleton GameData
+    /** Returns instance of singleton GameData
 	 *  @return instance of GameData object
 	 */
 	public static GameData getInstance(){
