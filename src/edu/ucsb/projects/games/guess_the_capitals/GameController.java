@@ -1,16 +1,15 @@
-/**
- * Controller that takes input in order for View to know what to display
- *
- * @author Sean Shelton, Armin Mahini
- * @version UCSB CS56, F16
- */
 package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 
-
+/**
+ * Controller that takes input in order for View to know what to display
+ *
+ * @author Sean Shelton, Armin Mahini
+ * @version UCSB CS56, F16
+ */
 public class GameController{
     
     private SessionModel model;
@@ -19,7 +18,9 @@ public class GameController{
     GameData gameData = GameData.getInstance();
     private MainMenu main;
 
-	// use input to handle things accordingly
+	/**
+	 * Use input to handle things accordingly
+	 */
 	private int input;
 
     /** Default constructor for the controller. Responsible for sending commands to  model 
@@ -118,7 +119,7 @@ public class GameController{
 		}
 	}
     
-        /** Iterates through questions that user will be asked given 
+    /** Iterates through questions that user will be asked given 
 	 *  their choices of territory and number of questions
 	 */
 	public void playTheQuestions() {
@@ -143,7 +144,7 @@ public class GameController{
 		}
 	}
 
-        /** Displays final menu and allows user to play another game or end the session
+    /** Displays final menu and allows user to play another game or end the session
 	 *  @return true if the user selected 1, else return false if they did not
 	 */
 	public boolean finalMenu() {
