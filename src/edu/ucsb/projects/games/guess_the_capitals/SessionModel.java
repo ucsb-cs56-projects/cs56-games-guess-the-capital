@@ -1,15 +1,15 @@
-/**
- * Model that keeps track of the current session.
- *
- * @author Sean Shelton, Armin Mahini
- * @version UCSB CS56, F16
- */
 package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 import java.util.Observable;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Model that keeps track of the current session.
+ *
+ * @author Sean Shelton, Armin Mahini
+ * @version UCSB CS56, F16
+ */
 public class SessionModel extends Observable{
     
     /**
@@ -58,15 +58,20 @@ public class SessionModel extends Observable{
      * clears it just to be safe
      */
     SessionModel() {
-		numQuestions = 10;
-		numChoices = 4;
+	numQuestions = 10;
+      	numChoices = 4;
         possibleAnswers = new ArrayList<Territory>();
-		possibleAnswers.clear();
+	possibleAnswers.clear();
 		//updateCurrentQuestion();
 	//questionTerritories
         //territoryOfQuestion = new Territory();
     }
-
+    
+    /** Constructor for a session of the game. Like the one above, sets number of questions to 10,
+     *  creates an  empty ArrayList and clears it. 
+     *  @param gameData gameData allows this SessionModel to access a particular list of capitals 
+     *  and terroritories depending on which selections the user has made.
+     */
 	SessionModel(GameData gameData) {
 		this.gameData = gameData;
 		numQuestions = 10;
@@ -80,8 +85,7 @@ public class SessionModel extends Observable{
      * Returns true if the capital guessed by the player is correct,
      * otherwhise returns false
      * @param guess represents the user's guess
-     * @param questionNumber represents the number of the question the
-     * user is currently on
+     * @return true if guess is correct, else return false
      */
     public boolean checkAnswer(int guess){
 		return possibleAnswers.get(guess).getName() == answerTerritory.getName();
@@ -100,18 +104,24 @@ public class SessionModel extends Observable{
     }
     
     /**
-     * Returns the number of questions in the current session
+     * @return number of questions in the current session
      */
     public int getNumQuestions(){
 		return numQuestions;
     }
 
+    /** Sets the number of questions to 10, 50, or a custom number selected by the user
+     * @param questionNum is number of questions indicated by the user
+     */
 	public void setQuestionNum(int questionNum) {
 		this.questionNum = questionNum;
 		setChanged();
 		notifyObservers();
 	}
 
+    /** 
+     * @return the current question number
+     */
 	public int getQuestionNum() {
 		return this.questionNum;
 	}
@@ -127,7 +137,7 @@ public class SessionModel extends Observable{
     }
 
     /**
-     * Returns the number of correct answers in the current session
+     * @return  number of correct answers in the current session
      */
     public int getNumCorrect(){
 		return numCorrect;
@@ -144,7 +154,7 @@ public class SessionModel extends Observable{
     }
 
     /**
-     * Returns the user's grade
+     * @return the user's grade
      */
     public double getGrade(){
 		return grade;
@@ -153,6 +163,7 @@ public class SessionModel extends Observable{
 	/**
 	 *	Changes the number of choices to play the game with.
 	 *	(e.g. having to guess between 6 choices instead of the usual 4)
+	 * @param numChoices represents number of options the user can pick from
 	 */
 	public void setNumChoices(int numChoices) {
 		this.numChoices = numChoices;
@@ -161,16 +172,22 @@ public class SessionModel extends Observable{
 	}
 
 	/**
-	 *	Gets the number of choices
+	 *  @return number of choices for this session of the game
 	 */
 	public int getNumChoices() {
 		return this.numChoices;
 	}
 
+    /** 
+	 * @return the possible answers for the question
+	 */
 	public ArrayList<Territory> getPossibleAnswers() {
 		return possibleAnswers;
 	}
 
+    /** 
+     * @return the Territory for which the Capital belongs to
+     */
 	public Territory getAnswerTerritory() {
 		return answerTerritory;
 	}
@@ -205,7 +222,9 @@ public class SessionModel extends Observable{
 		//gameData.getLocations.get(r.nextInt(
 		
 	}
-
+    /** Sets the number of questions, correct answers and grade to their default users to get the game ready
+     * for the next session to be played
+     */
 	public void reset() {
 		this.numQuestions = 10;
 		this.numCorrect = 0;
