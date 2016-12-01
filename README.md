@@ -55,7 +55,7 @@ $   at edu.ucsb.cs56.S12.esterkin.GameTest.testCompareAnswer(GameTest.java:101)
 
 ```
 
-## F16 Remarks
+## F16 final remarks
   Running the program via ant allows the user to play a command line version of the game "Guess the Capitals". The objective of the game, as the title implies, is to correctly guess the capital of the state or country in question. The user is prompted to select a game mode and then the number of questions they'd like to be quizzed on. The game then proceeds to offer 4 possible choices of capitals to choose from for the state or country in question. The game keeps track of the number of correct responses the user makes and display's the user's score in the form of a fraction (number of correct responses/number of questions asked) after the game is over. The user then enters their name and it is saved to "HighScores.txt", a text file that stores usernames and their corresponding scores, along with the number of correct responses a player had.
   
   Moving forward, I'd recommend adding a timer feature to force the player to answer each question in a limited amount of time. I also suggest separating the highscores by the number of questions asked and the game mode the user played in, as the highscores currently displayed are for any mode and any number of questions asked. Unlike the previous version of the game, this iteration lacks any sort of test coverage so adding that is highly recommended.
