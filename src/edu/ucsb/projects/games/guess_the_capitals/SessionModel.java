@@ -62,9 +62,6 @@ public class SessionModel extends Observable{
       	numChoices = 4;
         possibleAnswers = new ArrayList<Territory>();
 	possibleAnswers.clear();
-		//updateCurrentQuestion();
-	//questionTerritories
-        //territoryOfQuestion = new Territory();
     }
     
     /** Constructor for a session of the game. Like the one above, sets number of questions to 10,

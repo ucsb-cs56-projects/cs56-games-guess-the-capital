@@ -38,6 +38,9 @@ public class GameData extends Observable {
 	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
 	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
+	//private ArrayList<Level> = new ArrayList<Level>();
+	// In the constructor, load these ^^^
+
 	/** Singleton instance to restrict instantiaion since we'll be using this GameData 
 	 *  object across the whole game
 	 */
