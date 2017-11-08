@@ -27,7 +27,7 @@ public class GameData extends Observable {
 
 	// TODO: remove locations from GameData and move the logic of setting the current
 	// set of locations to SessionModel
-	private ArrayList<Territory> locations = new ArrayList<Territory>();
+	//private ArrayList<Territory> locations = new ArrayList<Territory>();
 	private ArrayList<Territory> usGame = new ArrayList<Territory>();
     private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
     private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
@@ -38,18 +38,41 @@ public class GameData extends Observable {
 	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
 	private ArrayList<Territory> allGame = new ArrayList<Territory>();
 
+	/**
+	 *  File path for location of data
+	 */
+	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
+
+	public static String getFilePath() {
+		return filePath;
+	}
+
+
+	//get rid of all the get() with this?
+	static File capitalsFile = new File(getFilePath() + "capitals.txt");
+	static File statesFile = new File(getFilePath() + "states.txt");
+	static File africaCountriesFile = new File(getFilePath() + "africaCountries.txt");
+	static File africaCapsFile = new File(getFilePath() + "africaCaps.txt");
+	static File asiaCountriesFile = new File(getFilePath()+ "asiaCountries.txt");
+	static File asiaCapsFile = new File(getFilePath() + "asiaCaps.txt");
+	static File australiaCountriesFile = new File(getFilePath() + "australiaCountries.txt");
+	static File australiaCapsFile = new File(getFilePath() + "australiaCaps.txt");
+	static File europeCountriesFile = new File(getFilePath() + "europeCountries.txt");
+	static File europeCapsFile = new File(getFilePath() + "europeCaps.txt");
+	static File northAmCountriesFile = new File(getFilePath() + "northAmCountries.txt");
+	static File northAmCapsFile = new File(getFilePath() + "northAmCaps.txt");
+	static File southAmCountriesFile = new File(getFilePath() + "southAmCountries.txt");
+	static File southAmCapsFile = new File(getFilePath() + "southAmCaps.txt");
+	static File worldCapitalsFile = new File(getFilePath() + "worldcapitals.txt");
+	static File worldCountriesFile = new File(getFilePath() + "worldcountries.txt");
+
 	//private ArrayList<Level> = new ArrayList<Level>();
 	// In the constructor, load these ^^^
 
-	/** Singleton instance to restrict instantiaion since we'll be using this GameData 
+	/** Singleton instance to restrict instantiaion since we'll be using this GameData
 	 *  object across the whole game
 	 */
 	private static GameData instance = new GameData();
-
-	/**
-  	 *  File path for location of data
- 	 */
-	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
 
 	/** Constructs a newly allocated GameData object that knows all the territories and capitals for the
 	 *  US, world and both of those games.
@@ -83,12 +106,11 @@ public class GameData extends Observable {
 		europeGame = createGameLocations(europeCapsFile, europeCountriesFile);
 		northAmGame = createGameLocations(northAmCapsFile, northAmCountriesFile);
 	    southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
-		
 		worldGame = createGameLocations(worldCapitalsFile, worldCountriesFile);
 		allGame = new ArrayList<Territory>();
-		allGame.addAll(usGame); // createGameLocations(capitalsFile, statesFile);
+		allGame.addAll(usGame);
 		allGame.addAll(worldGame);
-		setLocations(usGame);
+		//SessionModel.setLocations(usGame);
 		//locations =  usGame;
 		//usGame = createGameLocations(capitalsFile, statesFile);
 		//setQuestion(getTerritory(random capital));
@@ -96,12 +118,13 @@ public class GameData extends Observable {
 
     /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
 	 *  territories for the specific game the user has selected to play.
+	 *  This might be unused (?)
 	 *  @param capitalsFile is the file with the capitals.
 	 *  @param territoriesFile is the file with the territories.
+	 *
      */
 	private GameData(File capitalsFile, File territoriesFile) {
-		//locationHashMap = createGameMap(capitalsFile, territoriesFile);
-		locations = createGameLocations(capitalsFile, territoriesFile);
+		//SessionModel.setlocations(createGameLocations(capitalsFile, territoriesFile));
 	}
     
     /** Returns instance of singleton GameData
@@ -111,19 +134,6 @@ public class GameData extends Observable {
 		return instance;
 	}
 
-	/*GameData(HashMap setType) {
-		locationHashMap = setType;
-		//setQuestion(getTerritory(random capital));
-	}*/
-
-
-	/**
-	 * Returns the locations in GameData (ArrayList of Territories with Capitals inside)
-	 * @return ArrayList of Territories from GameData
-	 */
-	public ArrayList<Territory> getLocations() {
-		return locations;
-	}
 
         /**
 	 * @return Returns the list of Territory objects in a US capitals game (ArrayList of Territories with Capitals inside)
@@ -192,9 +202,11 @@ public class GameData extends Observable {
 	 * Sets the object's ArrayList of locations to a new ArrayList.
 	 * @param locations An ArrayList that contains all of the Territories, with their Capitals inside.
 	 */
+	/*
 	public void setLocations(ArrayList<Territory> locations) {
 		this.locations = locations;
 	}
+	*/
 
 	/** Creates an ArrayList of territories based on the capitals and territories files.
 	 *	In the file, the lines should match between the capitals and the territories.

@@ -3,6 +3,8 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
 import java.util.Observable;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.File;
+
 
 /**
  * Model that keeps track of the current session.
@@ -11,8 +13,17 @@ import java.util.Random;
  * @version UCSB CS56, F16
  */
 public class SessionModel extends Observable{
-    
-    /**
+
+	/**
+	 * The set of locations for current game
+	 */
+	private ArrayList<Territory> locations = new ArrayList<Territory>();
+
+
+	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
+
+
+	/**
      * Represents number of questions in the current session
      */
     private int numQuestions;
@@ -58,10 +69,12 @@ public class SessionModel extends Observable{
      * clears it just to be safe
      */
     SessionModel() {
-	numQuestions = 10;
+
+		numQuestions = 10;
       	numChoices = 4;
         possibleAnswers = new ArrayList<Territory>();
-	possibleAnswers.clear();
+		possibleAnswers.clear();
+
     }
     
     /** Constructor for a session of the game. Like the one above, sets number of questions to 10,
@@ -75,7 +88,6 @@ public class SessionModel extends Observable{
 		numChoices = 4;
         possibleAnswers = new ArrayList<Territory>();
 		possibleAnswers.clear();
-		//updateCurrentQuestion();
 	}
 
     /**
@@ -86,8 +98,6 @@ public class SessionModel extends Observable{
      */
     public boolean checkAnswer(int guess){
 		return possibleAnswers.get(guess).getName() == answerTerritory.getName();
-		//return guess.getName() == answerTerritory.getCapital().getName();
-		//return possibleAnswers.get(questionNumber-1) == guess;
     }
 
     /**
@@ -190,6 +200,18 @@ public class SessionModel extends Observable{
 	}
 
 	/**
+	 * set locations to the one GameController (the user) specifies
+	 * @param locations
+	 */
+	public void setLocations(ArrayList<Territory> locations) {
+		this.locations = locations;
+	}
+
+	public void setLocations(File capitalsFile, File territoriesFile) {
+		locations = GameData.createGameLocations(capitalsFile, territoriesFile);
+	}
+
+	/**
 	 * Changes the possible answers to a random set of capitals
 	 */
 	public void updateCurrentQuestion(){
@@ -202,7 +224,7 @@ public class SessionModel extends Observable{
 		// Making an ArrayList of locations to make the question	
 		// TODO: remove locations from GameData and move the logic of setting the current
 		// set of locations to SessionModel
-		ArrayList<Territory> totalData = gameData.getLocations();
+		ArrayList<Territory> totalData = locations;
 		Territory t = new Territory();
 
 		for (int i = 0; i < numChoices; ++i) {
@@ -216,8 +238,7 @@ public class SessionModel extends Observable{
 
 		setChanged();
 		notifyObservers();
-		//gameData.getLocations.get(r.nextInt(
-		
+
 	}
     /** Sets the number of questions, correct answers and grade to their default users to get the game ready
      * for the next session to be played
@@ -230,11 +251,6 @@ public class SessionModel extends Observable{
 		notifyObservers();
 	}
     
-    /*
-    public void setTerritory(Capital capital){
-	
-    }*/
 
-    
     
 }

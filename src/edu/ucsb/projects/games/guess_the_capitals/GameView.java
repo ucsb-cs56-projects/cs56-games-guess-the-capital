@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
- * View  class that handles what menu the player sees during teh game.
+ * View  class that handles what menu the player sees during the game.
  *
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16

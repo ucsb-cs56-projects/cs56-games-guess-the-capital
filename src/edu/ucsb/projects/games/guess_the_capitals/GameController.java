@@ -3,6 +3,8 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
+import java.io.File;
+
 
 /**
  * Controller that takes input in order for View to know what to display
@@ -76,28 +78,24 @@ public class GameController{
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
 		if(input == 0)
-		    gameData.setLocations(gameData.getUSGame());
-		    //GameData us = new GameData(capitalsFile, statesFile);
+		    //model.setLocations(gameData.getUSGame());
+		    model.setLocations(GameData.capitalsFile, GameData.statesFile);
 		else if(input == 1)
-		    gameData.setLocations(gameData.getNorthAmGame());
+			model.setLocations(gameData.getNorthAmGame());
 		else if(input == 2)
-		    gameData.setLocations(gameData.getSouthAmGame());
+			model.setLocations(gameData.getSouthAmGame());
 		else if(input == 3)
-		    gameData.setLocations(gameData.getEuropeGame());
+			model.setLocations(gameData.getEuropeGame());
 		else if(input == 4)
-		    gameData.setLocations(gameData.getAsiaGame());
+			model.setLocations(gameData.getAsiaGame());
 		else if(input == 5)
-		    gameData.setLocations(gameData.getAfricaGame());
+			model.setLocations(gameData.getAfricaGame());
 		else if(input == 6)
-		    gameData.setLocations(gameData.getAustraliaGame());
+			model.setLocations(gameData.getAustraliaGame());
 		else if(input == 7)
-		    gameData.setLocations(gameData.getWorldGame());
-			//gameData.setLocations(GameData.worldGame);
-		    //GameData world = new GameData(worldCapitalsFile, worldCountriesFile);
+			model.setLocations(gameData.getWorldGame());
 		else if(input == 8)
-		    gameData.setLocations(gameData.getAllGame());
-			//gameData.setLocations(GameData.allGame);
-		    //GameData all = new GameData();
+			model.setLocations(gameData.getAllGame());
 	}
 
         /** Displays menu that allows user how many questions they'd like to be asked
@@ -106,7 +104,6 @@ public class GameController{
 	public void questionNumMenu() {
 		input = view.menuIO(GameView.QUESTION_NUM_MENU, null);
 		// TODO: set SessionModel's number of questions
-		//SessionModel ten = new SessionModel();
 		if (input == 0)
 			model.setNumQuestions(10);
 		if(input == 1)
@@ -123,7 +120,6 @@ public class GameController{
 	 *  their choices of territory and number of questions
 	 */
 	public void playTheQuestions() {
-        //input = view.menuIO(GameView.QUESTION_MENU);
 
 		// initializes game session
 		model.updateCurrentQuestion();
