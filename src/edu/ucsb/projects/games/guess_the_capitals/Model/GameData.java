@@ -25,9 +25,7 @@ public class GameData extends Observable {
 	// Might want to consider making locationHashMap a JSON instead of a HashMap.
 	//private HashMap locationHashMap = new HashMap<Capital, Territory>();
 
-	// TODO: remove locations from GameData and move the logic of setting the current
-	// set of locations to SessionModel
-	//private ArrayList<Territory> locations = new ArrayList<Territory>();
+
 	private ArrayList<Territory> usGame = new ArrayList<Territory>();
     private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
     private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
@@ -95,17 +93,7 @@ public class GameData extends Observable {
 
 	}
 
-    /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
-	 *  territories for the specific game the user has selected to play.
-	 *  This might be unused (?)
-	 *  @param capitalsFile is the file with the capitals.
-	 *  @param territoriesFile is the file with the territories.
-	 *
-     */
-	private GameData(File capitalsFile, File territoriesFile) {
-		//SessionModel.setlocations(createGameLocations(capitalsFile, territoriesFile));
-	}
-    
+
     /** Returns instance of singleton GameData
 	 *  @return instance of GameData object
 	 */
@@ -203,7 +191,6 @@ public class GameData extends Observable {
 			// create capitals and territories to fill the ArrayList
 			while ((capitalLine =  capitalsReader.readLine()) != null &&
 					(territoryLine = territoriesReader.readLine()) != null) {
-				//gameHash.put(new Capital(capitalLine), new Territory(capitalLine, territoryLine));
 				gameLocations.add(new Territory(capitalLine, territoryLine));
 			}
 		} catch (IOException e) {
@@ -212,7 +199,6 @@ public class GameData extends Observable {
 
 
 
-		//return gameHash;
 		return gameLocations;
 	}
 

@@ -227,9 +227,23 @@ public class SessionModel extends Observable{
 
 		//prevent duplicates with possibleAnswers
 		for (int i = 0; i < numChoices; ++i) {
+			boolean contains = false;
+
 			// Set t equal to some random territory
 			t = totalData.get(r.nextInt(totalData.size()));
-			possibleAnswers.add(t);
+
+			for(Territory ter : possibleAnswers){
+				if (t == ter){
+					contains = true;
+				}
+			}
+
+			if(contains){
+				i--;
+			}
+			else {
+				possibleAnswers.add(t);
+			}
 		}
 
 		// Choose a possible answer to actually be the answer

@@ -30,3 +30,5 @@ kev	5
 wm	1
 fds	1
 yolo	10
+dfg	6
+wwww	3
