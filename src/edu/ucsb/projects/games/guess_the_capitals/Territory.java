@@ -2,6 +2,7 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
 
 /**
  * Contains the data for the territories in our game.
+ * Territories refer to countries, provinces, states, etc. that have capitals.
  *
  * @author Sean Shelton, Armin Mahini
  * @version for UCSB CS56, F16  

@@ -20,12 +20,7 @@ public class GameView { //extends Observable?
     public static int QUESTION_NUM_MENU = 1;
     public static int QUESTION_MENU = 2;
     public static int FINAL_MENU = 3;
-    //private Controller controller;
 
-    //initialized these in order to pass through capitals/territories for game that user wants to play (?)
-    //GameData usGame = new GameData(capitalsFile, statesFile);
-    //GameData worldGame = new GameData(worldCapitalsFile, worldCountriesFile);
-    //GameData allGame = new GameData();
 
     /** Default constructor that adds the 4 menus a user will see through the game. They will be 
      *  iterated throughout the game as the user makes a numerical input indicating what the want 
@@ -40,6 +35,7 @@ public class GameView { //extends Observable?
 
     /**
      * Decides what to display given the user's input
+     * Prints the appropriate Menu
      * @param menuNum corresponds to what menu to display given where in the game the user is
      * @param menuData is passed to print out possible choices
      * @return int that user selected to choose a menu

@@ -53,6 +53,8 @@ public class GameController{
 		// reset our model
 		boolean keepGoing = true;
 		while (keepGoing) {
+
+			//refresh SessionModel
 			model.reset();
 
 			// prints out the main menu and handles the mode the user wants
@@ -75,11 +77,11 @@ public class GameController{
          *  territories they'd like to be quizzed on
          */
 	public void mainMenu() {
+		//This prints the MainMenu and also takes in an input. The input decides which locations to set.
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
 		if(input == 0)
-		    //model.setLocations(gameData.getUSGame());
-		    model.setLocations(GameData.capitalsFile, GameData.statesFile);
+		    model.setLocations(gameData.getUSGame());
 		else if(input == 1)
 			model.setLocations(gameData.getNorthAmGame());
 		else if(input == 2)
@@ -96,14 +98,16 @@ public class GameController{
 			model.setLocations(gameData.getWorldGame());
 		else if(input == 8)
 			model.setLocations(gameData.getAllGame());
+
+		//model.setLocations(gameData.getGame(input));
 	}
 
-        /** Displays menu that allows user how many questions they'd like to be asked
-         *  given their numerical input
-         */
+	/** Displays menu that allows user how many questions they'd like to be asked
+	 *  given their numerical input
+	 */
 	public void questionNumMenu() {
+		//Prints out questionNumMenu and take in input that will decide the number of questions
 		input = view.menuIO(GameView.QUESTION_NUM_MENU, null);
-		// TODO: set SessionModel's number of questions
 		if (input == 0)
 			model.setNumQuestions(10);
 		if(input == 1)
@@ -123,13 +127,10 @@ public class GameController{
 
 		// initializes game session
 		model.updateCurrentQuestion();
-		//menuData = new MenuData(model);
 
 		for (int i = 1; i <= model.getNumQuestions(); ++i){
 			// print out question menu and get input
-			//model.setQuestionNum(i);
 			menuData.setQuestionNum(i);
-			//model.setQuestionNum(i);
 			input = view.menuIO(GameView.QUESTION_MENU, menuData);
 
 			// evaluate input for correctness

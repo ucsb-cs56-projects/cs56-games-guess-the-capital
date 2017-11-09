@@ -48,26 +48,6 @@ public class GameData extends Observable {
 	}
 
 
-	//get rid of all the get() with this?
-	static File capitalsFile = new File(getFilePath() + "capitals.txt");
-	static File statesFile = new File(getFilePath() + "states.txt");
-	static File africaCountriesFile = new File(getFilePath() + "africaCountries.txt");
-	static File africaCapsFile = new File(getFilePath() + "africaCaps.txt");
-	static File asiaCountriesFile = new File(getFilePath()+ "asiaCountries.txt");
-	static File asiaCapsFile = new File(getFilePath() + "asiaCaps.txt");
-	static File australiaCountriesFile = new File(getFilePath() + "australiaCountries.txt");
-	static File australiaCapsFile = new File(getFilePath() + "australiaCaps.txt");
-	static File europeCountriesFile = new File(getFilePath() + "europeCountries.txt");
-	static File europeCapsFile = new File(getFilePath() + "europeCaps.txt");
-	static File northAmCountriesFile = new File(getFilePath() + "northAmCountries.txt");
-	static File northAmCapsFile = new File(getFilePath() + "northAmCaps.txt");
-	static File southAmCountriesFile = new File(getFilePath() + "southAmCountries.txt");
-	static File southAmCapsFile = new File(getFilePath() + "southAmCaps.txt");
-	static File worldCapitalsFile = new File(getFilePath() + "worldcapitals.txt");
-	static File worldCountriesFile = new File(getFilePath() + "worldcountries.txt");
-
-	//private ArrayList<Level> = new ArrayList<Level>();
-	// In the constructor, load these ^^^
 
 	/** Singleton instance to restrict instantiaion since we'll be using this GameData
 	 *  object across the whole game
@@ -99,6 +79,8 @@ public class GameData extends Observable {
 		File worldCapitalsFile = new File(filePath + "worldcapitals.txt");
 		File worldCountriesFile = new File(filePath + "worldcountries.txt");
 
+		// private final int US_GAME = 0
+		// hashMap.put(US_GAME, usGameLocations
 		usGame = createGameLocations(capitalsFile, statesFile);
 		africaGame = createGameLocations(africaCapsFile, africaCountriesFile);
 		asiaGame = createGameLocations(asiaCapsFile, asiaCountriesFile);
@@ -110,10 +92,7 @@ public class GameData extends Observable {
 		allGame = new ArrayList<Territory>();
 		allGame.addAll(usGame);
 		allGame.addAll(worldGame);
-		//SessionModel.setLocations(usGame);
-		//locations =  usGame;
-		//usGame = createGameLocations(capitalsFile, statesFile);
-		//setQuestion(getTerritory(random capital));
+
 	}
 
     /** Constructs a newly allocated GameData object that passes in a file of  capitals and file of 
@@ -198,15 +177,6 @@ public class GameData extends Observable {
 		return allGame;
 	}
 
-	/** 
-	 * Sets the object's ArrayList of locations to a new ArrayList.
-	 * @param locations An ArrayList that contains all of the Territories, with their Capitals inside.
-	 */
-	/*
-	public void setLocations(ArrayList<Territory> locations) {
-		this.locations = locations;
-	}
-	*/
 
 	/** Creates an ArrayList of territories based on the capitals and territories files.
 	 *	In the file, the lines should match between the capitals and the territories.
@@ -245,5 +215,11 @@ public class GameData extends Observable {
 		//return gameHash;
 		return gameLocations;
 	}
+
+	/*
+	public ArrayList getGame(int gameKey) {
+		return hMap.get(gameKey)
+	}
+	 */
 
 }
