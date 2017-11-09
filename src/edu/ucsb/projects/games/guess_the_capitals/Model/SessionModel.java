@@ -221,12 +221,11 @@ public class SessionModel extends Observable{
 		// Creating r to be our random number generator
 		Random r = new Random();
 
-		// Making an ArrayList of locations to make the question	
-		// TODO: remove locations from GameData and move the logic of setting the current
-		// set of locations to SessionModel
+		// Making an ArrayList of locations to make the question
 		ArrayList<Territory> totalData = locations;
 		Territory t = new Territory();
 
+		//prevent duplicates with possibleAnswers
 		for (int i = 0; i < numChoices; ++i) {
 			// Set t equal to some random territory
 			t = totalData.get(r.nextInt(totalData.size()));
@@ -238,8 +237,8 @@ public class SessionModel extends Observable{
 
 		setChanged();
 		notifyObservers();
-
 	}
+
     /** Sets the number of questions, correct answers and grade to their default users to get the game ready
      * for the next session to be played
      */
