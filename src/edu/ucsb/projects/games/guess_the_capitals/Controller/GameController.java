@@ -133,11 +133,19 @@ public class GameController{
 			menuData.setQuestionNum(i);
 			input = view.menuIO(GameView.QUESTION_MENU, menuData);
 
-			// evaluate input for correctness
-			if (model.checkAnswer(input))
-				model.setNumCorrect(model.getNumCorrect() + 1);
+			if(input == menuData.possibleChoices.size()){
+				model.printHint();
+				i--;
+			}
 
-			model.updateCurrentQuestion();
+			// evaluate input for correctness
+			else if (model.checkAnswer(input)) {
+				model.setNumCorrect(model.getNumCorrect() + 1);
+			}
+
+			if(input != menuData.possibleChoices.size()) {
+				model.updateCurrentQuestion();
+			}
 		}
 	}
 

@@ -22,6 +22,7 @@ public class QuestionMenu extends Menu{
 		for(int i = 0; i < menuData.possibleChoices.size(); i++){
 			System.out.println(i + ". " + menuData.possibleChoices.get(i).getCapital().getName());
 		}
+		System.out.println(menuData.possibleChoices.size() + ". get hint");
 
     }
 

@@ -211,6 +211,16 @@ public class SessionModel extends Observable{
 		locations = GameData.createGameLocations(capitalsFile, territoriesFile);
 	}
 
+
+	public void printHint(){
+		for (int i=0; i < possibleAnswers.size(); i++){
+			if(possibleAnswers.get(i) != answerTerritory){
+				System.out.println("The answer is not " + possibleAnswers.get(i).getCapital().getName());
+				return;
+			}
+		}
+	}
+
 	/**
 	 * Changes the possible answers to a random set of capitals
 	 */
