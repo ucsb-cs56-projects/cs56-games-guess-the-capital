@@ -80,7 +80,7 @@ public class GameController{
 		//This prints the MainMenu and also takes in an input. The input decides which locations to set.
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
-		if(input == 0)
+		/*if(input == 0)
 		    model.setLocations(gameData.getUSGame());
 		else if(input == 1)
 			model.setLocations(gameData.getNorthAmGame());
@@ -98,8 +98,8 @@ public class GameController{
 			model.setLocations(gameData.getWorldGame());
 		else if(input == 8)
 			model.setLocations(gameData.getAllGame());
-
-		//model.setLocations(gameData.getGame(input));
+		*/
+		model.setLocations(gameData.getGame(input));
 	}
 
 	/** Displays menu that allows user how many questions they'd like to be asked

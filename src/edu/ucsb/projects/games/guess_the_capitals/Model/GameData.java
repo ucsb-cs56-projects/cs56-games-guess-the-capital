@@ -26,15 +26,21 @@ public class GameData extends Observable {
 	//private HashMap locationHashMap = new HashMap<Capital, Territory>();
 
 
-	private ArrayList<Territory> usGame = new ArrayList<Territory>();
+    private ArrayList<Territory> usGame = new ArrayList<Territory>();
     private ArrayList<Territory> northAmGame = new ArrayList<Territory>();
     private ArrayList<Territory> southAmGame = new ArrayList<Territory>();
     private ArrayList<Territory> europeGame = new ArrayList<Territory>();
     private ArrayList<Territory> asiaGame = new ArrayList<Territory>();
     private ArrayList<Territory> africaGame = new ArrayList<Territory>();
     private ArrayList<Territory> australiaGame = new ArrayList<Territory>();
-	private ArrayList<Territory> worldGame = new ArrayList<Territory>();
-	private ArrayList<Territory> allGame = new ArrayList<Territory>();
+    private ArrayList<Territory> worldGame = new ArrayList<Territory>();
+    private ArrayList<Territory> allGame = new ArrayList<Territory>();
+
+    //trying to implement HashMap refactoring here
+    private HashMap<String, ArrayList> games = new HashMap<String, ArrayList>();
+    private String names[] = {"US", "North America", "South America",
+			      "Europe", "Asia", "Africa", "Australia",
+			      "World", "All"};
 
 	/**
 	 *  File path for location of data
@@ -85,11 +91,21 @@ public class GameData extends Observable {
 		australiaGame = createGameLocations(australiaCapsFile, australiaCountriesFile);
 		europeGame = createGameLocations(europeCapsFile, europeCountriesFile);
 		northAmGame = createGameLocations(northAmCapsFile, northAmCountriesFile);
-	    southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
+		southAmGame = createGameLocations(southAmCapsFile, southAmCountriesFile);
 		worldGame = createGameLocations(worldCapitalsFile, worldCountriesFile);
 		allGame = new ArrayList<Territory>();
 		allGame.addAll(usGame);
 		allGame.addAll(worldGame);
+
+		//adding HashMap implementation here
+		games.put("US", usGame);
+		games.put("Africa", africaGame);
+		games.put("Australia", australiaGame);
+		games.put("Europe", europeGame);
+		games.put("North America", northAmGame);
+		games.put("South America", southAmGame);
+		games.put("World", worldGame);
+		games.put("All", allGame);
 
 	}
 
@@ -202,10 +218,10 @@ public class GameData extends Observable {
 		return gameLocations;
 	}
 
-	/*
+    //using the HashMap to get the ArrayList
 	public ArrayList getGame(int gameKey) {
-		return hMap.get(gameKey)
+	    return games.get(names[gameKey]);
 	}
-	 */
+	
 
 }
