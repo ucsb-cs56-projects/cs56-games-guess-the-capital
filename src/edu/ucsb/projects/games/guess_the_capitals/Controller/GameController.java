@@ -19,6 +19,7 @@ public class GameController{
     private GameView view;
     GameData gameData = GameData.getInstance();
     private MainMenu main;
+    private int timer = 10; //time for each question
 
 	/**
 	 * Use input to handle things accordingly
@@ -128,11 +129,21 @@ public class GameController{
 		// initializes game session
 		model.updateCurrentQuestion();
 
+		//int seconds = timer; //10 seconds to answer each question
+		
 		for (int i = 1; i <= model.getNumQuestions(); ++i){
 			// print out question menu and get input
 			menuData.setQuestionNum(i);
-			input = view.menuIO(GameView.QUESTION_MENU, menuData);
-
+				input = view.menuIO(GameView.QUESTION_MENU, menuData);
+			//do{
+			//		System.out.print(seconds + " seconds left!\r");
+			//		seconds--;
+					//	try {
+			//	Thread.sleep(1000);
+			//	}
+			//	catch(Exception e) { }
+			//	input = view.menuIO(GameView.QUESTION_MENU, menuData);
+			// } while(seconds != 0);
 			if(input == menuData.possibleChoices.size()){
 				model.printHint();
 				i--;
