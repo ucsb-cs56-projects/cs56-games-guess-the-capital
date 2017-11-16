@@ -39,3 +39,4 @@ yeaboiii	15
 0	1
 e	5
 why	2
+yay	3
