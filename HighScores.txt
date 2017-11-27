@@ -40,3 +40,4 @@ yeaboiii	15
 e	5
 why	2
 yay	3
+dying	1
