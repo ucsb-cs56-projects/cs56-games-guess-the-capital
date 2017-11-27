@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class FinalMenu extends Menu{
 
     File myFile = new File("HighScores.txt");
-    HashMap <String, Integer> lines = new HashMap <String, Integer>();
+    
+    private HashMap <String, Integer> lines = new HashMap <String, Integer>();
+
     //HashMap <String, Integer> result = new HashMap <String, Integer>();
     //ArrayList<String[]> parsed = new ArrayList<String[]>();
 

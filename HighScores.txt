@@ -41,3 +41,5 @@ e	5
 why	2
 yay	3
 dying	1
+tester	15
+wohoo	1

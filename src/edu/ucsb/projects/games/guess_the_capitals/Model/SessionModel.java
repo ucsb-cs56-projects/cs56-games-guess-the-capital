@@ -233,7 +233,7 @@ public class SessionModel extends Observable{
 	 */
 	public void updateCurrentQuestion(){
 
-		System.out.print("sdfs");
+	    //System.out.print("sdfs");
 		// clear current set of answers
 		possibleAnswers.clear();
 
