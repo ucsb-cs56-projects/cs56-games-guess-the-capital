@@ -81,25 +81,6 @@ public class GameController{
 		//This prints the MainMenu and also takes in an input. The input decides which locations to set.
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
-		/*if(input == 0)
-		    model.setLocations(gameData.getUSGame());
-		else if(input == 1)
-			model.setLocations(gameData.getNorthAmGame());
-		else if(input == 2)
-			model.setLocations(gameData.getSouthAmGame());
-		else if(input == 3)
-			model.setLocations(gameData.getEuropeGame());
-		else if(input == 4)
-			model.setLocations(gameData.getAsiaGame());
-		else if(input == 5)
-			model.setLocations(gameData.getAfricaGame());
-		else if(input == 6)
-			model.setLocations(gameData.getAustraliaGame());
-		else if(input == 7)
-			model.setLocations(gameData.getWorldGame());
-		else if(input == 8)
-			model.setLocations(gameData.getAllGame());
-		*/
 		model.setLocations(gameData.getGame(input));
 	}
 

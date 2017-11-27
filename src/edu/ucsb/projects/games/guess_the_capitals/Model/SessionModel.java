@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.File;
+import java.util.Collections;
 
 
 /**
@@ -22,6 +23,10 @@ public class SessionModel extends Observable{
 
 	private final static String filePath = "build/edu/ucsb/cs56/projects/games/guess_the_capitals/";
 
+	/**
+	 * Current Territories used as question
+	 */
+	private ArrayList<Territory> answerTers = new ArrayList<Territory>();
 
 	/**
      * Represents number of questions in the current session
@@ -32,12 +37,12 @@ public class SessionModel extends Observable{
 	 * Current question number
 	 */
 	private int questionNum;
-    
+
     /**
      * Represents number of correct answers in the current session
      */
     private int numCorrect = 0;
-    
+
     /**
      * Represents final grade of the current session
      */
@@ -45,9 +50,9 @@ public class SessionModel extends Observable{
 
 	/**
 	 * The number of choices available to pick from in the multiple choice game.
-	 */ 
+	 */
 	private int numChoices;
-    
+
     /**
      * Represents answers for each question in the current session
      */
@@ -58,13 +63,13 @@ public class SessionModel extends Observable{
 	 */
 	private Territory answerTerritory;
 
-	/** 
+	/**
 	 * Singleton GameData class used for generating questions/answers
 	 */
 	GameData gameData = GameData.getInstance();
 
     /**
-     * Constructor for a session of the game, by default sets 
+     * Constructor for a session of the game, by default sets
      * number of questions to 10. Makes an empty ArrayList and
      * clears it just to be safe
      */
@@ -76,10 +81,10 @@ public class SessionModel extends Observable{
 		possibleAnswers.clear();
 
     }
-    
+
     /** Constructor for a session of the game. Like the one above, sets number of questions to 10,
-     *  creates an  empty ArrayList and clears it. 
-     *  @param gameData gameData allows this SessionModel to access a particular list of capitals 
+     *  creates an  empty ArrayList and clears it.
+     *  @param gameData gameData allows this SessionModel to access a particular list of capitals
      *  and terroritories depending on which selections the user has made.
      */
 	SessionModel(GameData gameData) {
@@ -109,7 +114,7 @@ public class SessionModel extends Observable{
 		setChanged();
 		notifyObservers();
     }
-    
+
     /**
      * @return number of questions in the current session
      */
@@ -126,16 +131,16 @@ public class SessionModel extends Observable{
 		notifyObservers();
 	}
 
-    /** 
+    /**
      * @return the current question number
      */
 	public int getQuestionNum() {
 		return this.questionNum;
 	}
-    
+
     /**
      * Sets the number of correct answers in the current session
-     * @param numCorrect represents the number of correct answers 
+     * @param numCorrect represents the number of correct answers
      */
     public void setNumCorrect(int numCorrect){
 		this.numCorrect = numCorrect;
@@ -152,7 +157,7 @@ public class SessionModel extends Observable{
 
     /**
      * Sets the user's grade of their performance in the current session
-     * @param grade represents the user's grade based on the number of correct responses 
+     * @param grade represents the user's grade based on the number of correct responses
      */
     public void setGrade(double grade){
 		this.grade = grade;
@@ -185,14 +190,14 @@ public class SessionModel extends Observable{
 		return this.numChoices;
 	}
 
-    /** 
+    /**
 	 * @return the possible answers for the question
 	 */
 	public ArrayList<Territory> getPossibleAnswers() {
 		return possibleAnswers;
 	}
 
-    /** 
+    /**
      * @return the Territory for which the Capital belongs to
      */
 	public Territory getAnswerTerritory() {
@@ -211,7 +216,9 @@ public class SessionModel extends Observable{
 		locations = GameData.createGameLocations(capitalsFile, territoriesFile);
 	}
 
-
+	/**
+	 * print hint for current question
+	 */
 	public void printHint(){
 		for (int i=0; i < possibleAnswers.size(); i++){
 			if(possibleAnswers.get(i) != answerTerritory){
@@ -225,6 +232,8 @@ public class SessionModel extends Observable{
 	 * Changes the possible answers to a random set of capitals
 	 */
 	public void updateCurrentQuestion(){
+
+		System.out.print("sdfs");
 		// clear current set of answers
 		possibleAnswers.clear();
 
@@ -235,9 +244,27 @@ public class SessionModel extends Observable{
 		ArrayList<Territory> totalData = locations;
 		Territory t = new Territory();
 
+		/**
+		boolean terUsed = true;
+		while(terUsed){
+			t = totalData.get(r.nextInt(totalData.size()));
+			for(Territory ter : answerTers){
+				if(t != ter){
+					possibleAnswers.add(t);
+					answerTerritory = t;
+					terUsed = false;
+				}
+			}
+		}
+		 **/
+
+		//pick random answer # to be the answer
+		int answerNum = r.nextInt(numChoices);
+
 		//prevent duplicates with possibleAnswers
 		for (int i = 0; i < numChoices; ++i) {
 			boolean contains = false;
+			boolean terUsed = true;
 
 			// Set t equal to some random territory
 			t = totalData.get(r.nextInt(totalData.size()));
@@ -251,13 +278,27 @@ public class SessionModel extends Observable{
 			if(contains){
 				i--;
 			}
+
+			if(i==answerNum){
+
+				if(!answerTers.contains(t)){
+					answerTers.add(t);
+					possibleAnswers.add(t);
+					terUsed = false;
+				}
+
+				if(terUsed == true){
+					i--;
+				}
+			}
+
 			else {
 				possibleAnswers.add(t);
 			}
 		}
 
-		// Choose a possible answer to actually be the answer
-		answerTerritory = possibleAnswers.get(r.nextInt(numChoices));
+		//Collections.shuffle(possibleAnswers);
+		answerTerritory = possibleAnswers.get(answerNum);
 
 		setChanged();
 		notifyObservers();
@@ -273,7 +314,7 @@ public class SessionModel extends Observable{
 		setChanged();
 		notifyObservers();
 	}
-    
 
-    
+
+
 }
