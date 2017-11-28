@@ -66,7 +66,7 @@ public class FinalMenu extends Menu{
 	    	Scanner scanner = new Scanner(fileReader);
 	    	scanner.nextLine();
 	    	scanner.nextLine();
-	    	while (scanner.hasNextLine() && count < 10){
+	    	while (scanner.hasNextLine()/* && count < 10*/){
 				String line = scanner.nextLine();
 				String[] result = line.split("\t");
 				lines.put(result[0], Integer.parseInt(result[1]));
@@ -87,8 +87,11 @@ public class FinalMenu extends Menu{
 		List<String> users = new ArrayList<String>(h.keySet());
 		Collections.sort(users, (u1,u2) -> h.get(u2).compareTo(h.get(u1)));
 		System.out.println("Name" + "\t" + "Score");
-		for (String u: users){
+		/*	for (String u: users){
 	    	System.out.println(u + "\t" + h.get(u));
+		}*/
+		for(int i = 0; i < 10; i++) {
+		    System.out.println(users.get(i) + "\t" + h.get(users.get(i)));
 		}
     }
 
