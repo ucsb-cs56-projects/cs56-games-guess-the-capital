@@ -233,7 +233,6 @@ public class SessionModel extends Observable{
 	 */
 	public void updateCurrentQuestion(){
 
-	    //System.out.print("sdfs");
 		// clear current set of answers
 		possibleAnswers.clear();
 
@@ -297,7 +296,6 @@ public class SessionModel extends Observable{
 			}
 		}
 
-		//Collections.shuffle(possibleAnswers);
 		answerTerritory = possibleAnswers.get(answerNum);
 
 		setChanged();

@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.Scanner;
 import java.io.File;
-
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.io.Reader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Controller that takes input in order for View to know what to display
@@ -101,7 +110,59 @@ public class GameController{
 		    model.setNumQuestions(customNum);
 		}
 	}
-    
+
+	class aTask extends TimerTask {
+
+		Timer timer = new Timer();
+		boolean timeUp;
+
+		public void cat(){
+			System.out.println("You have 5 seconds.");
+
+			// initializes game session
+			model.updateCurrentQuestion();
+
+			for (int i = 1; i <= model.getNumQuestions(); ++i){
+				timeUp = false;
+
+				// print out question menu and get input
+				menuData.setQuestionNum(i);
+				input = view.menuIO(GameView.QUESTION_MENU, menuData);
+
+				timer.schedule(new aTask(), 5000);
+
+				//print hint if input = size
+				if(input == menuData.possibleChoices.size()){
+					if(!timeUp) {
+						model.printHint();
+					}
+					i--;
+				}
+
+				// evaluate input for correctness
+				else if (model.checkAnswer(input)) {
+					model.setNumCorrect(model.getNumCorrect() + 1);
+					if(timeUp){
+						model.setNumCorrect(model.getNumCorrect()-1);
+					}
+					timer.cancel();
+				}
+
+				if(input != menuData.possibleChoices.size()) {
+					model.updateCurrentQuestion();
+				}
+			}
+		}
+
+		public void run() {
+			timeUp = true;
+			System.out.println("Time up, choose any answer to continue.");
+			model.updateCurrentQuestion();
+
+			timer.cancel();
+		}
+	}
+
     /** Iterates through questions that user will be asked given 
 	 *  their choices of territory and number of questions
 	 */
@@ -110,36 +171,13 @@ public class GameController{
 		// initializes game session
 		model.updateCurrentQuestion();
 
-		//int seconds = timer; //10 seconds to answer each question
-		
-		for (int i = 1; i <= model.getNumQuestions(); ++i){
-			// print out question menu and get input
-			menuData.setQuestionNum(i);
-				input = view.menuIO(GameView.QUESTION_MENU, menuData);
-			//do{
-			//		System.out.print(seconds + " seconds left!\r");
-			//		seconds--;
-					//	try {
-			//	Thread.sleep(1000);
-			//	}
-			//	catch(Exception e) { }
-			//	input = view.menuIO(GameView.QUESTION_MENU, menuData);
-			// } while(seconds != 0);
-			if(input == menuData.possibleChoices.size()){
-				model.printHint();
-				i--;
-			}
+		aTask kitty = new aTask();
+		kitty.cat();
 
-			// evaluate input for correctness
-			else if (model.checkAnswer(input)) {
-				model.setNumCorrect(model.getNumCorrect() + 1);
-			}
 
-			if(input != menuData.possibleChoices.size()) {
-				model.updateCurrentQuestion();
-			}
-		}
 	}
+
+
 
     /** Displays final menu and allows user to play another game or end the session
 	 *  @return true if the user selected 1, else return false if they did not
