@@ -90,6 +90,10 @@ public class GameController{
 		//This prints the MainMenu and also takes in an input. The input decides which locations to set.
 		input = view.menuIO(GameView.MAIN_MENU, null); 
 		// TODO: set GameData to their selection
+		if(input < 0 || input > 8){
+			System.out.println("Incorrect input.");
+			mainMenu();
+		}
 		model.setLocations(gameData.getGame(input));
 	}
 
@@ -103,11 +107,15 @@ public class GameController{
 			model.setNumQuestions(10);
 		if(input == 1)
 		    model.setNumQuestions(50);
-		else if(input == 2){
+		if(input == 2){
 		    System.out.println("Enter the number of questions");
 		    Scanner numIn = new Scanner(System.in);
 		    int customNum = numIn.nextInt();
 		    model.setNumQuestions(customNum);
+		}
+		if(input < 0 || input > 2){
+			System.out.println("Incorrect input.");
+			questionNumMenu();
 		}
 	}
 
@@ -200,6 +208,7 @@ public class GameController{
 	 */
 	public boolean finalMenu() {
 		input = view.menuIO(GameView.FINAL_MENU, menuData); //need to double check with Sean/Jack
+
 		return input == 1;
 
 	}
