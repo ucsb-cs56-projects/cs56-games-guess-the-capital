@@ -135,17 +135,33 @@ public class GameController{
 				if(input == menuData.possibleChoices.size()){
 					if(!timeUp) {
 						model.printHint();
+						i--;
 					}
-					i--;
+				}
+
+				//handle incorrect input
+				if(input < 0 || input > menuData.possibleChoices.size()){
+					if(!timeUp) {
+						System.out.println("Incorrect input. Try again.");
+						i--;
+						continue;
+					}
+					else{
+						model.updateCurrentQuestion();
+						continue;
+					}
+
 				}
 
 				// evaluate input for correctness
-				else if (model.checkAnswer(input)) {
-					model.setNumCorrect(model.getNumCorrect() + 1);
-					if(timeUp){
-						model.setNumCorrect(model.getNumCorrect()-1);
+				else if (input >= 0 && input < menuData.possibleChoices.size()) {
+					if(model.checkAnswer(input)) {
+						model.setNumCorrect(model.getNumCorrect() + 1);
+						if (timeUp) {
+							model.setNumCorrect(model.getNumCorrect() - 1);
+						}
+						//timer.cancel();
 					}
-					timer.cancel();
 				}
 
 				if(input != menuData.possibleChoices.size()) {
