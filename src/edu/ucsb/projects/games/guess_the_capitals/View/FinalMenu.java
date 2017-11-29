@@ -34,7 +34,7 @@ public class FinalMenu extends Menu{
 		//parseLines(lines);
 		//sort(parsed):
 		printScores(getScores());
-		System.out.println("Enter 1 to play again (entering anything else quits the game)");
+		System.out.println("Enter 1 to let another player play the game (entering anything else quits the game)");
     }
 
     /**

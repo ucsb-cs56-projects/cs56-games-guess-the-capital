@@ -118,7 +118,7 @@ public class GameController{
 			questionNumMenu();
 		}
 	}
-
+    /*
 	class aTask extends TimerTask {
 
 		Timer timer = new Timer();
@@ -128,7 +128,7 @@ public class GameController{
 			System.out.println("You have 5 seconds.");
 
 			// initializes game session
-			model.updateCurrentQuestion();
+			//			model.updateCurrentQuestion();
 
 			for (int i = 1; i <= model.getNumQuestions(); ++i){
 				timeUp = false;
@@ -186,7 +186,7 @@ public class GameController{
 			timer.cancel();
 		}
 	}
-
+    */
     /** Iterates through questions that user will be asked given 
 	 *  their choices of territory and number of questions
 	 */
@@ -194,10 +194,24 @@ public class GameController{
 
 		// initializes game session
 		model.updateCurrentQuestion();
-
+		/*
 		aTask kitty = new aTask();
 		kitty.cat();
-
+		*/
+		for (int i = 1; i <= model.getNumQuestions(); ++i) {
+		    menuData.setQuestionNum(i);
+		    input = view.menuIO(GameView.QUESTION_MENU, menuData);
+		    if(input == menuData.possibleChoices.size()) {
+			model.printHint();
+			i--;
+		    }
+		    else if(model.checkAnswer(input)) {
+			model.setNumCorrect(model.getNumCorrect() + 1);
+		    }
+		    if(input != menuData.possibleChoices.size()) {
+			model.updateCurrentQuestion();
+		    }
+		}
 
 	}
 

@@ -45,3 +45,7 @@ tester	15
 wohoo	1
 highscore?	20
 whais	3
+keviyolo	1
+yay	0
+wut	1
+wut	0
