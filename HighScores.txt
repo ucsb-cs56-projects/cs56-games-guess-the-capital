@@ -49,3 +49,4 @@ keviyolo	1
 yay	0
 wut	1
 wut	0
+WOOHOOOO	1
