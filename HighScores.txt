@@ -44,3 +44,4 @@ dying	1
 tester	15
 wohoo	1
 highscore?	20
+whais	3
