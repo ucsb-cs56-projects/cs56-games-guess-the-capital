@@ -73,6 +73,10 @@ public class GameData extends Observable {
 		File worldCapitalsFile = new File(filePath + "worldcapitals.txt");
 		File worldCountriesFile = new File(filePath + "worldcountries.txt");
 
+		//loading all files in an array refactoring
+		//File directory = new File(filePath);
+		//File[] gameFiles = directory.listFiles();
+		
 		// private final int US_GAME = 0
 		// hashMap.put(US_GAME, usGameLocations
 		ArrayList<Territory> usGame = createGameLocations(capitalsFile, statesFile);

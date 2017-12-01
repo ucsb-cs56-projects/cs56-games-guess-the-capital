@@ -50,3 +50,7 @@ yay	0
 wut	1
 wut	0
 WOOHOOOO	1
+whoohoo	1
+play2	2
+jk	1
+.-.	5
