@@ -6,6 +6,9 @@ package edu.ucsb.cs56.projects.games.guess_the_capitals;
  * @author Sean Shelton, Armin Mahini
  * @version UCSB CS56, F16
  */
+
+//Menus can be replaced with xml files in Android (?)
+
 public class MainMenu extends Menu{
     
     /** Overridden version simply prints selections for the user to choose
