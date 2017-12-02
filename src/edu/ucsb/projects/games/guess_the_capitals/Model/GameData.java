@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Holds all of the data for the game
@@ -101,9 +102,46 @@ public class GameData extends Observable {
 		games.put("World", worldGame);
 		games.put("All", allGame);
 
+		//if you comment the stuff above and only leave the stuff below in this constructor
+		/*
+		  File directory = new File(filePath);
+		  File[] gameFiles = directory.listFiles();
+		  Arrays.sort(gameFiles);
+		  loadGames(gameFiles);
+		*/
+		
 	}
-
-
+    //load games method below
+    /*
+public void loadGames(File[] files) {
+for(int i = 0; i < names.length; i++) {
+    if(names[i] == "All") {
+      ArrayList<Territory> allGame = new ArrayList<Territory>();
+      allGame.addAll(games.get("US"));
+      allGame.addAll(games.get("World"));
+    }
+    else if (names[i] == "US") {
+      for (File caps : files) {
+        if(caps.equals(filePath + "capitals.txt")) {
+          for(File states : files) {
+            if (states.equals(filePath + "states.txt")) {
+              games.put("US", createGameLocations(caps, states));
+            }
+          }
+        }
+      }
+    }
+    else {
+      for (int j = 2i; j < 2i + 1; j++) {
+        if (j >= 6 && j <= 13) {
+          games.put(names[i], createGameLocations(files[j+1], files[j+2]));
+        }
+        games.put(names[i], createGameLocations(files[j], files[j+1]));
+      }
+    }
+  }  
+}     
+    */
     /** Returns instance of singleton GameData
 	 *  @return instance of GameData object
 	 */
