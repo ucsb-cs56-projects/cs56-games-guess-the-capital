@@ -119,6 +119,7 @@ for(int i = 0; i < names.length; i++) {
       ArrayList<Territory> allGame = new ArrayList<Territory>();
       allGame.addAll(games.get("US"));
       allGame.addAll(games.get("World"));
+      games.put("All", allGame);
     }
     else if (names[i] == "US") {
       for (File caps : files) {
