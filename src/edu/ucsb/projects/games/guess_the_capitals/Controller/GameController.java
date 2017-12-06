@@ -118,75 +118,7 @@ public class GameController{
 			questionNumMenu();
 		}
 	}
-    /*
-	class aTask extends TimerTask {
 
-		Timer timer = new Timer();
-		boolean timeUp;
-
-		public void cat(){
-			System.out.println("You have 5 seconds.");
-
-			// initializes game session
-			//			model.updateCurrentQuestion();
-
-			for (int i = 1; i <= model.getNumQuestions(); ++i){
-				timeUp = false;
-
-				// print out question menu and get input
-				menuData.setQuestionNum(i);
-				input = view.menuIO(GameView.QUESTION_MENU, menuData);
-
-				timer.schedule(new aTask(), 5000);
-
-				//print hint if input = size
-				if(input == menuData.possibleChoices.size()){
-					if(!timeUp) {
-						model.printHint();
-						i--;
-					}
-				}
-
-				//handle incorrect input
-				if(input < 0 || input > menuData.possibleChoices.size()){
-					if(!timeUp) {
-						System.out.println("Incorrect input. Try again.");
-						i--;
-						continue;
-					}
-					else{
-						model.updateCurrentQuestion();
-						continue;
-					}
-
-				}
-
-				// evaluate input for correctness
-				else if (input >= 0 && input < menuData.possibleChoices.size()) {
-					if(model.checkAnswer(input)) {
-						model.setNumCorrect(model.getNumCorrect() + 1);
-						if (timeUp) {
-							model.setNumCorrect(model.getNumCorrect() - 1);
-						}
-						//timer.cancel();
-					}
-				}
-
-				if(input != menuData.possibleChoices.size()) {
-					model.updateCurrentQuestion();
-				}
-			}
-		}
-
-		public void run() {
-			timeUp = true;
-			System.out.println("Time up, choose any answer to continue.");
-			model.updateCurrentQuestion();
-
-			timer.cancel();
-		}
-	}
-    */
     /** Iterates through questions that user will be asked given 
 	 *  their choices of territory and number of questions
 	 */
@@ -194,10 +126,7 @@ public class GameController{
 
 		// initializes game session
 		model.updateCurrentQuestion();
-		/*
-		aTask kitty = new aTask();
-		kitty.cat();
-		*/
+
 		for (int i = 1; i <= model.getNumQuestions(); ++i) {
 		    menuData.setQuestionNum(i);
 		    input = view.menuIO(GameView.QUESTION_MENU, menuData);

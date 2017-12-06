@@ -65,3 +65,13 @@ $   at edu.ucsb.cs56.S12.esterkin.GameTest.testCompareAnswer(GameTest.java:101)
   A possibility for refactoring exists in the FinalMenu.java file. That file handles the highscores as well as simply asking the user if they'd like to play again. This could be split into 2 separate Menu classes: one for handling highscores (say "HighScoreMenu.java") and the other simply for displaying the user's score and asking if they'd like to play again.
   
   As far as working with legacy code, I highly recommend playing around with the program to get an idea of how the game works before tackling the issues you've been presented - you'll learn a lot about the code that way than just reading about what it's suppsoed to do. You'll probably find it easier to tackle the smaller issues and then work your way up to the more challenging ones when getting started with issue fixing.
+
+## F17 final remarks
+    
+   Before starting to change anything, play the game a couple times through. This will show how the game works and help understand some of the bugs. Then look up the Model-View-Controller Pattern and have a good understanding of it. This is important in understanding how the files all work together. 
+   
+   Refactoring and javadocs should be done first. When refactoring, clean up the commented out code. Then maybe clean up some of the functions to make single-purpose. Moving the timer into SessionModel may take some time to figure out.
+   
+   There is a strange issue with the first question having a duplicate answer. Wrong input in the question menu can crash the game. The timer and hints option seem to act strangely with each other.
+   
+   
