@@ -268,12 +268,20 @@ public class SessionModel extends Observable{
 			// Set t equal to some random territory
 			t = totalData.get(r.nextInt(totalData.size()));
 
+			/*
 			for(Territory ter : possibleAnswers){
 				if (t == ter){
 					contains = true;
 				}
 			}
+			*/
 
+			//refactoring the for loop above
+			if (possibleAnswers.contains(t)) {
+			    contains = true;
+			}
+
+			
 			if(contains){
 				i--;
 			}
